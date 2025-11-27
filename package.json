@@ -20,6 +20,7 @@
     "axios": "^1.13.2",
     "izitoast": "^1.4.0",
     "loaders.css": "^0.1.2",
+    "modern-normalize": "^3.0.1",
     "simplelightbox": "^2.14.3",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
