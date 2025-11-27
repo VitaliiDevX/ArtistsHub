@@ -1,22 +1,24 @@
 /* Styles for Mobile devices */
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-width: 320px;
   margin: 0 auto;
-  padding: 36px 15px;
-}
-/* Styles for Tablet devices */
-@media only screen and (min-width: 768px) {
-  .container {
+  padding: 0 16px;
+
+  @media only screen and (min-width: 768px) {
     max-width: 768px;
+    padding: 0 32px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding: 0 64px;
   }
 }
-/* Styles for Desktop devices */
-@media only screen and (min-width: 1200px) {
-  .container {
-    max-width: 1200px;
+
+/* example */
+/* button {
+  background-color: red;
+  &:hover {
+    background-color: white;
   }
-}
+} */
