@@ -1,0 +1,233 @@
+/* ==============================MOBILE STYLES */
+.section-gallery {
+  background-color: var(--color-scheme-1-background);
+}
+.container {
+   padding-top: 64px ;
+ padding-bottom:64px ;
+ width: 320px;
+}
+.gallery-title {
+  
+}
+.gallery-text {
+ font-weight: 600;
+font-size: 16px;
+line-height: 1.5;
+color: var(--color-scheme-1-text);
+}
+.gallery-main-title {
+ font-weight: 700;
+font-size: 44px; 
+line-height: 1.2;
+letter-spacing: -0.01em;
+text-transform: capitalize;
+color: var(--color-scheme-1-text); 
+}
+.filter-and-gallery {
+}
+.gallery-filter {
+}
+.filter-name-and-button {
+  display: flex;
+flex-direction: column;
+gap: 12px;
+margin-bottom: 16px;
+}
+.filter-name {
+ font-weight: 700;
+font-size: 18px;
+color: var(--color-scheme-1-text);
+}
+.filters-button {
+  border-radius: 12px;
+padding: 10px 24px;
+width: 288px;
+height: 47px;
+box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+inset 0 -2px 1px 0 var(--opacity-neutral-darkest-5),
+inset 0 0 0 1px var(--opacity-white-10);
+background: var(--opacity-white-10);
+}
+.filters-body {
+  border-radius: 12px;
+padding: 12px;
+width: 289px;
+height: 343px;
+background-color: var(--color-scheme-2-foreground);
+}
+.hidden {
+  display: none;
+}
+.filter-group {
+  border: 1px solid var(--opacity-white-20);
+border-radius: 12px;
+padding: 8px 12px;
+width: 265px;
+height: 48px;
+background-color: var(--opacity-transparent);
+}
+.filter-input {
+ font-weight: 400;
+font-size: 18px;
+line-height: 1.5;
+background-color: var(--opacity-transparent);
+border: none;
+outline: none;
+color: var(--opacity-white-60); 
+}
+.filter-select {
+ background-color: var(--opacity-transparent);
+border: none;
+outline: none;
+color: var(--opacity-white-60);
+}
+.filter-option {
+  background-color: var(--opacity-transparent);
+border: none;
+outline: none;
+color: var(--opacity-white-60);
+}
+.gallery-list {
+
+}
+.gallery-not-found {
+  border-radius: 16px;
+padding: 16px;
+background-color:var(--color-scheme-3-foreground);
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+gap: 24px;
+}
+.gallery-not-found-title{
+ font-weight: 700;
+font-size: 32px;
+line-height: 1.2;
+letter-spacing: -0.01em;
+color: var(--color-scheme-1-text); 
+}
+.gallery-not-found-text{
+ font-weight: 400;
+font-size: 20px;
+line-height: 1.5;
+color: var(--color-scheme-1-text); 
+}
+.icon-info {
+}
+.gallery-btn {
+  margin: 0 auto;
+border-radius: 12px;
+padding: 10px 24px;
+width: 256px;
+height: 47px;
+box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+ inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+ inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+ inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+ inset 0 32px 24px 0 var(--opacity-white-5);
+background-color: var(--color-affair);
+}
+
+/* ================================TABLET STYLES */
+.section-gallery {
+}
+.container {
+ width: 768px; 
+}
+.gallery-title {
+}
+.gallery-text {
+}
+.gallery-main-title {
+}
+.filter-and-gallery {
+}
+.gallery-filter {
+}
+.filter-name-and-button {
+}
+.filter-name {
+}
+.filters-button {
+}
+.filters-body {
+}
+.hidden {
+}
+.filter-group {
+}
+.filter-input {
+}
+.filter-select {
+}
+.filter-option {
+}
+.gallery-list {
+}
+.gallery-not-found {
+  padding: 32px;
+  width: 976px;
+}
+.gallery-not-found-title{
+ font-size: 48px;
+
+}
+.icon-info {
+}
+.gallery-btn {
+ margin-left: 0;
+width: 148px; 
+}
+/* ================================DESCTOP STYLES */
+.section-gallery {
+}
+.container {
+  padding-top: 112px;
+padding-bottom: 112px;
+width: 1440px;
+}
+.gallery-title {
+  width: 863px;
+}
+.gallery-text {
+}
+.gallery-main-title {
+  font-size: 84px;
+  line-height: 1.1;
+}
+.filter-and-gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+.gallery-filter {
+  width: 304px;
+}
+.filter-name-and-button {
+}
+.filter-name {
+}
+.filters-button {
+}
+.filters-body {
+}
+.hidden {
+}
+.filter-group {
+}
+.filter-input {
+}
+.filter-select {
+}
+.filter-option {
+}
+.gallery-list {
+}
+.gallery-not-found {
+}
+.icon-info {
+}
+.gallery-btn {
+}
