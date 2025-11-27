@@ -1,11 +1,11 @@
 {
-  "name": "goit-js-hw-12",
+  "name": "ArtistsHub",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/goit-js-hw-12/",
+    "build": "vite build --base=/ArtistsHub/",
     "preview": "vite preview"
   },
   "devDependencies": {
