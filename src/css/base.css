@@ -17,16 +17,17 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: var(--color-scheme-1-text);
+  font-family: var(--font-family);
+  background-color: var(--color-scheme-1-background);
 }
 
-main {
+/* main {
   flex-grow: 1;
 }
+
 main:has(.back-link) {
   text-align: center;
 }
@@ -48,4 +49,4 @@ button {
   &:hover {
     background-color: #6c8cff;
   }
-}
+} */

@@ -1,161 +1,57 @@
 import './js/feedback';
-// import iziToast from 'izitoast';
-// import errorUrl from './img/error.svg';
-// import cautionUrl from './img/caution.svg';
-// import infoUrl from './img/bell.svg';
-// import { getImagesByQuery, PER_PAGE } from './js/pixabay-api';
-// import {
-//   clearGallery,
-//   createGallery,
-//   hideLoader,
-//   hideLoadMoreButton,
-//   showLoader,
-//   showLoadMoreButton,
-// } from './js/render-functions';
+import {
+  getFeedbacks,
+  getArtistInfoById,
+  getArtists,
+  getAllGenres,
+} from './js/soundwawe-api';
+import {
+  renderArtistModalPreview,
+  renderArtistModalAlbumsList,
+} from './js/render-artist-modal';
+import { renderArtistList, renderPagination } from './js/render-artists';
+import { getTotalPages } from './js/helpers';
+import { artistModalPagesEl, searchFormEl } from './js/refs';
 
-// export const refs = {
-//   form: document.querySelector('.form'),
-//   gallery: document.querySelector('.gallery'),
-//   loadMoreBtn: document.querySelector('.load-more-btn'),
-//   loader: document.querySelector('.loader'),
-// };
+let currentPage = 1;
+let currentQuery = {};
 
-// let page = 1;
-// let currentQuery = '';
+// TESTS!!!!!!!!!!!!!!!!!!!!!!!!!
+// const result = await getArtistInfoById('65b0fda6ba67998416821076');
+// const { artists, totalArtists } = await getArtists();
 
-// refs.form.addEventListener('submit', onSubmit);
-// refs.loadMoreBtn.addEventListener('click', onClick);
+// renderArtistModalPreview(result);
+// renderArtistModalAlbumsList(result);
+// renderArtistList(artists);
+// renderPagination(currentPage, getTotalPages(totalArtists));
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// async function onSubmit(e) {
-//   e.preventDefault();
+// EVENT LISTENERS
+// artistModalPagesEl.addEventListener('click', async event => {
+//   const btn = event.target.closest('.page-btn');
+//   if (!btn || btn.disabled || btn.classList.contains('active')) return;
 
-//   const query = e.target.elements.search_text.value.trim();
+//   const newPage = Number(btn.dataset.page);
+//   currentPage = newPage;
 
-//   if (query === '') {
-//     iziToast.warning({
-//       title: 'Caution',
-//       message: 'The search field cannot be empty',
-//       position: 'topRight',
-//       backgroundColor: '#ffa000',
-//       titleColor: '#fff',
-//       messageColor: '#fff',
-//       progressBarColor: '#bb7b10',
-//       close: true,
-//       iconUrl: cautionUrl,
-//       class: 'my-toast',
-//     });
+//   const { artists, totalArtists } = await getArtists({}, currentPage);
+//   renderArtistList(artists);
+//   renderPagination(currentPage, getTotalPages(totalArtists));
+// });
 
-//     return;
-//   }
+// searchFormEl.addEventListener('submit', async event => {
+//   event.preventDefault();
 
-//   currentQuery = query;
+//   const name = event.target.elements.search_text.value.trim();
+//   const sorted = event.target.elements.sort.value;
+//   const genre = event.target.elements.genre.value;
+
+//   currentQuery = { name, sorted, genre };
 
 //   clearGallery();
 //   page = 1;
 
-//   await fetchImages();
-// }
-
-// async function onClick(e) {
-//   const cards = Array.from(refs.gallery.querySelectorAll('.card'));
-
-//   page++;
-
-//   await fetchImages();
-
-//   // прокрутка як по завданню
-//   // const firstCard = document.querySelector('.gallery .card');
-//   // if (!firstCard) return;
-//   // const { height: cardHeight } = firstCard.getBoundingClientRect();
-//   // window.scrollBy({ top: cardHeight * 2, behavior: 'smooth' });
-
-//   // прокрутка з врахуванням кількості картинок в рядках і висоти екрану
-//   const viewportHeight = window.innerHeight;
-
-//   const columnCount = Math.floor(
-//     document.querySelector('.container').offsetWidth / cards[0].offsetWidth
-//   );
-
-//   let cardToScroll = null;
-
-//   const rowCount = cards.length / columnCount;
-
-//   if (rowCount < 1) {
-//     return;
-//   } else if (rowCount % 1 === 0) {
-//     cardToScroll = cards
-//       .reverse()
-//       .find(card => card.getBoundingClientRect().bottom < viewportHeight);
-//   } else {
-//     cardToScroll = cards[Math.floor(rowCount) * columnCount - 1];
-//   }
-
-//   window.scrollBy({
-//     top: cardToScroll.getBoundingClientRect().bottom,
-//     behavior: 'smooth',
-//   });
-// }
-
-// async function fetchImages() {
-//   hideLoadMoreButton();
-//   showLoader();
-
-//   try {
-//     const { images, totalImageCount } = await getImagesByQuery(
-//       currentQuery,
-//       page
-//     );
-
-//     if (images.length === 0) {
-//       iziToast.error({
-//         title: 'Error',
-//         message:
-//           'Sorry, there are no images matching your search query. Please try again!',
-//         position: 'topRight',
-//         backgroundColor: '#ef4040',
-//         titleColor: '#fff',
-//         messageColor: '#fff',
-//         progressBarColor: '#b51b1b',
-//         close: true,
-//         iconUrl: errorUrl,
-//         class: 'my-toast',
-//       });
-
-//       return;
-//     }
-
-//     createGallery(images);
-
-//     if (totalImageCount > page * PER_PAGE) {
-//       showLoadMoreButton();
-//     } else {
-//       iziToast.info({
-//         title: 'Info',
-//         message: "We're sorry, but you've reached the end of search results",
-//         position: 'topRight',
-//         backgroundColor: '#09f',
-//         titleColor: '#fff',
-//         messageColor: '#fff',
-//         progressBarColor: '#0071bd',
-//         close: true,
-//         iconUrl: infoUrl,
-//         class: 'my-toast',
-//       });
-//     }
-//   } catch (error) {
-//     iziToast.error({
-//       title: 'Error',
-//       message: 'Something went wrong. Please try again later.',
-//       position: 'topRight',
-//       backgroundColor: '#ef4040',
-//       titleColor: '#fff',
-//       messageColor: '#fff',
-//       progressBarColor: '#b51b1b',
-//       close: true,
-//       iconUrl: errorUrl,
-//       class: 'my-toast',
-//     });
-//   } finally {
-//     hideLoader();
-//   }
-// }
+//   const result = await getArtists(currentQuery, page);
+//   renderArtistList(result.artists);
+//   renderPagination(currentPage, getTotalPages(result.totalArtists));
+// });

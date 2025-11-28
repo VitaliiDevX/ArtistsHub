@@ -1,0 +1,135 @@
+/* ==============================MOBILE STYLES */
+.section-gallery {
+  background-color: var(--color-scheme-1-background);
+}
+.container {
+   padding-top: 64px ;
+ padding-bottom:64px ;
+ width: 320px;
+}
+.gallery-title {
+  
+}
+.gallery-text {
+ font-weight: 600;
+font-size: 16px;
+line-height: 1.5;
+color: var(--color-scheme-1-text);
+}
+.gallery-main-title {
+ font-weight: 700;
+font-size: 44px; 
+line-height: 1.2;
+letter-spacing: -0.01em;
+text-transform: capitalize;
+color: var(--color-scheme-1-text); 
+}
+
+
+.hidden {
+  display: none;
+}
+
+.gallery-list {
+
+}
+.gallery-not-found {
+  border-radius: 16px;
+padding: 16px;
+background-color:var(--color-scheme-3-foreground);
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+gap: 24px;
+}
+.gallery-not-found-title{
+ font-weight: 700;
+font-size: 32px;
+line-height: 1.2;
+letter-spacing: -0.01em;
+color: var(--color-scheme-1-text); 
+}
+.gallery-not-found-text{
+ font-weight: 400;
+font-size: 20px;
+line-height: 1.5;
+color: var(--color-scheme-1-text); 
+}
+.icon-info {
+}
+.gallery-btn {
+  margin: 0 auto;
+border-radius: 12px;
+padding: 10px 24px;
+width: 256px;
+height: 47px;
+box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+ inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+ inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+ inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+ inset 0 32px 24px 0 var(--opacity-white-5);
+background-color: var(--color-affair);
+}
+
+/* ================================TABLET STYLES */
+@media screen and (min-width: 768px){
+.section-gallery {
+}
+.container {
+ width: 768px; 
+}
+.gallery-title {
+}
+.gallery-text {
+}
+.gallery-main-title {
+}
+
+
+.gallery-list {
+}
+.gallery-not-found {
+  padding: 32px;
+ width: 704px;
+}
+.gallery-not-found-title{
+ font-size: 48px;
+
+}
+.icon-info {
+}
+.gallery-btn {
+ margin-left: 0;
+width: 148px; 
+}
+}
+/* ================================DESCTOP STYLES */
+@media screen and (min-width: 1440px) {
+  
+.section-gallery {
+}
+.container {
+  padding-top: 112px;
+padding-bottom: 112px;
+width: 1440px;
+}
+.gallery-title {
+  width: 863px;
+}
+.gallery-text {
+}
+.gallery-main-title {
+  font-size: 84px;
+}
+
+
+.gallery-list {
+}
+.gallery-not-found {
+}
+.icon-info {
+}
+.gallery-btn {
+}
+}
