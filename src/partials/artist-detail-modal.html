@@ -1,7 +1,11 @@
 <!-- BACKDROP WITH MODAL -->
-<div class="backdrop">
+<div class="backdrop-with-modal is-open">
   <div class="modal">
-    <button class="modal-close-button"></button>
+    <a class="modal-close-button">
+      <svg class="modal-close-svg" width="32" height="32">
+        <use href="./img/sprite.svg#close"></use>
+      </svg>
+    </a>
 
     <h5 class="modal-main-heading">Artist's Name</h5>
 
@@ -55,7 +59,7 @@
 
         <div class="modal-info-genres-container">
           <ul class="modal-info-genres-list">
-            <li class="modal-info-genre-li">
+            <!-- <li class="modal-info-genre-li">
               <p class="modal-info-genre">Lorem</p>
             </li>
             <li class="modal-info-genre-li">
@@ -66,7 +70,7 @@
             </li>
             <li class="modal-info-genre-li">
               <p class="modal-info-genre">Lorem</p>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -132,22 +136,40 @@
             <tr>
               <td class="position-left">Lorem</td>
               <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
+              <td>
+                <a class="position-center" href="${movie}">
+                  <svg class="modal-youtube-svg" width="24" height="24">
+                    <use href="./img/sprite.svg#youtube"></use>
+                  </svg>
+                </a>
+              </td>
             </tr>
             <tr>
               <td class="position-left">Lorem</td>
               <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
+              <td><a class="position-center" href="${movie}"></a></td>
             </tr>
             <tr>
               <td class="position-left">Lorem</td>
               <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
+              <td>
+                <a class="position-center" href="${movie}">
+                  <svg class="modal-youtube-svg" width="24" height="24">
+                    <use href="./img/sprite.svg#youtube"></use>
+                  </svg>
+                </a>
+              </td>
             </tr>
             <tr>
               <td class="position-left">Lorem</td>
               <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
+              <td>
+                <a class="position-center" href="${movie}">
+                  <svg class="modal-youtube-svg" width="24" height="24">
+                    <use href="./img/sprite.svg#youtube"></use>
+                  </svg>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -2,7 +2,7 @@ body {
   color: #fff;
 }
 
-.backdrop {
+.backdrop-with-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@ body {
   /* transition: opacity 500ms linear; */
 }
 
-.backdrop.is-open {
+.backdrop-with-modal.is-open {
   opacity: 1;
   pointer-events: auto;
 }
