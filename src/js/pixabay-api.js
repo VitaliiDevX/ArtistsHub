@@ -22,3 +22,5 @@
 //     totalImageCount: response.data.totalHits,
 //   };
 // }
+
+console.log('Hello');
