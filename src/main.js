@@ -1,3 +1,4 @@
+import './js/feedback';
 import {
   getFeedbacks,
   getArtistInfoById,
