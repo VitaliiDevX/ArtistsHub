@@ -1,4 +1,4 @@
-import { artistListEl, artistModalPagesEl } from './refs';
+import { artistListEl, artistModalPagesEl, genresListEl } from './refs';
 
 export function renderArtistCard(artist) {
   const { genres, strArtist, strArtistThumb, strBiographyEN, _id } = artist;
@@ -6,7 +6,7 @@ export function renderArtistCard(artist) {
   
     <img  class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}">
     <ul class="artist-genres">
-    ${renderGenresList(genres)}
+    ${renderArtistGenresList(genres)}
     </ul>
     <h2 class="artist-name">${strArtist}</h2>
     <p class="artist-biography">${strBiographyEN}</p>
@@ -15,7 +15,7 @@ export function renderArtistCard(artist) {
   return artistCard;
 }
 
-export function renderGenresList(genres) {
+export function renderArtistGenresList(genres) {
   const genresList = genres.map(genre => `<li>${genre}</li>`).join('');
   return genresList;
 }
@@ -24,6 +24,11 @@ export function renderArtistList(artistList) {
   const artistListMarkup = artistList.map(renderArtistCard).join('');
   artistListEl.innerHTML = '';
   artistListEl.insertAdjacentHTML('beforeend', artistListMarkup);
+}
+
+export function renderGenresList(genres) {
+  const genresList = genres.map(({ genre }) => `<li>${genre}</li>`).join('');
+  genresListEl.insertAdjacentHTML('beforeend', genresList);
 }
 
 export function renderPagination(page, totalPages) {

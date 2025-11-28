@@ -23,3 +23,6 @@
 @import url('./loader.css');
 @import url('./iziToast.css');
 @import url('feedback-modal.css');
+.artist-modal-pages {
+    background-color: #fff;
+}

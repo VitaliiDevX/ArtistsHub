@@ -19,8 +19,13 @@
           </svg>
         </label>
 
-        <div class="select" data-select>
-          <input type="hidden" name="sorting" value="default" />
+        <div class="select" data-select data-select-name="sortName">
+          <input
+            class="select-input"
+            type="hidden"
+            name="sorting"
+            value="default"
+          />
 
           <button class="select-btn" type="button" name="sorting">
             Sorting
@@ -37,8 +42,13 @@
           </div>
         </div>
 
-        <div class="select" data-select>
-          <input type="hidden" name="genre" value="default" />
+        <div class="select" data-select data-select-name="genre">
+          <input
+            class="select-input"
+            type="hidden"
+            name="genre"
+            value="default"
+          />
 
           <button class="select-btn" type="button" name="genre">
             Genre
@@ -48,14 +58,16 @@
           </button>
 
           <div class="select-list-wrapper is-hidden">
-            <ul class="select-list" data-select-list></ul>
+            <ul class="select-list js-genres-list" data-select-list>
+              <li>All Genres</li>
+            </ul>
           </div>
         </div>
       </form>
       <div>
         <ul class="artists-list"></ul>
 
-        <div class="artists-not-found hidden">
+        <!-- <div class="artists-not-found is-hidden">
           <svg class="icon-info" width="40" height="40">
             <use href="../img/"></use>
           </svg>
@@ -65,7 +77,7 @@
             Try changing them or hit "Reset Filters" to bring back the beat.
           </p>
           <button class="artists-btn">Reset filters</button>
-        </div>
+        </div> -->
 
         <div class="artist-modal-pages"></div>
       </div>
