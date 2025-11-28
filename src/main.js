@@ -1,11 +1,19 @@
 import './js/feedback';
 import './js/search-form';
-import { genresListEl, searchFormEl } from './js/refs';
-import { onSearchArtistsByInput, onSearchArtistsByClick } from './js/event-listeners-callbacks';
-import { renderArtistList, renderArtistGenresList, renderPagination, renderGenresList } from './js/render-artists';
+import { artistModalPagesEl, genresListEl, searchFormEl } from './js/refs';
+import {
+  onSearchArtistsByInput,
+  onSearchArtistsByClick,
+  onArtistModalPagesClick,
+} from './js/event-listeners-callbacks';
+import {
+  renderArtistList,
+  renderArtistGenresList,
+  renderPagination,
+  renderGenresList,
+} from './js/render-artists';
 import { getTotalPages } from './js/helpers';
 import { getAllGenres, getArtists } from './js/soundwawe-api';
-
 
 // TESTS!!!!!!!!!!!!!!!!!!!!!!!!!
 // const result = await getArtistInfoById('65b0fda6ba67998416821076');
@@ -18,13 +26,11 @@ import { getAllGenres, getArtists } from './js/soundwawe-api';
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 async function init() {
-   const { artists, totalArtists } = await getArtists();
+  const { artists, totalArtists } = await getArtists();
   renderArtistList(artists);
   const genres = await getAllGenres();
   renderPagination(1, getTotalPages(totalArtists));
   renderGenresList(genres);
-  
-  
 }
 init();
 
@@ -32,4 +38,4 @@ init();
 searchFormEl.addEventListener('input', onSearchArtistsByInput);
 searchFormEl.addEventListener('click', onSearchArtistsByClick);
 
-// artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);
+artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);

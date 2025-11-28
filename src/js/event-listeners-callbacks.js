@@ -5,7 +5,6 @@ import { renderPagination } from './render-artists';
 
 let currentPage = 1;
 let currentQuery = {};
-let previousSelector = '';
 let previousInputValue = '';
 
 export async function onSearchArtistsByInput(e) {
@@ -105,12 +104,14 @@ export async function onSearchArtistsByClick(e) {
   }
 }
 // IM SERIOUSLY
+
 export async function onArtistModalPagesClick(e) {
   const btn = e.target.closest('.page-btn');
   if (!btn || btn.disabled || btn.classList.contains('active')) return;
 
   const newPage = Number(btn.dataset.page);
   currentPage = newPage;
+  console.log(currentPage);
 
   const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
   renderArtistList(artists);
