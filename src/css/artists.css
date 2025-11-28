@@ -24,70 +24,12 @@ letter-spacing: -0.01em;
 text-transform: capitalize;
 color: var(--color-scheme-1-text); 
 }
-.filter-and-gallery {
-}
-.gallery-filter {
-}
-.filter-name-and-button {
-  display: flex;
-flex-direction: column;
-gap: 12px;
-margin-bottom: 16px;
-}
-.filter-name {
- font-weight: 700;
-font-size: 18px;
-color: var(--color-scheme-1-text);
-}
-.filters-button {
-  border-radius: 12px;
-padding: 10px 24px;
-width: 288px;
-height: 47px;
-box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
-inset 0 -2px 1px 0 var(--opacity-neutral-darkest-5),
-inset 0 0 0 1px var(--opacity-white-10);
-background: var(--opacity-white-10);
-}
-.filters-body {
-  border-radius: 12px;
-padding: 12px;
-width: 289px;
-height: 343px;
-background-color: var(--color-scheme-2-foreground);
-}
+
+
 .hidden {
   display: none;
 }
-.filter-group {
-  border: 1px solid var(--opacity-white-20);
-border-radius: 12px;
-padding: 8px 12px;
-width: 265px;
-height: 48px;
-background-color: var(--opacity-transparent);
-}
-.filter-input {
- font-weight: 400;
-font-size: 18px;
-line-height: 1.5;
-background-color: var(--opacity-transparent);
-border: none;
-outline: none;
-color: var(--opacity-white-60); 
-}
-.filter-select {
- background-color: var(--opacity-transparent);
-border: none;
-outline: none;
-color: var(--opacity-white-60);
-}
-.filter-option {
-  background-color: var(--opacity-transparent);
-border: none;
-outline: none;
-color: var(--opacity-white-60);
-}
+
 .gallery-list {
 
 }
@@ -142,33 +84,13 @@ background-color: var(--color-affair);
 }
 .gallery-main-title {
 }
-.filter-and-gallery {
-}
-.gallery-filter {
-}
-.filter-name-and-button {
-}
-.filter-name {
-}
-.filters-button {
-}
-.filters-body {
-}
-.hidden {
-}
-.filter-group {
-}
-.filter-input {
-}
-.filter-select {
-}
-.filter-option {
-}
+
+
 .gallery-list {
 }
 .gallery-not-found {
   padding: 32px;
-  width: 976px;
+ width: 704px;
 }
 .gallery-not-found-title{
  font-size: 48px;
@@ -195,34 +117,9 @@ width: 1440px;
 }
 .gallery-main-title {
   font-size: 84px;
-  line-height: 1.1;
 }
-.filter-and-gallery {
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-}
-.gallery-filter {
-  width: 304px;
-}
-.filter-name-and-button {
-}
-.filter-name {
-}
-.filters-button {
-}
-.filters-body {
-}
-.hidden {
-}
-.filter-group {
-}
-.filter-input {
-}
-.filter-select {
-}
-.filter-option {
-}
+
+
 .gallery-list {
 }
 .gallery-not-found {
