@@ -1,4 +1,5 @@
 import './js/feedback';
+import './js/search-form';
 import {
   getFeedbacks,
   getArtistInfoById,
