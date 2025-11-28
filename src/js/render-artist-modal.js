@@ -1,5 +1,5 @@
 import { artistModalEl } from './refs';
-import { renderGenresList } from './render-artists';
+import { renderArtistGenresList } from './render-artists';
 import { artistModalList } from './refs';
 import { convertTime } from './helpers';
 
@@ -18,8 +18,8 @@ export function renderArtistModalPreview(artist) {
 
   const artistModalPreview = `<div class="artist-modal-preview">
     <img class="artist-modal-preview-thumb" src="${strArtistThumb}" alt="${strArtist}">
-    <h2 class="artist-modal-preview-name">${strArtist}</h2>
-    <p class="artist-modal-preview-genres">${renderGenresList(genres)}</p>
+    <h5 class="artist-modal-preview-name">${strArtist}</h5>
+    <p class="artist-modal-preview-genres">${renderArtistGenresList(genres)}</p>
     <p class="artist-modal-preview-biography">${strBiographyEN}</p>
     <p class="artist-modal-preview-formed-year">${intFormedYear}</p>
     <p class="artist-modal-preview-died-year">${intDiedYear}</p>

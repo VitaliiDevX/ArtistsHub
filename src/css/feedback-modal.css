@@ -4,6 +4,11 @@ body {
   color: var(--color-scheme-1-text);
 }
 
+/* *Видалення скролу сторінки  */
+/* body.no-scroll {
+  overflow: hidden;
+} */
+
 .backdrop {
   position: absolute;
   top: 0;
@@ -26,19 +31,22 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 320px;
-  height: 100vh;
-  background-color: #2e2e2e;
   padding-top: 64px;
   padding-bottom: 58px;
+  transform: translate(-50%, -50%);
+  max-width: 320px;
+  /* height: 568px; */
+  background-color: rgb(46, 46, 46);
+  border-radius: 16px;
 
   @media only screen and (min-width: 768px) {
-    max-width: 768px;
+    max-width: 704px;
+    /* max-height: 688px; */
   }
 
   @media only screen and (min-width: 1440px) {
-    max-width: 1440px;
+    max-width: 864px;
+    max-height: 688px;
   }
 }
 .feedback-modal-btn {
@@ -56,9 +64,6 @@ body {
   }
 }
 
-.feedback-modal-icon-cloce {
-}
-
 .feedback-modal-header {
   text-align: center;
   font-family: 'Epilogue', sans-serif;
@@ -66,23 +71,106 @@ body {
   font-size: 24px;
   line-height: 130%;
   letter-spacing: -0.01em;
-  /* margin-bottom: 0; */
+
+  @media only screen and (min-width: 768px) {
+    font-size: 44px;
+    line-height: 120%;
+    margin-bottom: 48px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 60px;
+  }
 }
 .feedback-modal-form {
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media only screen and (min-width: 768px) {
+    gap: 24px;
+  }
 }
+
 .feedback-modal-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  color: var(--color-white);
 }
 .feedback-modal-input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 12px;
+  width: 288px;
+  height: 43px;
+  background-color: inherit;
+  &:hover,
+  &:focus {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 640px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 736px;
+  }
 }
+
+.feedback-modal-message-area {
+  resize: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 12px;
+  height: 130px;
+  background-color: inherit;
+
+  &:hover,
+  &:focus {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+  }
+}
+
+.feedback-modal-input::placeholder {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .feedback-modal-stars {
   display: flex;
+  gap: 6px;
 }
 .feedback-modal-star-item {
 }
 .feedback-modal-submit-btn {
-  &:hover {
-    background-color: firebrick;
+  border-radius: 12px;
+  padding: 10px 114px;
+  width: 288px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background: #764191;
+
+  @media only screen and (min-width: 768px) {
+    align-self: center;
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+      inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+      inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+    background: #764191;
+    opacity: 0.6;
   }
 }

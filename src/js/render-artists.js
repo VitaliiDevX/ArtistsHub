@@ -1,4 +1,4 @@
-import { artistListEl, artistModalPagesEl } from './refs';
+import { artistListEl, artistModalPagesEl, genresListEl } from './refs';
 
 export function renderArtistCard(artist) {
   const { genres, strArtist, strArtistThumb, strBiographyEN, _id } = artist;
@@ -6,7 +6,7 @@ export function renderArtistCard(artist) {
   
     <img  class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}">
     <ul class="artist-genres">
-    ${renderGenresList(genres)}
+    ${renderArtistGenresList(genres)}
     </ul>
     <h2 class="artist-name">${strArtist}</h2>
     <p class="artist-biography">${strBiographyEN}</p>
@@ -15,7 +15,7 @@ export function renderArtistCard(artist) {
   return artistCard;
 }
 
-export function renderGenresList(genres) {
+export function renderArtistGenresList(genres) {
   const genresList = genres.map(genre => `<li>${genre}</li>`).join('');
   return genresList;
 }
@@ -26,23 +26,28 @@ export function renderArtistList(artistList) {
   artistListEl.insertAdjacentHTML('beforeend', artistListMarkup);
 }
 
+export function renderGenresList(genres) {
+  const genresList = genres.map(({ genre }) => `<li>${genre}</li>`).join('');
+  genresListEl.insertAdjacentHTML('beforeend', genresList);
+}
+
 export function renderPagination(page, totalPages) {
   let html = '';
 
   // ← Previous
   html += `
-    <button class="page-btn" ${page === 1 ? 'disabled' : ''} data-page="${
-    page - 1
-  }">
+    <a href="#artists" class="page-btn" ${
+      page === 1 ? 'disabled' : ''
+    } data-page="${page - 1}">
       ←
-    </button>
+    </a>
   `;
 
   // Pages
   // First page
-  html += `<button class="page-btn ${
+  html += `<a href="#artists" class="page-btn ${
     page === 1 ? 'active' : ''
-  }" data-page="1">1</button>`;
+  }" data-page="1">1</a>`;
 
   // Dots after first page
   if (page > 3) {
@@ -51,21 +56,21 @@ export function renderPagination(page, totalPages) {
 
   // Previous neighbor
   if (page > 2) {
-    html += `<button class="page-btn" data-page="${page - 1}">${
+    html += `<a href="#artists" class="page-btn" data-page="${page - 1}">${
       page - 1
-    }</button>`;
+    }</a>`;
   }
 
   // Current page (if not first and not last)
   if (page !== 1 && page !== totalPages) {
-    html += `<button class="page-btn active" data-page="${page}">${page}</button>`;
+    html += `<a href="#artists" class="page-btn active" data-page="${page}">${page}</a>`;
   }
 
   // Next neighbor
   if (page < totalPages - 1) {
-    html += `<button class="page-btn" data-page="${page + 1}">${
+    html += `<a href="#artists" class="page-btn" data-page="${page + 1}">${
       page + 1
-    }</button>`;
+    }</a>`;
   }
 
   // Dots before last page
@@ -75,18 +80,18 @@ export function renderPagination(page, totalPages) {
 
   // Last page
   if (totalPages > 1) {
-    html += `<button class="page-btn ${
+    html += `<a href="#artists" class="page-btn ${
       page === totalPages ? 'active' : ''
-    }" data-page="${totalPages}">${totalPages}</button>`;
+    }" data-page="${totalPages}">${totalPages}</a>`;
   }
 
   // → Next
   html += `
-    <button class="page-btn" ${
+    <a href="#artists" class="page-btn" ${
       page === totalPages ? 'disabled' : ''
     } data-page="${page + 1}">
       →
-    </button>
+    </a> 
   `;
 
   artistModalPagesEl.innerHTML = html;
