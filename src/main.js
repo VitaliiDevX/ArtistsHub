@@ -1,3 +1,4 @@
+import './js/feedback';
 // import iziToast from 'izitoast';
 // import errorUrl from './img/error.svg';
 // import cautionUrl from './img/caution.svg';
