@@ -1,28 +1,74 @@
-<!-- ARTISTS GALLERY -->
- <section class="section-gallery" id="gallery">
+<!-- ARTISTS artists -->
+<section class="section-artists" id="artists">
+  <div class="container">
+    <div class="artists-title">
+      <p class="artists-text">Artists</p>
+      <h2 class="artists-main-title">Explore your new favorite artists</h2>
+    </div>
+    <div class="artists-content">
+      <form class="filters">
+        <div class="filters-header">
+          <span>Filters</span>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
 
-  <div class="container">
+        <label class="search-box">
+          <input type="search" name="search" placeholder="Search" />
+          <svg class="search-form-icon" width="24" height="24">
+            <use href="./img/sprite.svg#search"></use>
+          </svg>
+        </label>
 
-    <div class="gallery-title">
-      <p class="gallery-text">Artists</p>
-      <h2 class="gallery-main-title">Explore your new favorite artists</h2>
-    </div>
-   
+        <div class="select" data-select>
+          <input type="hidden" name="sorting" value="default" />
 
+          <button class="select-btn" type="button" name="sorting">
+            Sorting
+            <svg width="24" height="24">
+              <use href="./img/sprite.svg#list-arrow-down"></use>
+            </svg>
+          </button>
+          <div class="select-list-wrapper is-hidden">
+            <ul class="select-list" data-select-list>
+              <li class="select-item" data-value="default">Default</li>
+              <li class="select-item" data-value="az">A-Z</li>
+              <li class="select-item" data-value="za">Z-A</li>
+            </ul>
+          </div>
+        </div>
 
-    <ul class="gallery-list">
-      <li class="gallery-not-found hidden">
-      <svg class="icon-info" width="40" height="40">
-        <use href="../img/"></use>
-      </svg>
-      <h3 class="gallery-not-found-title">Silence on the stage…</h3>
-      <p class="gallery-not-found-text">Looks like no artists match your filters.<br/>
-Try changing them or hit “Reset Filters” to bring back the beat.</p>
-      <button class="gallery-btn">Reset filters</button>
-    </li>
-    </ul>
+        <div class="select" data-select>
+          <input type="hidden" name="genre" value="default" />
 
-    
-    
-  </div>
- </section>
+          <button class="select-btn" type="button" name="genre">
+            Genre
+            <svg width="24" height="24">
+              <use href="./img/sprite.svg#list-arrow-down"></use>
+            </svg>
+          </button>
+
+          <div class="select-list-wrapper is-hidden">
+            <ul class="select-list" data-select-list></ul>
+          </div>
+        </div>
+      </form>
+      <div>
+        <ul class="artists-list"></ul>
+
+        <div class="artists-not-found hidden">
+          <svg class="icon-info" width="40" height="40">
+            <use href="../img/"></use>
+          </svg>
+          <h3 class="artists-not-found-title">Silence on the stage…</h3>
+          <p class="artists-not-found-text">
+            Looks like no artists match your filters.<br />
+            Try changing them or hit "Reset Filters" to bring back the beat.
+          </p>
+          <button class="artists-btn">Reset filters</button>
+        </div>
+
+        <div class="artist-modal-pages"></div>
+      </div>
+    </div>
+  </div>
+</section>
