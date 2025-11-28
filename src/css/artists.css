@@ -73,6 +73,7 @@ background-color: var(--color-affair);
 }
 
 /* ================================TABLET STYLES */
+@media screen and (min-width: 768px){
 .section-gallery {
 }
 .container {
@@ -102,7 +103,10 @@ background-color: var(--color-affair);
  margin-left: 0;
 width: 148px; 
 }
+}
 /* ================================DESCTOP STYLES */
+@media screen and (min-width: 1440px) {
+  
 .section-gallery {
 }
 .container {
@@ -127,4 +131,5 @@ width: 1440px;
 .icon-info {
 }
 .gallery-btn {
+}
 }
