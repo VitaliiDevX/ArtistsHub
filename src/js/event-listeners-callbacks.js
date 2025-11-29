@@ -134,7 +134,6 @@ export async function onArtistModalPagesClick(e) {
 
 export async function onLearnMoreClick(e) {
   backdropWithModalEl.classList.add('is-open');
-  console.log(e.target.dataset.id);
   const artistId = await getArtistInfoById(e.target.dataset.id);
   renderArtistModal(artistId);
   document.body.style.overflow = 'hidden';

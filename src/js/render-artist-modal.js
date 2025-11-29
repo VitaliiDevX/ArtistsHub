@@ -2,9 +2,9 @@ import { artistModalEl } from './refs';
 import { renderArtistGenresList } from './render-artists';
 import { artistModalList } from './refs';
 import { convertTime } from './helpers';
+import spriteUrl from '../img/sprite.svg';
 
 export function renderArtistModal(artist) {
-  console.log(artist);
   const {
     strArtist,
     strArtistThumb,
@@ -169,7 +169,7 @@ export function renderArtistModalTrackList(tracks) {
 
 export function renderArtistModalTrack({ strTrack, intDuration, movie }) {
   const movieIcon = movie
-    ? '<svg width="24" height="24" style="fill: #fff;"><use href="./img/sprite.svg#youtube"></use></svg>'
+    ? `<svg width="24" height="24" style="fill: #fff;"><use href="${spriteUrl}#youtube"></use></svg>`
     : '';
   const trackCard = `<tr>
                         <td>${strTrack}</td>
