@@ -23,7 +23,7 @@
     />
     <script type="module" crossorigin src="/ArtistsHub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/ArtistsHub/assets/vendor-BJTl0V0a.js">
-    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-BHEZJFYl.css">
+    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-DjO6mSrt.css">
   </head>
   <body>
     <header class="header-box">
@@ -82,73 +82,72 @@
 </div>
 
     
-    ARTISTS artists
-<section class="section-artists" id="artists">
+    <section class="section-artists" id="artists">
   <div class="container">
     <div class="artists-title">
       <p class="artists-text">Artists</p>
-      <h2 class="artists-main-title">Explore your new favorite artists</h2>
+      <h2 class="artists-main-title">Explore Your New Favorite Artists</h2>
     </div>
     <div class="artists-content">
-      <form class="filters">
-        <div class="filters-header">
-          <span>Filters</span>
-          <button type="reset" class="reset-btn">Reset</button>
-        </div>
-
-        <label class="search-box">
-          <input type="search" name="search" placeholder="Search" />
-          <svg class="search-form-icon" width="24" height="24">
-            <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#search"></use>
-          </svg>
-        </label>
-
-        <div class="select" data-select data-select-name="sortName">
-          <input
-            class="select-input"
-            type="hidden"
-            name="sorting"
-            value="default"
-          />
-
-          <button class="select-btn" type="button" name="sorting">
-            Sorting
-            <svg width="24" height="24">
-              <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#list-arrow-down"></use>
+      <div class="filters-wrapper">
+        <span>Filters</span>
+        <button type="reset" class="reset-btn">Reset</button>
+        <form class="filters is-hidden">
+          <label class="search-box">
+            <input type="search" name="search" placeholder="Search" />
+            <svg class="search-form-icon" width="24" height="24">
+              <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#search"></use>
             </svg>
-          </button>
-          <div class="select-list-wrapper is-hidden">
-            <ul class="select-list" data-select-list>
-              <li class="select-item" data-value="default">Default</li>
-              <li class="select-item" data-value="az">A-Z</li>
-              <li class="select-item" data-value="za">Z-A</li>
-            </ul>
+          </label>
+
+          <div class="select" data-select data-select-name="sortName">
+            <input
+              class="select-input"
+              type="hidden"
+              name="sorting"
+              value="default"
+            />
+
+            <button class="select-btn" type="button" name="sorting">
+              Sorting
+              <svg width="24" height="24">
+                <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#list-arrow-down"></use>
+              </svg>
+            </button>
+            <div class="select-list-wrapper is-hidden">
+              <ul class="select-list" data-select-list>
+                <li class="select-item" data-value="default">Default</li>
+                <li class="select-item" data-value="az">A-Z</li>
+                <li class="select-item" data-value="za">Z-A</li>
+              </ul>
+            </div>
           </div>
-        </div>
 
-        <div class="select" data-select data-select-name="genre">
-          <input
-            class="select-input"
-            type="hidden"
-            name="genre"
-            value="default"
-          />
+          <div class="select" data-select data-select-name="genre">
+            <input
+              class="select-input"
+              type="hidden"
+              name="genre"
+              value="default"
+            />
 
-          <button class="select-btn" type="button" name="genre">
-            Genre
-            <svg width="24" height="24">
-              <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#list-arrow-down"></use>
-            </svg>
-          </button>
+            <button class="select-btn" type="button" name="genre">
+              Genre
+              <svg width="24" height="24">
+                <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#list-arrow-down"></use>
+              </svg>
+            </button>
 
-          <div class="select-list-wrapper is-hidden">
-            <ul class="select-list js-genres-list" data-select-list>
-              <li>All Genres</li>
-            </ul>
+            <div class="select-list-wrapper is-hidden">
+              <ul class="select-list js-genres-list" data-select-list>
+                <li class="select-item">All Genres</li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </form>
-      <div>
+        </form>
+      </div>
+
+      <div class="artist-list-wrapper">
         <ul class="artists-list"></ul>
 
         <!-- <div class="artists-not-found is-hidden">
@@ -196,7 +195,7 @@
 
     <div class="about-content-wrapper">
       <svg class="about-icon" width="80" height="80">
-        <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#logo-icon"></use>
+        <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#logo-icon"></use>
       </svg>
 
       <h2 class="about-title">About ArtistsHub</h2>
@@ -234,7 +233,7 @@
   <div class="container">
     <a class="main-link-footer" href="">
       <svg class="icon-logo-footer" width="106" height="30">
-        <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#logo"></use>
+        <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#logo"></use>
       </svg>
     </a>
     <nav class="nav-footer">
@@ -255,21 +254,21 @@
         <li class="social-item-footer">
           <a class="social-link-footer" href="">
             <svg class="social-icon-logo-footer" width="32" height="32">
-              <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#instagram"></use>
+              <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#instagram"></use>
             </svg>
           </a>
         </li>
         <li class="social-item-footer">
           <a class="social-link-footer" href="">
             <svg class="social-icon-logo-footer" width="32" height="32">
-              <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#facebook"></use>
+              <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#facebook"></use>
             </svg>
           </a>
         </li>
         <li class="social-item-footer">
           <a class="social-link-footer" href="">
             <svg class="social-icon-logo-footer" width="32" height="32">
-              <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+              <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
             </svg>
           </a>
         </li>
@@ -284,7 +283,7 @@
   <div class="modal">
     <button class="modal-close-button">
       <svg class="modal-close-svg" width="15" height="15">
-        <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#close"></use>
+        <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#close"></use>
       </svg>
     </button>
 
@@ -413,7 +412,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -429,7 +428,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -440,7 +439,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -467,7 +466,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -483,7 +482,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -494,7 +493,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -521,7 +520,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -537,7 +536,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -548,7 +547,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -575,7 +574,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -591,7 +590,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -602,7 +601,7 @@
               <td>
                 <a class="position-center" href="${movie}">
                   <svg class="modal-youtube-svg" width="24" height="24">
-                    <use href="/ArtistsHub/assets/sprite-B2nQrcjC.svg#youtube"></use>
+                    <use href="/ArtistsHub/assets/sprite-BK7dMvGu.svg#youtube"></use>
                   </svg>
                 </a>
               </td>
@@ -613,7 +612,7 @@
     </ul>
   </div>
 </div>
-    
+
     <div class="backdrop js-backdrop">
   <div class="container feedback-modal">
     <button type="button" class="feedback-modal-btn js-feedback-modal-btn">
