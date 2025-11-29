@@ -10,13 +10,18 @@ export function renderArtistCard(artist) {
     </ul>
     <h2 class="artist-name">${strArtist}</h2>
     <p class="artist-biography">${strBiographyEN}</p>
+    <button class="learn-more-btn">Learn More<svg width="24" height="24">
+              <use href="./img/sprite.svg#icon-caret-right"></use>
+            </svg></button>
     </li>`;
 
   return artistCard;
 }
 
 export function renderArtistGenresList(genres) {
-  const genresList = genres.map(genre => `<li>${genre}</li>`).join('');
+  const genresList = genres
+    .map(genre => `<li class="genre-item">${genre}</li>`)
+    .join('');
   return genresList;
 }
 
@@ -27,7 +32,9 @@ export function renderArtistList(artistList) {
 }
 
 export function renderGenresList(genres) {
-  const genresList = genres.map(({ genre }) => `<li>${genre}</li>`).join('');
+  const genresList = genres
+    .map(({ genre }) => `<li class="select-item">${genre}</li>`)
+    .join('');
   genresListEl.insertAdjacentHTML('beforeend', genresList);
 }
 
