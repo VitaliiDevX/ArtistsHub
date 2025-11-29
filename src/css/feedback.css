@@ -14,6 +14,30 @@
   align-items: center;
   justify-content: space-between;
   gap: 36px;
+  margin-bottom: 80px;
+}
+.feedback-btn {
+  border-radius: 12px;
+  padding: 10px 24px;
+  width: 177px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background-color: #764191;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  transition: opacity linear 250ms;
+}
+.feedback-btn:hover {
+  opacity: 0.6;
+}
+.feedback-btn:active {
+  opacity: 1;
 }
 .arrow-btn {
   display: flex;
@@ -25,20 +49,25 @@
   width: 48px;
   height: 48px;
   padding: 12px;
+  transition: background-color linear 250ms, border-color linear 250ms,
+    color linear 250ms;
 }
-.arrow-btn:hover {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.arrow-btn:hover .arrow {
-  fill: #6a686a;
-}
+
 .arrow-btn:active {
   background-color: #381b46;
   border-color: rgba(6, 3, 7, 0.15);
 }
-.arrow {
-  fill: #ffffff;
+.swiper-button-prev,
+.swiper-button-next {
+  color: #ffffff;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #6a686a;
+}
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  color: #ffffff;
 }
 .swiper-slide {
   padding-inline: 175px;
