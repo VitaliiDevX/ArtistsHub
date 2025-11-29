@@ -139,11 +139,9 @@
   gap: 24px;
 } */
 
-.modal-first-mini-container {
-}
+.modal-first-mini-container {}
 
-.modal-second-mini-container {
-}
+.modal-second-mini-container {}
 
 .modal-basic-info-list {
   display: flex;
@@ -176,15 +174,13 @@
   color: #fff;
 }
 
-.modal-info-sex-li {
-}
+.modal-info-sex-li {}
 
 .modal-info-members-li {
   min-width: 146px;
 }
 
-.modal-info-country-li {
-}
+.modal-info-country-li {}
 
 .modal-info-bio {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -202,8 +198,7 @@
   color: #fff;
 }
 
-.modal-info-genres-container {
-}
+.modal-info-genres-container {}
 
 .modal-info-genres-list {
   display: flex;
@@ -307,6 +302,7 @@ thead th:first-child {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
+
 thead th:last-child {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;

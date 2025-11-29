@@ -2,7 +2,7 @@ import { artistListEl, artistModalPagesEl, genresListEl } from './refs';
 
 export function renderArtistCard(artist) {
   const { genres, strArtist, strArtistThumb, strBiographyEN, _id } = artist;
-  const artistCard = `<li class="artist-card" data-id="${_id}"> 
+  const artistCard = `<li class="artist-card"> 
   
     <img  class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}">
     <ul class="artist-genres">
@@ -10,7 +10,7 @@ export function renderArtistCard(artist) {
     </ul>
     <h2 class="artist-name">${strArtist}</h2>
     <p class="artist-biography">${strBiographyEN}</p>
-    <button class="learn-more-btn">Learn More<svg width="24" height="24">
+    <button class="learn-more-btn" data-id="${_id}">Learn More<svg width="24" height="24">
               <use href="./img/sprite.svg#icon-caret-right"></use>
             </svg></button>
     </li>`;
@@ -43,8 +43,7 @@ export function renderPagination(page, totalPages) {
 
   // ← Previous
   html += `
-    <a href="#artists" class="page-btn" ${
-      page === 1 ? 'disabled' : ''
+    <a href="#artists" class="page-btn" ${page === 1 ? 'disabled' : ''
     } data-page="${page - 1}">
       ←
     </a>
@@ -52,9 +51,8 @@ export function renderPagination(page, totalPages) {
 
   // Pages
   // First page
-  html += `<a href="#artists" class="page-btn ${
-    page === 1 ? 'active' : ''
-  }" data-page="1">1</a>`;
+  html += `<a href="#artists" class="page-btn ${page === 1 ? 'active' : ''
+    }" data-page="1">1</a>`;
 
   // Dots after first page
   if (page > 3) {
@@ -63,9 +61,8 @@ export function renderPagination(page, totalPages) {
 
   // Previous neighbor
   if (page > 2) {
-    html += `<a href="#artists" class="page-btn" data-page="${page - 1}">${
-      page - 1
-    }</a>`;
+    html += `<a href="#artists" class="page-btn" data-page="${page - 1}">${page - 1
+      }</a>`;
   }
 
   // Current page (if not first and not last)
@@ -75,9 +72,8 @@ export function renderPagination(page, totalPages) {
 
   // Next neighbor
   if (page < totalPages - 1) {
-    html += `<a href="#artists" class="page-btn" data-page="${page + 1}">${
-      page + 1
-    }</a>`;
+    html += `<a href="#artists" class="page-btn" data-page="${page + 1}">${page + 1
+      }</a>`;
   }
 
   // Dots before last page
@@ -87,15 +83,13 @@ export function renderPagination(page, totalPages) {
 
   // Last page
   if (totalPages > 1) {
-    html += `<a href="#artists" class="page-btn ${
-      page === totalPages ? 'active' : ''
-    }" data-page="${totalPages}">${totalPages}</a>`;
+    html += `<a href="#artists" class="page-btn ${page === totalPages ? 'active' : ''
+      }" data-page="${totalPages}">${totalPages}</a>`;
   }
 
   // → Next
   html += `
-    <a href="#artists" class="page-btn" ${
-      page === totalPages ? 'disabled' : ''
+    <a href="#artists" class="page-btn" ${page === totalPages ? 'disabled' : ''
     } data-page="${page + 1}">
       →
     </a> 

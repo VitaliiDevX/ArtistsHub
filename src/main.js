@@ -1,10 +1,11 @@
 import './js/feedback';
 import './js/search-form';
-import { artistModalPagesEl, genresListEl, searchFormEl } from './js/refs';
+import { artistModalPagesEl, genresListEl, searchFormEl, artistListEl } from './js/refs';
 import {
   onSearchArtistsByInput,
   onSearchArtistsByClick,
   onArtistModalPagesClick,
+  onLearnMoreClick,
 } from './js/event-listeners-callbacks';
 import {
   renderArtistList,
@@ -39,3 +40,10 @@ searchFormEl.addEventListener('input', onSearchArtistsByInput);
 searchFormEl.addEventListener('click', onSearchArtistsByClick);
 
 artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);
+
+artistListEl.addEventListener('click', e => {
+  const btnClick = e.target.closest('.learn-more-btn')
+
+  if (!btnClick) return
+  onLearnMoreClick(e)
+})

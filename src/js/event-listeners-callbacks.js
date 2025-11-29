@@ -2,6 +2,8 @@ import { getTotalPages } from './helpers';
 import { getArtists } from './soundwawe-api';
 import { renderArtistList } from './render-artists';
 import { renderPagination } from './render-artists';
+import { backdropWithModalEl, modalCloseButtonEl } from './refs'
+// import { document } from 'postcss';
 
 let currentPage = 1;
 let currentQuery = {};
@@ -118,4 +120,37 @@ export async function onArtistModalPagesClick(e) {
   const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
   renderArtistList(artists);
   renderPagination(currentPage, getTotalPages(totalArtists));
+}
+
+
+
+export async function onLearnMoreClick(e) {
+  backdropWithModalEl.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+
+  backdropWithModalEl.addEventListener('click', onCloseModal);
+  document.addEventListener('keydown', onEscClose);
+}
+
+export function onCloseModal(e) {
+  const clickOnBtn = e.target.closest('.modal-close-button');
+  const clickOnBackdrop = e.target === backdropWithModalEl;
+
+  if (clickOnBtn || clickOnBackdrop) {
+    closeModal();
+  }
+}
+
+function onEscClose(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+}
+
+function closeModal() {
+  backdropWithModalEl.classList.remove('is-open');
+  document.body.style.overflow = '';
+
+  backdropWithModalEl.removeEventListener('click', onCloseModal);
+  document.removeEventListener('keydown', onEscClose);
 }
