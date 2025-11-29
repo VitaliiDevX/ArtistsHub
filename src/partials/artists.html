@@ -1,4 +1,4 @@
-<section class="section-artists" id="artists">
+<section class="artists section" id="artists">
   <div class="container">
     <div class="artists-title">
       <p class="artists-text">Artists</p>
@@ -6,61 +6,69 @@
     </div>
     <div class="artists-content">
       <div class="filters-wrapper">
-        <span>Filters</span>
-        <button type="reset" class="reset-btn">Reset</button>
-        <form class="filters is-hidden">
-          <label class="search-box">
-            <input type="search" name="search" placeholder="Search" />
-            <svg class="search-form-icon" width="24" height="24">
-              <use href="./img/sprite.svg#search"></use>
+        <div class="filters-title">
+          <span>Filters</span>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
+        <div class="filters-dropdown-wrapper">
+          <button type="button" class="filter-btn">
+            Search and Filters<svg width="24" height="24">
+              <use href="./img/sprite.svg#list-arrow-down"></use>
             </svg>
-          </label>
-
-          <div class="select" data-select data-select-name="sortName">
-            <input
-              class="select-input"
-              type="hidden"
-              name="sorting"
-              value="default"
-            />
-
-            <button class="select-btn" type="button" name="sorting">
-              Sorting
-              <svg width="24" height="24">
-                <use href="./img/sprite.svg#list-arrow-down"></use>
+          </button>
+          <form class="filters">
+            <label class="search-box">
+              <input type="search" name="search" placeholder="Search" />
+              <svg class="search-form-icon" width="24" height="24">
+                <use href="./img/sprite.svg#search"></use>
               </svg>
-            </button>
-            <div class="select-list-wrapper is-hidden">
-              <ul class="select-list" data-select-list>
-                <li class="select-item" data-value="default">Default</li>
-                <li class="select-item" data-value="az">A-Z</li>
-                <li class="select-item" data-value="za">Z-A</li>
-              </ul>
+            </label>
+
+            <div class="select" data-select data-select-name="sortName">
+              <input
+                class="select-input"
+                type="hidden"
+                name="sorting"
+                value="default"
+              />
+
+              <button class="select-btn" type="button" name="sorting">
+                Sorting<svg width="24" height="24">
+                  <use href="./img/sprite.svg#list-arrow-down"></use>
+                </svg>
+              </button>
+              <div class="select-list-wrapper is-hidden">
+                <ul class="select-list" data-select-list>
+                  <li class="select-item" data-value="default">Default</li>
+                  <li class="select-item" data-value="az">A-Z</li>
+                  <li class="select-item" data-value="za">Z-A</li>
+                </ul>
+              </div>
             </div>
-          </div>
 
-          <div class="select" data-select data-select-name="genre">
-            <input
-              class="select-input"
-              type="hidden"
-              name="genre"
-              value="default"
-            />
+            <div class="select" data-select data-select-name="genre">
+              <input
+                class="select-input"
+                type="hidden"
+                name="genre"
+                value="default"
+              />
 
-            <button class="select-btn" type="button" name="genre">
-              Genre
-              <svg width="24" height="24">
-                <use href="./img/sprite.svg#list-arrow-down"></use>
-              </svg>
-            </button>
+              <button class="select-btn" type="button" name="genre">
+                Genre
+                <svg width="24" height="24">
+                  <use href="./img/sprite.svg#list-arrow-down"></use>
+                </svg>
+              </button>
 
-            <div class="select-list-wrapper is-hidden">
-              <ul class="select-list js-genres-list" data-select-list>
-                <li class="select-item">All Genres</li>
-              </ul>
+              <div class="select-list-wrapper is-hidden">
+                <ul class="select-list js-genres-list" data-select-list>
+                  <li class="select-item">All Genres</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
       <div class="artist-list-wrapper">
