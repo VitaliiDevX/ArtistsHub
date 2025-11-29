@@ -39,6 +39,13 @@ export function renderGenresList(genres) {
 }
 
 export function renderPagination(page, totalPages) {
+  if (totalPages === 1) {
+    artistModalPagesEl.innerHTML = '';
+    return;
+  }
+  // Kostyli
+  if (page > totalPages) return;
+  // Kostyli
   let html = '';
 
   // ← Previous

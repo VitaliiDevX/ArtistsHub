@@ -16,19 +16,76 @@ export function renderArtistModalPreview(artist) {
     genres,
   } = artist;
 
-  const artistModalPreview = `<div class="artist-modal-preview">
-    <img class="artist-modal-preview-thumb" src="${strArtistThumb}" alt="${strArtist}">
-    <h5 class="artist-modal-preview-name">${strArtist}</h5>
-    <p class="artist-modal-preview-genres">${renderArtistGenresList(genres)}</p>
-    <p class="artist-modal-preview-biography">${strBiographyEN}</p>
-    <p class="artist-modal-preview-formed-year">${intFormedYear}</p>
-    <p class="artist-modal-preview-died-year">${intDiedYear}</p>
-    <p class="artist-modal-preview-gender">${strGender}</p>
-    <p class="artist-modal-preview-members">${intMembers}</p>
-    <p class="artist-modal-preview-country">${strCountry}</p>
-    </div>`;
+  const artistModalPreview = `<button class="modal-close-button">
+    <svg class="modal-close-svg" width="15" height="15">
+      <use href="./img/sprite.svg#close"></use>
+    </svg>
+  </button>
 
+  <h5 class="modal-main-heading">${strArtist}</h5>
+
+  <div class="modal-img-and-info-container">
+    <img
+      class="modal-artist-img"
+      src="${strArtistThumb}"
+      alt="artist-photo"
+    />
+
+    <div class="modal-all-text-container">
+      <div class="modal-first-mini-container">
+        <ul class="modal-basic-info-list">
+          <li class="modal-info-years-li">
+            <p class="modal-info-semibold-text">Years active</p>
+            <p class="modal-info-normal-text">${intFormedYear}-${
+    intDiedYear === 0 ? 'present' : intDiedYear
+  }</p>
+          </li>
+          <li class="modal-info-sex-li">
+            <p class="modal-info-semibold-text">Sex</p>
+            <p class="modal-info-normal-text">${strGender}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-second-mini-container">
+        <ul class="modal-basic-info-list">
+          <li class="modal-info-members-li">
+            <p class="modal-info-semibold-text">Members</p>
+            <p class="modal-info-normal-text">${intMembers}</p>
+          </li>
+          <li class="modal-info-country-li">
+            <p class="modal-info-semibold-text">Country</p>
+            <p class="modal-info-normal-text">${strCountry}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="modal-bio-container">
+        <p class="modal-info-bio">Biography</p>
+        <p class="modal-info-text">
+          ${strBiographyEN}
+        </p>
+        </div>
+
+        <div class="modal-info-genres-container">
+          <ul class="modal-info-genres-list">
+           ${renderArtistModalGenresList(genres)}
+          </ul>
+        </div>
+      </div>
+`;
+  artistModalList.innerHTML = '';
   artistModalEl.insertAdjacentHTML('beforeend', artistModalPreview);
+}
+
+export function renderArtistModalGenresList(genres) {
+  const genresList = genres
+    .map(
+      genre =>
+        `<li class="modal-info-genre-li"><p class="modal-info-genre">${genre}</p></li>`
+    )
+    .join('');
+
+  return genresList;
 }
 
 export function renderArtistModalAlbumsList({ albumsList }) {
@@ -40,13 +97,13 @@ export function renderArtistModalAlbumsList({ albumsList }) {
 }
 
 export function renderArtistModalAlbum({ strAlbum, tracks }) {
-  const albumCard = `<li><h2 class="artist-modal-album-title">${strAlbum}</h2>
+  const albumCard = `<li class="modal-table-li"><h2 class="artist-modal-album-title">${strAlbum}</h2>
                         <table class="artist-modal-album">
                             <thead>
                                 <tr>
-                                    <th>Track</th>
-                                    <th>Time</th>
-                                    <th>Link</th>
+                                   <th scope="col">Track</th>
+                                   <th scope="col">Time</th>
+                                   <th scope="col">Link</th>
                                 </tr>
                             </thead>
                             <tbody>

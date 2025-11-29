@@ -13,7 +13,6 @@ export async function onSearchArtistsByInput(e) {
     const name = e.target.value.trim();
 
     if (name.length === previousInputValue.length) {
-      console.log('object');
       return;
     }
     previousInputValue = name;
@@ -21,6 +20,8 @@ export async function onSearchArtistsByInput(e) {
     // currentQuery = {};
     if (name) {
       currentQuery.name = name;
+    } else {
+      delete currentQuery.name;
     }
 
     // ВИНЕСТИ В ОКРЕМУ ФУНКЦІЮ
@@ -38,8 +39,9 @@ export async function onSearchArtistsByInput(e) {
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
 export async function onSearchArtistsByClick(e) {
   try {
-    if (e.target.tagName === 'BUTTON') {
-      const nextElementSibling = e.target.nextElementSibling;
+    if (e.target.closest('.select-btn')) {
+      const nextElementSibling =
+        e.target.closest('.select-btn').nextElementSibling;
       nextElementSibling.classList.toggle('is-hidden');
       if (previousSelector && previousSelector !== nextElementSibling) {
         previousSelector.classList.add('is-hidden');
@@ -113,9 +115,16 @@ export async function onArtistModalPagesClick(e) {
   if (!btn || btn.disabled || btn.classList.contains('active')) return;
 
   const newPage = Number(btn.dataset.page);
+
+  if (newPage < 1) return;
+
   currentPage = newPage;
+  console.log(currentPage);
 
   const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
+  const totalPages = getTotalPages(totalArtists);
+  console.log(artists, totalArtists, totalPages);
+
   renderArtistList(artists);
-  renderPagination(currentPage, getTotalPages(totalArtists));
+  renderPagination(currentPage, totalPages);
 }
