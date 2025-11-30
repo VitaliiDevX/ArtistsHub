@@ -1,4 +1,4 @@
-.container {
+.footer-section {
     text-align: center;
 }
 
@@ -134,5 +134,3 @@
         fill: var(--color-affair);
     }
 }
-
-/* test */
