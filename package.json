@@ -1,5 +1,5 @@
 {
-  "name": "ArtistsHub",
+  "name": "artists-hub",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -22,7 +22,7 @@
     "axios": "^1.13.2",
     "izitoast": "^1.4.0",
     "loaders.css": "^0.1.2",
-    "modern-normalize": "^3.0.1",
+    "raty-js": "^4.3.0",
     "simplelightbox": "^2.14.3",
     "swiper": "^12.0.3",
     "vite-plugin-full-reload": "^1.2.0",

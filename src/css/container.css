@@ -1,8 +1,9 @@
 /* Styles for Mobile devices */
 .container {
-  min-width: 320px;
+  max-width: 320px;
   margin: 0 auto;
   padding: 0 16px;
+  box-sizing: border-box;
 
   @media only screen and (min-width: 768px) {
     max-width: 768px;
@@ -12,6 +13,16 @@
   @media only screen and (min-width: 1440px) {
     max-width: 1440px;
     padding: 0 64px;
+  }
+}
+
+.section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  @media screen and (min-width: 1440px) {
+    padding-top: 112px;
+    padding-bottom: 112px;
   }
 }
 

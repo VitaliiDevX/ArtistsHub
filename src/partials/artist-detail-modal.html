@@ -1,28 +1,25 @@
 <!-- BACKDROP WITH MODAL -->
-<div class="backdrop">
+<div class="backdrop-with-modal">
   <div class="modal">
-    <button class="modal-close-button"></button>
-
-    <h5 class="modal-main-heading">Artist's Name</h5>
-
+    <button class="modal-close-button">
+      <svg class="modal-close-svg" width="15" height="15">
+        <use href="./img/sprite.svg#close"></use>
+      </svg>
+    </button>
+    <h5 class="modal-main-heading"></h5>
     <div class="modal-img-and-info-container">
-      <img
-        class="modal-artist-img"
-        src="https://placehold.co/576x354"
-        alt="artist-photo"
-      />
+      <img class="modal-artist-img" src="" alt="artist-photo" />
 
       <div class="modal-all-text-container">
-        <!-- <div class="modal-basic-info-container"> -->
         <div class="modal-first-mini-container">
           <ul class="modal-basic-info-list">
             <li class="modal-info-years-li">
               <p class="modal-info-semibold-text">Years active</p>
-              <p class="modal-info-normal-text">Lorem, ipsum.</p>
+              <p class="modal-info-normal-text js-modal-years"></p>
             </li>
             <li class="modal-info-sex-li">
               <p class="modal-info-semibold-text">Sex</p>
-              <p class="modal-info-normal-text">Lorem</p>
+              <p class="modal-info-normal-text js-modal-sex">Lorem</p>
             </li>
           </ul>
         </div>
@@ -31,127 +28,27 @@
           <ul class="modal-basic-info-list">
             <li class="modal-info-members-li">
               <p class="modal-info-semibold-text">Members</p>
-              <p class="modal-info-normal-text">Lorem</p>
+              <p class="modal-info-normal-text js-modal-members"></p>
             </li>
             <li class="modal-info-country-li">
               <p class="modal-info-semibold-text">Country</p>
-              <p class="modal-info-normal-text">Lorem, ipsum.</p>
+              <p class="modal-info-normal-text js-modal-country"></p>
             </li>
           </ul>
-          <!-- </div> -->
         </div>
 
         <div class="modal-bio-container">
           <p class="modal-info-bio">Biography</p>
-          <p class="modal-info-text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
-            voluptas dolorem iure minus, nesciunt maiores quibusdam voluptatum
-            dolores? Excepturi ipsam architecto cupiditate eveniet nisi
-            accusamus, dolorem, ex sit nesciunt nemo distinctio voluptatum
-            molestiae rerum fugiat obcaecati in unde eligendi voluptatem. Veniam
-            culpa obcaecati est nihil quaerat, quam amet iure ad.
-          </p>
+          <p class="modal-info-text js-modal-bio"></p>
         </div>
 
         <div class="modal-info-genres-container">
-          <ul class="modal-info-genres-list">
-            <!-- <li class="modal-info-genre-li">
-              <p class="modal-info-genre">Lorem</p>
-            </li>
-            <li class="modal-info-genre-li">
-              <p class="modal-info-genre">Lorem</p>
-            </li>
-            <li class="modal-info-genre-li">
-              <p class="modal-info-genre">Lorem</p>
-            </li>
-            <li class="modal-info-genre-li">
-              <p class="modal-info-genre">Lorem</p>
-            </li> -->
-          </ul>
+          <ul class="modal-info-genres-list"></ul>
         </div>
       </div>
     </div>
 
     <h4 class="heading-before-table">Albums</h4>
-    <ul class="artist-modal-list">
-      <!-- `
-      <li class="modal-table-li">
-        <h2 class="artist-modal-album-title">${strAlbum}</h2>
-        <table class="artist-modal-album">
-          <caption>
-            Caption
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Track</th>
-              <th scope="col">Time</th>
-              <th scope="col">Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>${strTrack}</td>
-              <td>${convertTime(intDuration)}</td>
-              <td><a href="${movie}">Youtube</a></td>
-            </tr>
-            <tr>
-              <td>${strTrack}</td>
-              <td>${convertTime(intDuration)}</td>
-              <td><a href="${movie}">Youtube</a></td>
-            </tr>
-            <tr>
-              <td>${strTrack}</td>
-              <td>${convertTime(intDuration)}</td>
-              <td><a href="${movie}">Youtube</a></td>
-            </tr>
-            <tr>
-              <td>${strTrack}</td>
-              <td>${convertTime(intDuration)}</td>
-              <td><a href="${movie}">Youtube</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      ` -->
-
-      <li class="modal-table-li">
-        <p class="artist-modal-album-title">Album Name</p>
-
-        <table class="artist-modal-album">
-          <!-- <caption>
-            Album Name
-          </caption> -->
-          <thead>
-            <tr class="main-row">
-              <th class="position-left track-col" scope="col">Track</th>
-              <th class="position-center time-col" scope="col">Time</th>
-              <th class="position-center link-col" scope="col">Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="position-left">Lorem</td>
-              <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
-            </tr>
-            <tr>
-              <td class="position-left">Lorem</td>
-              <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
-            </tr>
-            <tr>
-              <td class="position-left">Lorem</td>
-              <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
-            </tr>
-            <tr>
-              <td class="position-left">Lorem</td>
-              <td class="position-center">3:03</td>
-              <td><a class="position-center" href="${movie}">YT</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-    </ul>
+    <ul class="artist-modal-list"></ul>
   </div>
 </div>

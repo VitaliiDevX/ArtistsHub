@@ -1,0 +1,136 @@
+.footer-section {
+    text-align: center;
+}
+
+.footer-section {
+    padding: 48px 0;
+
+    @media only screen and (min-width: 768px) {
+        padding: 80px 0;
+    }
+}
+
+.nav-footer {
+    margin-bottom: 48px;
+
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 80px;
+    }
+}
+
+.main-link-footer {
+    display: inline-block;
+    text-align: center;
+    line-height: 0;
+    fill: var(--color-affair);
+    margin: 0 auto 32px auto;
+    transition: opacity 250ms linear;
+
+    &:hover,
+    &:focus {
+        opacity: 0.7;
+    }
+}
+
+.nav-list-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (min-width: 768px) {
+        flex-direction: row;
+        gap: 32px;
+    }
+}
+
+.nav-item-footer:not(:last-child) {
+    margin-bottom: 32px;
+
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 0;
+    }
+}
+
+.nav-item-footer {
+    line-height: 1.5;
+    font-weight: 600;
+    text-align: center;
+}
+
+.nav-link-footer {
+    position: relative;
+    transition: color 250ms linear;
+
+    &:hover,
+    &:focus {
+        color: var(--color-scheme-1-border);
+    }
+}
+
+.nav-link-footer::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-scheme-1-border);
+    opacity: 0;
+    transition: opacity 250ms linear;
+}
+
+.nav-link-footer:hover::before,
+.nav-link-footer:focus::before {
+    opacity: 1;
+}
+
+.wrraper-social-footer {
+    position: relative;
+    padding-top: 24px;
+    padding-right: 5px;
+    padding-bottom: 16px;
+    padding-left: 5px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 32px 0 0 0;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.wrraper-social-footer::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-scheme-1-border);
+}
+
+.social-list-footer {
+    margin-bottom: 32px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (min-width: 768px) {
+        margin: 0;
+    }
+}
+
+.social-link-footer {
+    line-height: 0;
+    display: block;
+    fill: var(--color-scheme-1-text);
+    transition: fill 250ms linear;
+
+    &:hover,
+    &:focus {
+        fill: var(--color-affair);
+    }
+}

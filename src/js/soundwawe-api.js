@@ -15,10 +15,6 @@ export async function getArtists(query = {}, page = 1) {
   const response = await axios.get('/artists', {
     params,
   });
-  console.log({
-    artists: response.data.artists,
-    totalArtists: response.data.totalArtists,
-  });
   return {
     artists: response.data.artists,
     totalArtists: response.data.totalArtists,
@@ -27,7 +23,6 @@ export async function getArtists(query = {}, page = 1) {
 
 export async function getArtistInfoById(id) {
   const response = await axios.get(`/artists/${id}/albums`);
-  console.log(response.data);
   return response.data;
 }
 
@@ -36,6 +31,5 @@ export async function getFeedbacks(page = 1) {
   const response = await axios.get('/feedbacks', {
     params,
   });
-  console.log(response.data.data);
   return response.data.data;
 }
