@@ -23,7 +23,7 @@
     />
     <script type="module" crossorigin src="/ArtistsHub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/ArtistsHub/assets/vendor-Bx2Hut4r.js">
-    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-BW6RHRI1.css">
+    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-BWEFzTyT.css">
   </head>
   <body>
     <header class="header-box">
@@ -375,11 +375,22 @@
     <!-- BACKDROP WITH MODAL -->
 <div class="backdrop-with-modal">
   <div class="modal">
+    <!-- Inline sprite symbol -->
+    <svg style="display: none">
+      <symbol id="icon-close" viewBox="0 0 32 32">
+        <path
+          d="M22.835 22.364l-0.471 0.471c-0.26 0.26-0.682 0.26-0.943 0l-5.421-5.421-5.421 5.421c-0.26 0.26-0.682 0.26-0.943 0l-0.471-0.471c-0.26-0.26-0.26-0.682 0-0.943l5.421-5.421-5.421-5.421c-0.26-0.26-0.26-0.682 0-0.943l0.471-0.471c0.26-0.26 0.682-0.26 0.943 0l5.421 5.421 5.421-5.421c0.26-0.26 0.683-0.26 0.943 0l0.471 0.471c0.26 0.26 0.26 0.682 0 0.943l-5.421 5.421 5.421 5.421c0.26 0.26 0.26 0.683 0 0.943z"
+        ></path>
+      </symbol>
+    </svg>
+
+    <!-- Close button -->
     <button class="modal-close-button">
-      <svg class="modal-close-svg" width="15" height="15">
-        <use href="/ArtistsHub/assets/sprite-C-VO0C7L.svg#close"></use>
+      <svg class="modal-close-svg" width="32" height="32">
+        <use href="#icon-close"></use>
       </svg>
     </button>
+
     <h5 class="modal-main-heading"></h5>
     <div class="modal-img-and-info-container">
       <img class="modal-artist-img" src="" alt="artist-photo" />
