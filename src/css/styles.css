@@ -5,6 +5,8 @@
   |============================
 */
 /* Common styles */
+@import url('./root.css');
+
 @import url('modern-normalize/modern-normalize.css');
 @import url('izitoast/dist/css/iziToast.min.css');
 @import url('simplelightbox/dist/simple-lightbox.min.css');

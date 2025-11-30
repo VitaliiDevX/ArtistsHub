@@ -12,8 +12,11 @@ import { renderArtistList, renderPagination } from './js/render-artists';
 import { getTotalPages } from './js/helpers';
 import { artistModalPagesEl, searchFormEl } from './js/refs';
 
-let currentPage = 1;
-let currentQuery = {};
+import { initSliders } from './js/hero-slider';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSliders();
+});
 
 // TESTS!!!!!!!!!!!!!!!!!!!!!!!!!
 // const result = await getArtistInfoById('65b0fda6ba67998416821076');
