@@ -1,27 +1,23 @@
-<section class="feedback container">
-  <h1 class="visually-hidden">Feedbacks our visitors</h1>
+<section id="feedback" class="feedback container section">
+  <h2 class="visually-hidden">Feedbacks our visitors</h2>
   <div class="feedback-slider swiper" role="region" aria-live="polite">
-    <!-- <button class="arrow-btn prev" type="button">
-      <svg class="left arrow" width="24" height="24">
-        <use href="./img/left-arrow.svg"></use>
+    <button class="arrow-btn swiper-button-prev" type="button">
+      <svg class="left-arrow" width="24" height="24">
+        <use href="./img/sprite.svg#left-arrow-btn"></use>
       </svg>
     </button>
 
-    <ul class="feedback-list">
-      <li class="feedback-item">
-        <div class="raty" data-raty></div>
-        <p class="feedback-text">
-          "ArtistsHub has transformed the way I discover new music. It's like
-          having a personal DJ that knows my taste perfectly!"
-        </p>
-        <p class="feedback-author">Emily Johnson</p>
-      </li>
-    </ul>
+    <div class="swiper-wrapper"></div>
 
-    <button class="arrow-btn next" type="button">
-      <svg class="right arrow" width="24" height="24">
-        <use href="./img/right-arrow.svg"></use>
+    <button class="arrow-btn swiper-button-next" type="button">
+      <svg class="right-arrow" width="24" height="24">
+        <use href="./img/sprite.svg#right-arrow-btn"></use>
       </svg>
-    </button> -->
+    </button>
+
+    <div class="swiper-pagination"></div>
   </div>
+  <button class="feedback-btn js-feedback-btn" type="button">
+    Leave feedback
+  </button>
 </section>

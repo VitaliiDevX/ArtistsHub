@@ -1,60 +1,70 @@
-// import './js/feedback';
+import './js/feedback';
+import './js/search-form';
 import {
-  getFeedbacks,
+  artistModalPagesEl,
+  genresListEl,
+  searchFormEl,
+  artistListEl,
+  filterBtnEl,
+} from './js/refs';
+import {
+  onSearchArtistsByInput,
+  onSearchArtistsByClick,
+  onArtistModalPagesClick,
+  onLearnMoreClick,
+  onFilterClick,
+} from './js/event-listeners-callbacks';
+import {
+  renderArtistList,
+  renderArtistGenresList,
+  renderPagination,
+  renderGenresList,
+} from './js/render-artists';
+import { getTotalPages } from './js/helpers';
+import {
+  getAllGenres,
   getArtistInfoById,
   getArtists,
-  getAllGenres,
 } from './js/soundwawe-api';
 import {
-  renderArtistModalPreview,
   renderArtistModalAlbumsList,
+  renderArtistModal,
 } from './js/render-artist-modal';
-import { renderArtistList, renderPagination } from './js/render-artists';
-import { getTotalPages } from './js/helpers';
-import { artistModalPagesEl, searchFormEl } from './js/refs';
-import { initHeader } from './js/header-open-menu';
 
-let currentPage = 1;
-let currentQuery = {};
+
+import { initSliders } from './js/hero-slider';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSliders();
+});
 
 initHeader();
 
 // TESTS!!!!!!!!!!!!!!!!!!!!!!!!!
 // const result = await getArtistInfoById('65b0fda6ba67998416821076');
+// renderArtistModal(result);
 // const { artists, totalArtists } = await getArtists();
-
-// renderArtistModalPreview(result);
-// renderArtistModalAlbumsList(result);
 // renderArtistList(artists);
 // renderPagination(currentPage, getTotalPages(totalArtists));
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// EVENT LISTENERS
-// artistModalPagesEl.addEventListener('click', async event => {
-//   const btn = event.target.closest('.page-btn');
-//   if (!btn || btn.disabled || btn.classList.contains('active')) return;
+async function init() {
+  const { artists, totalArtists } = await getArtists();
+  renderArtistList(artists);
+  const genres = await getAllGenres();
+  renderPagination(1, getTotalPages(totalArtists));
+  renderGenresList(genres);
+}
+init();
 
-//   const newPage = Number(btn.dataset.page);
-//   currentPage = newPage;
+// -------------------EVENT LISTENERS-------------------
+searchFormEl.addEventListener('input', onSearchArtistsByInput);
+searchFormEl.addEventListener('click', onSearchArtistsByClick);
+artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);
+filterBtnEl.addEventListener('click', onFilterClick);
+artistListEl.addEventListener('click', e => {
+  const btnClick = e.target.closest('.learn-more-btn');
 
-//   const { artists, totalArtists } = await getArtists({}, currentPage);
-//   renderArtistList(artists);
-//   renderPagination(currentPage, getTotalPages(totalArtists));
-// });
-
-// searchFormEl.addEventListener('submit', async event => {
-//   event.preventDefault();
-
-//   const name = event.target.elements.search_text.value.trim();
-//   const sorted = event.target.elements.sort.value;
-//   const genre = event.target.elements.genre.value;
-
-//   currentQuery = { name, sorted, genre };
-
-//   clearGallery();
-//   page = 1;
-
-//   const result = await getArtists(currentQuery, page);
-//   renderArtistList(result.artists);
-//   renderPagination(currentPage, getTotalPages(result.totalArtists));
-// });
+  if (!btnClick) return;
+  onLearnMoreClick(e);
+});
