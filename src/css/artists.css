@@ -236,6 +236,13 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+  transition: color 250ms linear, fill 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: var(--color-affair);
+    fill: var(--color-affair);
+  }
 }
 
 .artists-not-found {
@@ -254,6 +261,7 @@
     max-width: 704px;
   }
 }
+
 .artists-not-found-title {
   font-weight: 700;
   font-size: 32px;
@@ -265,6 +273,7 @@
     font-size: 48px;
   }
 }
+
 .artists-not-found-text {
   font-weight: 400;
   font-size: 20px;
@@ -362,6 +371,7 @@
   position: relative;
   display: block;
 }
+
 .search-box input {
   width: 100%;
   background: var(--opacity-transparent);
@@ -396,6 +406,7 @@
   border: 1px solid var(--opacity-white-20);
   border-radius: 12px;
 }
+
 .select-btn {
   fill: var(--color-scheme-2-text);
   display: flex;
@@ -434,8 +445,10 @@
   text-align: start;
 
   max-height: 328px;
-  overflow-y: auto; /* добавляем вертикальный скролл */
-  box-sizing: border-box; /* учитываем padding при высоте */
+  overflow-y: auto;
+  /* добавляем вертикальный скролл */
+  box-sizing: border-box;
+  /* учитываем padding при высоте */
 
   font-family: var(--font-family);
   font-weight: 400;

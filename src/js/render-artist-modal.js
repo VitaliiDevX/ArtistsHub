@@ -169,12 +169,12 @@ export function renderArtistModalTrackList(tracks) {
 
 export function renderArtistModalTrack({ strTrack, intDuration, movie }) {
   const movieIcon = movie
-    ? `<svg width="24" height="24" style="fill: #fff;"><use href="${spriteUrl}#youtube"></use></svg>`
+    ? `<svg class="icon-modal-artist-track-list" width="24" height="24"><use href="${spriteUrl}#youtube"></use></svg>`
     : '';
   const trackCard = `<tr>
                         <td>${strTrack}</td>
                         <td>${convertTime(intDuration)}</td>
-                        <td><a href="${movie}">${movieIcon}</a></td>
+                        <td><a class="link-modal-artist-track-list" href="${movie}">${movieIcon}</a></td>
                     </tr>`;
 
   return trackCard;

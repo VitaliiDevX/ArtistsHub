@@ -52,8 +52,13 @@
   background-color: transparent;
   padding: 0;
   line-height: 0;
-  fill: #fff;
+  fill: var(--color-scheme-1-text);
   transition: fill 250ms linear;
+
+  &:focus,
+  &:hover {
+    fill: var(--color-affair);
+  }
 
   @media screen and (min-width: 768px) {
     top: 16px;
@@ -66,12 +71,16 @@
   }
 }
 
-.modal-close-svg {
-  fill: #fff;
-}
+.link-modal-artist-track-list {
+  line-height: 0;
+  display: inline-block;
+  fill: var(--color-scheme-1-text);
+  transition: fill 250ms linear;
 
-.modal-youtube-svg {
-  fill: #fff;
+  &:hover,
+  &:focus {
+    fill: var(--color-affair);
+  }
 }
 
 .modal-main-heading {
@@ -108,7 +117,8 @@
 
 .modal-artist-img {
   border-radius: 16px;
-
+  object-fit: cover;
+  object-position: top;
   width: 272px;
   height: 167px;
 
@@ -129,9 +139,15 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 272px;
 
   @media screen and (min-width: 768px) {
     gap: 24px;
+    max-width: 654px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 576px;
   }
 }
 
@@ -141,11 +157,9 @@
   gap: 24px;
 } */
 
-.modal-first-mini-container {
-}
+.modal-first-mini-container {}
 
-.modal-second-mini-container {
-}
+.modal-second-mini-container {}
 
 .modal-basic-info-list {
   display: flex;
@@ -178,15 +192,13 @@
   color: #fff;
 }
 
-.modal-info-sex-li {
-}
+.modal-info-sex-li {}
 
 .modal-info-members-li {
   min-width: 146px;
 }
 
-.modal-info-country-li {
-}
+.modal-info-country-li {}
 
 .modal-info-bio {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -202,10 +214,19 @@
   font-size: 18px;
   line-height: 1.5;
   color: #fff;
+  height: 279px;
+  overflow: auto;
+
+  @media screen and (min-width: 768px) {
+    height: 108px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 135px;
+  }
 }
 
-.modal-info-genres-container {
-}
+.modal-info-genres-container {}
 
 .modal-info-genres-list {
   display: flex;
