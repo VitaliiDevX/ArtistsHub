@@ -1,7 +1,10 @@
 import { getTotalPages } from './helpers';
-import { getArtists } from './soundwawe-api';
+import { getArtistInfoById, getArtists } from './soundwawe-api';
 import { renderArtistList } from './render-artists';
 import { renderPagination } from './render-artists';
+import { backdropWithModalEl } from './refs';
+import { renderArtistModal } from './render-artist-modal';
+// import { document } from 'postcss';
 
 let currentPage = 1;
 let currentQuery = {};
@@ -13,7 +16,6 @@ export async function onSearchArtistsByInput(e) {
     const name = e.target.value.trim();
 
     if (name.length === previousInputValue.length) {
-      console.log('object');
       return;
     }
     previousInputValue = name;
@@ -21,6 +23,8 @@ export async function onSearchArtistsByInput(e) {
     // currentQuery = {};
     if (name) {
       currentQuery.name = name;
+    } else {
+      delete currentQuery.name;
     }
 
     // ВИНЕСТИ В ОКРЕМУ ФУНКЦІЮ
@@ -38,8 +42,9 @@ export async function onSearchArtistsByInput(e) {
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
 export async function onSearchArtistsByClick(e) {
   try {
-    if (e.target.tagName === 'BUTTON') {
-      const nextElementSibling = e.target.nextElementSibling;
+    if (e.target.closest('.select-btn')) {
+      const nextElementSibling =
+        e.target.closest('.select-btn').nextElementSibling;
       nextElementSibling.classList.toggle('is-hidden');
       if (previousSelector && previousSelector !== nextElementSibling) {
         previousSelector.classList.add('is-hidden');
@@ -113,9 +118,61 @@ export async function onArtistModalPagesClick(e) {
   if (!btn || btn.disabled || btn.classList.contains('active')) return;
 
   const newPage = Number(btn.dataset.page);
+
+  if (newPage < 1) return;
+
   currentPage = newPage;
+  console.log(currentPage);
 
   const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
+  const totalPages = getTotalPages(totalArtists);
+  console.log(artists, totalArtists, totalPages);
+
   renderArtistList(artists);
-  renderPagination(currentPage, getTotalPages(totalArtists));
+  renderPagination(currentPage, totalPages);
 }
+
+export async function onLearnMoreClick(e) {
+  backdropWithModalEl.classList.add('is-open');
+  const artistId = await getArtistInfoById(e.target.dataset.id);
+  renderArtistModal(artistId);
+  document.body.style.overflow = 'hidden';
+
+  backdropWithModalEl.addEventListener('click', onCloseModal);
+  document.addEventListener('keydown', onEscClose);
+}
+
+export function onCloseModal(e) {
+  const clickOnBtn = e.target.closest('.modal-close-button');
+  const clickOnBackdrop = e.target === backdropWithModalEl;
+
+  if (clickOnBtn || clickOnBackdrop) {
+    closeModal();
+  }
+}
+
+function onEscClose(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+}
+
+function closeModal() {
+  backdropWithModalEl.classList.remove('is-open');
+  document.body.style.overflow = '';
+
+  backdropWithModalEl.removeEventListener('click', onCloseModal);
+  document.removeEventListener('keydown', onEscClose);
+}
+
+// Need to fix this function KOSTYL
+export function onFilterClick(e) {
+  const btn = e.target.closest('.filter-btn');
+  const listWrapperCurrentStyle = btn.nextElementSibling.style.display;
+  if (listWrapperCurrentStyle === 'flex') {
+    btn.nextElementSibling.style.display = 'none';
+  } else {
+    btn.nextElementSibling.style.display = 'flex';
+  }
+}
+// END OF KOSTYL

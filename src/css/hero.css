@@ -1,0 +1,186 @@
+/* @media (min-width: 768px) {
+      }
+
+  @media (min-width: 1440px) {
+  }
+  */
+
+.hero {
+  background-color: var(--color-scheme-3-background);
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    align-items: flex-start;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    gap: 31px;
+  }
+}
+
+.hero-text-content {
+  margin: 64px 0;
+  @media (min-width: 768px) {
+    margin: 32px 0;
+    max-width: 624px;
+  }
+
+  @media (min-width: 1440px) {
+    width: calc((100% - 31px) / 2);
+    margin: 0;
+    padding: 215px 0;
+  }
+}
+
+.hero-title {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1-text);
+
+  @media (min-width: 1440px) {
+    font-size: 84px;
+    margin: 0;
+  }
+}
+
+.hero-desk {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-scheme-1-text);
+  margin-bottom: 24px;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+.hero-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 65px;
+
+  box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px var(--opacity-neutral-darkest-15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background: var(--color-affair);
+
+  @media (min-width: 768px) {
+    max-width: 246px;
+    padding: 10px 44px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 206px;
+    padding: 10px 24px;
+  }
+}
+
+.hero-btn-text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+.hero-slider {
+  display: flex;
+  gap: 16px;
+  height: 385px;
+  overflow: hidden;
+  width: fit-content;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1440px) {
+    gap: 18px;
+    height: 900px;
+  }
+}
+
+.column img {
+  height: 170px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  user-select: none;
+  pointer-events: none;
+  @media (min-width: 768px) {
+    height: 340px;
+  }
+}
+
+.splide__slide {
+  margin-bottom: 16px;
+}
+.column {
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 106px;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(180deg, #060307 0%, rgba(35, 19, 43, 0) 100%);
+    z-index: 2;
+  }
+
+  &::after {
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  }
+}
+
+/*Раскидать по правилам!!!!!!!!!!!!!!!!!!!!*/
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 106px;
+  background: linear-gradient(180deg, #060307 0%, rgba(35, 19, 43, 0) 100%);
+  pointer-events: none;
+  z-index: 2; /* чтобы был поверх фона, но под контентом */
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 106px;
+  background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 100%);
+  pointer-events: none;
+}

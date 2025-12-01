@@ -17,6 +17,8 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "axios": "^1.13.2",
     "izitoast": "^1.4.0",
     "loaders.css": "^0.1.2",

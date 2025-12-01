@@ -1,8 +1,9 @@
 import { artistListEl, artistModalPagesEl, genresListEl } from './refs';
+import sprite from '../img/sprite.svg';
 
 export function renderArtistCard(artist) {
   const { genres, strArtist, strArtistThumb, strBiographyEN, _id } = artist;
-  const artistCard = `<li class="artist-card" data-id="${_id}"> 
+  const artistCard = `<li class="artist-card"> 
   
     <img  class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}">
     <ul class="artist-genres">
@@ -10,8 +11,8 @@ export function renderArtistCard(artist) {
     </ul>
     <h2 class="artist-name">${strArtist}</h2>
     <p class="artist-biography">${strBiographyEN}</p>
-    <button class="learn-more-btn">Learn More<svg width="24" height="24">
-              <use href="./img/sprite.svg#icon-caret-right"></use>
+    <button class="learn-more-btn" data-id="${_id}">Learn More<svg width="24" height="24">
+              <use href="${sprite}#icon-caret-right"></use>
             </svg></button>
     </li>`;
 
@@ -39,20 +40,29 @@ export function renderGenresList(genres) {
 }
 
 export function renderPagination(page, totalPages) {
+  if (totalPages === 1) {
+    artistModalPagesEl.innerHTML = '';
+    return;
+  }
+  // Kostyli
+  if (page > totalPages) return;
+  // Kostyli
   let html = '';
 
   // ← Previous
   html += `
-    <a href="#artists" class="page-btn" ${
+    <a href="#artists-content" class="page-btn arrow-btn" ${
       page === 1 ? 'disabled' : ''
     } data-page="${page - 1}">
-      ←
+      <svg width="24" height="24">
+        <use href="${sprite}#left-arrow-btn"></use>
+      </svg>
     </a>
   `;
 
   // Pages
   // First page
-  html += `<a href="#artists" class="page-btn ${
+  html += `<a href="#artists-content" class="page-btn ${
     page === 1 ? 'active' : ''
   }" data-page="1">1</a>`;
 
@@ -63,21 +73,21 @@ export function renderPagination(page, totalPages) {
 
   // Previous neighbor
   if (page > 2) {
-    html += `<a href="#artists" class="page-btn" data-page="${page - 1}">${
+    html += `<a href="#artists-content" class="page-btn" data-page="${
       page - 1
-    }</a>`;
+    }">${page - 1}</a>`;
   }
 
   // Current page (if not first and not last)
   if (page !== 1 && page !== totalPages) {
-    html += `<a href="#artists" class="page-btn active" data-page="${page}">${page}</a>`;
+    html += `<a href="#artists-content" class="page-btn active" data-page="${page}">${page}</a>`;
   }
 
   // Next neighbor
   if (page < totalPages - 1) {
-    html += `<a href="#artists" class="page-btn" data-page="${page + 1}">${
+    html += `<a href="#artists-content" class="page-btn" data-page="${
       page + 1
-    }</a>`;
+    }">${page + 1}</a>`;
   }
 
   // Dots before last page
@@ -87,17 +97,19 @@ export function renderPagination(page, totalPages) {
 
   // Last page
   if (totalPages > 1) {
-    html += `<a href="#artists" class="page-btn ${
+    html += `<a href="#artists-content" class="page-btn ${
       page === totalPages ? 'active' : ''
     }" data-page="${totalPages}">${totalPages}</a>`;
   }
 
   // → Next
   html += `
-    <a href="#artists" class="page-btn" ${
+    <a href="#artists-content" class="page-btn arrow-btn" ${
       page === totalPages ? 'disabled' : ''
     } data-page="${page + 1}">
-      →
+      <svg width="24" height="24">
+        <use href="${sprite}#right-arrow-btn"></use>
+      </svg>
     </a> 
   `;
 

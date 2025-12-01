@@ -2,8 +2,9 @@ import { artistModalEl } from './refs';
 import { renderArtistGenresList } from './render-artists';
 import { artistModalList } from './refs';
 import { convertTime } from './helpers';
+import spriteUrl from '../img/sprite.svg';
 
-export function renderArtistModalPreview(artist) {
+export function renderArtistModal(artist) {
   const {
     strArtist,
     strArtistThumb,
@@ -14,39 +15,140 @@ export function renderArtistModalPreview(artist) {
     strCountry,
     strBiographyEN,
     genres,
+    albumsList,
   } = artist;
 
-  const artistModalPreview = `<div class="artist-modal-preview">
-    <img class="artist-modal-preview-thumb" src="${strArtistThumb}" alt="${strArtist}">
-    <h5 class="artist-modal-preview-name">${strArtist}</h5>
-    <p class="artist-modal-preview-genres">${renderArtistGenresList(genres)}</p>
-    <p class="artist-modal-preview-biography">${strBiographyEN}</p>
-    <p class="artist-modal-preview-formed-year">${intFormedYear}</p>
-    <p class="artist-modal-preview-died-year">${intDiedYear}</p>
-    <p class="artist-modal-preview-gender">${strGender}</p>
-    <p class="artist-modal-preview-members">${intMembers}</p>
-    <p class="artist-modal-preview-country">${strCountry}</p>
-    </div>`;
+  const artistName = artistModalEl.querySelector('.modal-main-heading');
+  artistName.textContent = strArtist;
 
-  artistModalEl.insertAdjacentHTML('beforeend', artistModalPreview);
+  const artistImage = artistModalEl.querySelector('.modal-artist-img');
+  artistImage.src = strArtistThumb;
+
+  const timeActive = document.querySelector('.js-modal-years');
+  timeActive.textContent =
+    intDiedYear === null
+      ? `${intFormedYear}-present`
+      : `${intFormedYear}-${intDiedYear}`;
+
+  const sex = document.querySelector('.js-modal-sex');
+  sex.textContent = strGender;
+
+  const members = document.querySelector('.js-modal-members');
+  members.textContent = intMembers;
+
+  const country = document.querySelector('.js-modal-country');
+  country.textContent = strCountry;
+
+  const bio = document.querySelector('.js-modal-bio');
+  bio.textContent = strBiographyEN;
+
+  const genresListEl = document.querySelector('.modal-info-genres-list');
+  genresListEl.innerHTML = '';
+  genresListEl.insertAdjacentHTML(
+    'beforeend',
+    renderArtistModalGenresList(genres)
+  );
+
+  const albumsListEl = document.querySelector('.artist-modal-list');
+  albumsListEl.innerHTML = '';
+  albumsListEl.insertAdjacentHTML(
+    'beforeend',
+    renderArtistModalAlbumsList(albumsList)
+  );
+
+  // ---------------SECOND VERSION-------------------
+  //   const artistModalPreview = `
+  // <button class="modal-close-button">
+  //     <svg class="modal-close-svg" width="15" height="15">
+  //       <use href="./img/sprite.svg#close"></use>
+  //     </svg>
+  //   </button>
+  //   <h5 class="modal-main-heading">${strArtist}</h5>
+
+  //   <div class="modal-img-and-info-container">
+  //     <img
+  //       class="modal-artist-img"
+  //       src="${strArtistThumb}"
+  //       alt="artist-photo"
+  //     />
+
+  //     <div class="modal-all-text-container">
+  //       <div class="modal-first-mini-container">
+  //         <ul class="modal-basic-info-list">
+  //           <li class="modal-info-years-li">
+  //             <p class="modal-info-semibold-text">Years active</p>
+  //             <p class="modal-info-normal-text js-modal-years">${intFormedYear}-${
+  //     intDiedYear === 0 ? 'present' : intDiedYear
+  //   }</p>
+  //           </li>
+  //           <li class="modal-info-sex-li">
+  //             <p class="modal-info-semibold-text">Sex</p>
+  //             <p class="modal-info-normal-text ">${strGender}</p>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //       <div class="modal-second-mini-container">
+  //         <ul class="modal-basic-info-list">
+  //           <li class="modal-info-members-li">
+  //             <p class="modal-info-semibold-text">Members</p>
+  //             <p class="modal-info-normal-text">${intMembers}</p>
+  //           </li>
+  //           <li class="modal-info-country-li">
+  //             <p class="modal-info-semibold-text">Country</p>
+  //             <p class="modal-info-normal-text">${strCountry}</p>
+  //           </li>
+  //         </ul>
+  //       </div>
+
+  //       <div class="modal-bio-container">
+  //         <p class="modal-info-bio">Biography</p>
+  //         <p class="modal-info-text">
+  //           ${strBiographyEN}
+  //         </p>
+  //         </div>
+
+  //         <div class="modal-info-genres-container">
+  //           <ul class="modal-info-genres-list">
+  //            ${renderArtistModalGenresList(genres)}
+  //           </ul>
+  //           <h4 class="heading-before-table">Albums</h4>
+  //           <ul class="artist-modal-list">
+  //             ${renderArtistModalAlbumsList(albumsList)}
+  //           </ul>
+  //         </div>
+  //       </div>
+  // `;
+  // artistModalEl.innerHTML = '';
+  // artistModalEl.insertAdjacentHTML('beforeend', artistModalPreview);
 }
 
-export function renderArtistModalAlbumsList({ albumsList }) {
+export function renderArtistModalGenresList(genres) {
+  const genresList = genres
+    .map(
+      genre =>
+        `<li class="modal-info-genre-li"><p class="modal-info-genre">${genre}</p></li>`
+    )
+    .join('');
+
+  return genresList;
+}
+
+export function renderArtistModalAlbumsList(albumsList) {
   const albumsListMarkup = albumsList
     .map(album => renderArtistModalAlbum(album))
     .join('');
 
-  artistModalList.insertAdjacentHTML('beforeend', albumsListMarkup);
+  return albumsListMarkup;
 }
 
 export function renderArtistModalAlbum({ strAlbum, tracks }) {
-  const albumCard = `<li><h2 class="artist-modal-album-title">${strAlbum}</h2>
+  const albumCard = `<li class="modal-table-li"><h2 class="artist-modal-album-title">${strAlbum}</h2>
                         <table class="artist-modal-album">
                             <thead>
                                 <tr>
-                                    <th>Track</th>
-                                    <th>Time</th>
-                                    <th>Link</th>
+                                   <th scope="col">Track</th>
+                                   <th scope="col">Time</th>
+                                   <th scope="col">Link</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,10 +168,13 @@ export function renderArtistModalTrackList(tracks) {
 }
 
 export function renderArtistModalTrack({ strTrack, intDuration, movie }) {
+  const movieIcon = movie
+    ? `<svg class="icon-modal-artist-track-list" width="24" height="24"><use href="${spriteUrl}#youtube"></use></svg>`
+    : '';
   const trackCard = `<tr>
                         <td>${strTrack}</td>
                         <td>${convertTime(intDuration)}</td>
-                        <td><a href="${movie}">Youtube</a></td>
+                        <td><a class="link-modal-artist-track-list" href="${movie}">${movieIcon}</a></td>
                     </tr>`;
 
   return trackCard;
