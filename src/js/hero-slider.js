@@ -1,6 +1,15 @@
 import Splide from '@splidejs/splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
+const fallbackImages = [
+  './img/webp/default-webp-for-hero-slider/image-slider-01.webp',
+  './img/webp/default-webp-for-hero-slider/image-slider-02.webp',
+  './img/webp/default-webp-for-hero-slider/image-slider-03.webp',
+  './img/webp/default-webp-for-hero-slider/image-slider-04.webp',
+  './img/webp/default-webp-for-hero-slider/image-slider-05.webp',
+];
+export const heroSliderEl = document.querySelector('.splide__list');
+
 export function initSliders() {
   // левый
   new Splide('#slider-left', {
@@ -25,7 +34,45 @@ export function initSliders() {
   }).mount({ AutoScroll });
 }
 
-export function renderSlider() {}
+export function renderSlider(arr) {
+  const leftList = document.querySelector('#slider-left .splide__list');
+  const rightList = document.querySelector('#slider-right .splide__list');
+
+  leftList.innerHTML = '';
+  rightList.innerHTML = '';
+
+  const leftSlidesHTML = arr
+    .map(item => {
+      return `<li class="splide__slide">
+              <img src="${item.strArtistThumb}" />
+            </li>`;
+    })
+    .join('');
+
+  const rightSlidesHTML = arr
+    .slice()
+    .reverse()
+    .map(item => {
+      return `<li class="splide__slide">
+              <img src="${item.strArtistThumb}" />
+            </li>`;
+    })
+    .join('');
+
+  leftList.insertAdjacentHTML('beforeend', leftSlidesHTML);
+  rightList.insertAdjacentHTML('beforeend', rightSlidesHTML);
+
+  initSliders();
+}
+
+export function getSliderImages(arr) {
+  const apiImages = arr.map(item => item.strArtistThumb).filter(Boolean);
+
+  if (apiImages.length === 0) {
+    return fallbackImages;
+  }
+  return apiImages;
+}
 /*  Vanilla sliders version */
 // export function createInfiniteScroll(selector, speed = 0.3, direction = 1) {
 //   const column = document.querySelector(selector);
