@@ -21,6 +21,7 @@ import {
   renderGenresList,
 } from './js/render-artists';
 import { getTotalPages } from './js/helpers';
+import './js/feedback-modal';
 import {
   getAllGenres,
   getArtistInfoById,

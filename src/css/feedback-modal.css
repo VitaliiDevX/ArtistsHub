@@ -1,52 +1,49 @@
 @import url(root.css);
 
-body {
-  color: var(--color-scheme-1-text);
+/* @import url('./node_modules/raty-js/src/raty.css'); */
+
+body.no-scroll {
+  overflow: hidden;
 }
 
-/* *Видалення скролу сторінки  */
-/* body.no-scroll {
-  overflow: hidden;
-} */
-
-.backdrop {
-  position: absolute;
+.backdrop-feedback-modal {
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
   z-index: 999999;
-  width: 100%;
+  min-width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.25);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 50ms linear;
 }
 
-.backdrop.is-open {
+.backdrop-feedback-modal.is-open {
   opacity: 1;
   pointer-events: auto;
 }
 
 .feedback-modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
-  padding-top: 64px;
-  padding-bottom: 58px;
+  padding: 64px 16px 58px;
   transform: translate(-50%, -50%);
-  max-width: 320px;
-  /* height: 568px; */
-  background-color: rgb(46, 46, 46);
+  max-width: 288px;
+  background-color: var(--color-neutral-darkest);
   border-radius: 16px;
 
   @media only screen and (min-width: 768px) {
-    max-width: 704px;
-    /* max-height: 688px; */
+    max-width: 640px;
+    padding: 64px 32px 64px;
+    max-height: 688px;
   }
 
   @media only screen and (min-width: 1440px) {
-    max-width: 864px;
-    max-height: 688px;
+    max-width: 736px;
+    padding: 64px;
   }
 }
 .feedback-modal-btn {
@@ -59,8 +56,11 @@ body {
 
   border: none;
   background-color: inherit;
-  &:hover {
+  fill: var(--color-white);
+  &:hover,
+  &:focus {
     background-color: inherit;
+    fill: var(--color-affair);
   }
 }
 
@@ -99,12 +99,17 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
   color: var(--color-white);
+  text-align: left;
 }
 .feedback-modal-input {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  color: var(--color-white);
+
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 8px 12px;
-  width: 288px;
+
   height: 43px;
   background-color: inherit;
   &:hover,
@@ -112,17 +117,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     outline: none;
   }
-
-  @media only screen and (min-width: 768px) {
-    width: 640px;
-  }
-
-  @media only screen and (min-width: 1440px) {
-    width: 736px;
-  }
 }
 
 .feedback-modal-message-area {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  color: var(--color-white);
+
   resize: none;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
@@ -142,14 +143,14 @@ body {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.6);
 }
+input.my-class:-internal-autofill-selected {
+  background-color: var(--color-affair) !important;
+}
 
-.feedback-modal-stars {
-  display: flex;
-  gap: 6px;
-}
-.feedback-modal-star-item {
-}
 .feedback-modal-submit-btn {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  color: var(--color-white);
   border-radius: 12px;
   padding: 10px 114px;
   width: 288px;
@@ -158,10 +159,12 @@ body {
     inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
     inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-  background: #764191;
+  background: var(--color-affair);
 
   @media only screen and (min-width: 768px) {
     align-self: center;
+    /* padding: 16px 140px; */
+    width: 340px;
   }
 
   &:hover,
@@ -173,4 +176,15 @@ body {
     background: #764191;
     opacity: 0.6;
   }
+}
+
+.feedback-modal-star > i {
+  font-size: 1em !important;
+}
+.feedback-modal-star .star-off-png::before {
+  content: url('../img/feedback-star.svg');
+}
+
+.feedback-modal-star .star-on-png::before {
+  content: url('../img/filled-star-feedbeck.svg');
 }
