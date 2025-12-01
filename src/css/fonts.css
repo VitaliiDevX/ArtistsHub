@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./fonts/Epilogue-Bold.ttf') format('truetype');
+  src: url('../fonts/Epilogue-Bold.ttf') format('truetype');
 }
 
 @font-face {
@@ -12,7 +12,7 @@
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
-  src: url('./fonts/IBMPlexSans-Regular.ttf') format('truetype');
+  src: url('../fonts/IBMPlexSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -21,7 +21,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
-  src: url('./fonts/IBMPlexSans-Medium.ttf') format('truetype');
+  src: url('../fonts/IBMPlexSans-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -30,7 +30,7 @@
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
-  src: url('./fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
+  src: url('../fonts/IBMPlexSans-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
@@ -39,5 +39,5 @@
   font-weight: 700;
   font-stretch: normal;
   font-display: swap;
-  src: url('./fonts/Roboto-Bold.ttf') format('truetype');
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
 }
