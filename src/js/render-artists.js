@@ -48,6 +48,7 @@ export function renderPagination(page, totalPages) {
   if (page > totalPages) return;
   // Kostyli
   let html = '';
+  const innerWidth = window.innerWidth;
 
   // ← Previous
   html += `
@@ -67,16 +68,16 @@ export function renderPagination(page, totalPages) {
   }" data-page="1">1</a>`;
 
   // Dots after first page
-  if (page > 3 || (window.innerWidth < 768 && page > 2)) {
+  if (page > 3 || (innerWidth < 768 && page > 2)) {
     html += `<span class="dots">...</span>`;
   }
 
   console.log(page > 3);
 
-  console.log(window.innerWidth < 768 && page > 2);
+  console.log(innerWidth < 768 && page > 2);
 
   // Previous neighbor
-  if (page > 2 && window.innerWidth >= 768) {
+  if (page > 2 && innerWidth >= 768) {
     html += `<a href="#artists-content" class="page-btn" data-page="${
       page - 1
     }">${page - 1}</a>`;
@@ -88,14 +89,14 @@ export function renderPagination(page, totalPages) {
   }
 
   // Next neighbor
-  if (page < totalPages - 1 && window.innerWidth >= 768) {
+  if (page < totalPages - 1 && innerWidth >= 768) {
     html += `<a href="#artists-content" class="page-btn" data-page="${
       page + 1
     }">${page + 1}</a>`;
   }
 
   // Dots before last page
-  if (page < totalPages - 2) {
+  if (page < totalPages - 2 || (innerWidth < 768 && totalPages - 1)) {
     html += `<span class="dots">...</span>`;
   }
 
