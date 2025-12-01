@@ -8,7 +8,7 @@
       <div class="filters-wrapper">
         <div class="filters-title">
           <span>Filters</span>
-          <button type="reset" class="reset-btn">Reset</button>
+          <button type="reset" class="reset-btn js-reset-btn">Reset</button>
         </div>
         <div class="filters-dropdown-wrapper">
           <button type="button" class="filter-btn">
@@ -74,7 +74,7 @@
       <div class="artist-list-wrapper">
         <ul class="artists-list"></ul>
 
-        <!-- <div class="artists-not-found is-hidden">
+        <div class="artists-not-found visually-hidden">
           <svg class="icon-info" width="40" height="40">
             <use href="./img/sprite.svg#error-circle"></use>
           </svg>
@@ -83,8 +83,10 @@
             Looks like no artists match your filters.<br />
             Try changing them or hit "Reset Filters" to bring back the beat.
           </p>
-          <button type="reset" class="artists-btn">Reset filters</button>
-        </div> -->
+          <button type="reset" class="artists-btn js-reset-btn">
+            Reset filters
+          </button>
+        </div>
 
         <div class="artists-pages"></div>
       </div>

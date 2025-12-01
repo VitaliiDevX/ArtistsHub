@@ -72,10 +72,6 @@ export function renderPagination(page, totalPages) {
     html += `<span class="dots">...</span>`;
   }
 
-  console.log(page > 3);
-
-  console.log(innerWidth < 768 && page > 2);
-
   // Previous neighbor
   if (page > 2 && innerWidth >= 768) {
     html += `<a href="#artists-content" class="page-btn" data-page="${

@@ -6,6 +6,7 @@ import {
   searchFormEl,
   artistListEl,
   filterBtnEl,
+  resetBtnEl,
 } from './js/refs';
 import {
   onSearchArtistsByInput,
@@ -13,6 +14,7 @@ import {
   onArtistModalPagesClick,
   onLearnMoreClick,
   onFilterClick,
+  onResetClick,
 } from './js/event-listeners-callbacks';
 import {
   renderArtistList,
@@ -59,7 +61,6 @@ async function init() {
   const genres = await getAllGenres();
   renderPagination(1, getTotalPages(totalArtists));
   renderGenresList(genres);
-  console.dir(artists);
 }
 init();
 
@@ -68,6 +69,7 @@ searchFormEl.addEventListener('input', onSearchArtistsByInput);
 searchFormEl.addEventListener('click', onSearchArtistsByClick);
 artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);
 filterBtnEl.addEventListener('click', onFilterClick);
+resetBtnEl.forEach(btn => btn.addEventListener('click', onResetClick));
 artistListEl.addEventListener('click', e => {
   const btnClick = e.target.closest('.learn-more-btn');
 

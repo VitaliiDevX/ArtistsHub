@@ -2,7 +2,13 @@ import { getTotalPages } from './helpers';
 import { getArtistInfoById, getArtists } from './soundwawe-api';
 import { renderArtistList } from './render-artists';
 import { renderPagination } from './render-artists';
-import { backdropWithModalEl } from './refs';
+import {
+  artistListEl,
+  artistModalPagesEl,
+  artistsNotFoundEl,
+  backdropWithModalEl,
+  searchFormEl,
+} from './refs';
 import { renderArtistModal } from './render-artist-modal';
 // import { document } from 'postcss';
 
@@ -10,6 +16,19 @@ let currentPage = 1;
 let currentQuery = {};
 let previousInputValue = '';
 let previousSelector = null;
+
+export async function checkArtistResponse(currentQuery, currentPage) {
+  const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
+  if (totalArtists === 0) {
+    artistListEl.innerHTML = '';
+    artistModalPagesEl.innerHTML = '';
+    artistsNotFoundEl.classList.remove('visually-hidden');
+    return;
+  }
+  artistsNotFoundEl.classList.add('visually-hidden');
+  renderArtistList(artists);
+  renderPagination(currentPage, getTotalPages(totalArtists));
+}
 
 export async function onSearchArtistsByInput(e) {
   try {
@@ -27,14 +46,8 @@ export async function onSearchArtistsByInput(e) {
       delete currentQuery.name;
     }
 
-    // ВИНЕСТИ В ОКРЕМУ ФУНКЦІЮ
     currentPage = 1;
-    const { artists, totalArtists } = await getArtists(
-      currentQuery,
-      currentPage
-    );
-    renderArtistList(artists);
-    renderPagination(currentPage, getTotalPages(totalArtists));
+    checkArtistResponse(currentQuery, currentPage);
   } catch (error) {
     console.log(error);
   }
@@ -94,12 +107,7 @@ export async function onSearchArtistsByClick(e) {
             }
           }
           currentPage = 1;
-          const { artists, totalArtists } = await getArtists(
-            currentQuery,
-            currentPage
-          );
-          renderArtistList(artists);
-          renderPagination(currentPage, getTotalPages(totalArtists));
+          checkArtistResponse(currentQuery, currentPage);
         }
       }
 
@@ -122,11 +130,9 @@ export async function onArtistModalPagesClick(e) {
   if (newPage < 1) return;
 
   currentPage = newPage;
-  console.log(currentPage);
 
   const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
   const totalPages = getTotalPages(totalArtists);
-  console.log(artists, totalArtists, totalPages);
 
   renderArtistList(artists);
   renderPagination(currentPage, totalPages);
@@ -176,3 +182,14 @@ export function onFilterClick(e) {
   }
 }
 // END OF KOSTYL
+
+export function onResetClick(e) {
+  currentQuery = {};
+  currentPage = 1;
+  // МОЖНА ЗРОБИТИ РЕФАКТОРІНГ, А МОЖНА І НЕ РОБИТИ
+  const form = searchFormEl.querySelectorAll('.select-btn');
+  form[0].childNodes[0].nodeValue = 'Sorting';
+  form[1].childNodes[0].nodeValue = 'Genre';
+  searchFormEl.reset();
+  checkArtistResponse(currentQuery, currentPage);
+}
