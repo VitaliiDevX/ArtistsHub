@@ -1,7 +1,5 @@
 # **ArtistsHub**
 
-![logo ArtistsHub](./src/img/readme/logoArtistHub.png)
-
 A platform for discovering artists, browsing their works, reading details, and
 leaving feedback.
 
@@ -9,22 +7,21 @@ leaving feedback.
 
 https://vitaliidevx.github.io/ArtistsHub/
 
-## **📌 Overview**
+## ✨ Key Features
 
-ArtistsHub is a responsive web application that allows users to:
+- Search and browse music artists
+- Artist cards with quick view
+- Modal with list of tracks and details
+- Pagination for easy navigation
+- Fully responsive layout
+- Feedback form with validation and iziToast notifications
+- Image optimization (1x / 2x)
 
-Browse artists and artworks
+## 🎯 Project Purpose
 
-View detailed information in dynamic modals
-
-Navigate using pagination
-
-Leave feedback through a dedicated modal
-
-Receive success/error notifications via iziToast
-
-The platform is designed for smooth performance, clean UI, optimized images (1x
-/ 2x), and a user-friendly experience.
+ArtistsHub was created as a collaborative team project to practice modern
+frontend development. It demonstrates work with APIs, dynamic UI rendering,
+pagination, modals, notifications, and responsive design.
 
 ## **📸 Screenshots**
 
@@ -32,11 +29,11 @@ The platform is designed for smooth performance, clean UI, optimized images (1x
 
 ![Homepage preview](./src/img/readme/hero.png)
 
-### 👩‍🎨 Artist Cards
+### 🎤 Artist Cards
 
 ![Artist Cards](./src/img/readme/artists.png)
 
-### 🖼️ Artwork Modal
+### 🎶 Tracks Modal
 
 ![Artist Modal](./src/img/readme/modal-artists.png)
 
