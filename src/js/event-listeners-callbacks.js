@@ -164,3 +164,15 @@ function closeModal() {
   backdropWithModalEl.removeEventListener('click', onCloseModal);
   document.removeEventListener('keydown', onEscClose);
 }
+
+// Need to fix this function KOSTYL
+export function onFilterClick(e) {
+  const btn = e.target.closest('.filter-btn');
+  const listWrapperCurrentStyle = btn.nextElementSibling.style.display;
+  if (listWrapperCurrentStyle === 'flex') {
+    btn.nextElementSibling.style.display = 'none';
+  } else {
+    btn.nextElementSibling.style.display = 'flex';
+  }
+}
+// END OF KOSTYL

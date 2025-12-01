@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 
   @media only screen and (min-width: 1440px) {
     flex-direction: row;
@@ -74,6 +75,7 @@
 
 .filters-dropdown-wrapper {
   position: relative;
+  /* overflow: hidden; */
 
   @media only screen and (min-width: 1440px) {
     margin-bottom: 0;
@@ -81,6 +83,7 @@
 }
 
 .filter-btn {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,6 +101,8 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+  /* its about animation */
+  /* z-index: 10; */
 
   @media only screen and (min-width: 1440px) {
     display: none;
@@ -105,11 +110,11 @@
 }
 
 .filters {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
-  top: calc(100% + 12px);
-  z-index: 9999;
+
+  top: 48px;
   border-radius: 12px;
   padding: 12px;
   max-width: 289px;
@@ -117,12 +122,17 @@
   gap: 12px;
   box-sizing: border-box;
   background-color: var(--color-scheme-2-foreground);
-
+  z-index: 9;
+  /* Try to animate */
+  /* top: -136px; */
+  /* transition: top 0.3s ease-in-out; */
+  /* Then top 48px */
   @media only screen and (min-width: 768px) {
     max-width: 304px;
   }
 
   @media only screen and (min-width: 1440px) {
+    display: flex;
     background-color: transparent;
     position: relative;
     top: auto;
@@ -236,6 +246,13 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+  transition: color 250ms linear, fill 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: var(--color-affair);
+    fill: var(--color-affair);
+  }
 }
 
 .artists-not-found {
@@ -254,6 +271,7 @@
     max-width: 704px;
   }
 }
+
 .artists-not-found-title {
   font-weight: 700;
   font-size: 32px;
@@ -265,6 +283,7 @@
     font-size: 48px;
   }
 }
+
 .artists-not-found-text {
   font-weight: 400;
   font-size: 20px;
@@ -298,7 +317,7 @@
   gap: 4px;
 }
 
-.arrow-btn,
+.artists-arrow-btn,
 .page-btn {
   display: flex;
   justify-content: center;
@@ -307,7 +326,7 @@
   padding: 10px 17px;
 }
 
-.arrow-btn {
+.artists-arrow-btn {
   fill: var(--color-scheme-1-text);
   padding: 8px 12px;
 }
@@ -362,6 +381,7 @@
   position: relative;
   display: block;
 }
+
 .search-box input {
   width: 100%;
   background: var(--opacity-transparent);
@@ -396,6 +416,7 @@
   border: 1px solid var(--opacity-white-20);
   border-radius: 12px;
 }
+
 .select-btn {
   fill: var(--color-scheme-2-text);
   display: flex;
@@ -434,8 +455,10 @@
   text-align: start;
 
   max-height: 328px;
-  overflow-y: auto; /* добавляем вертикальный скролл */
-  box-sizing: border-box; /* учитываем padding при высоте */
+  overflow-y: auto;
+  /* добавляем вертикальный скролл */
+  box-sizing: border-box;
+  /* учитываем padding при высоте */
 
   font-family: var(--font-family);
   font-weight: 400;

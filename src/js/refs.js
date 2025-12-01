@@ -5,5 +5,8 @@ export const backdropWithModalEl = document.querySelector(
 );
 export const artistModalList = document.querySelector('.artist-modal-list');
 export const artistModalPagesEl = document.querySelector('.artists-pages');
-export const searchFormEl = document.querySelector('.filters');
 export const genresListEl = document.querySelector('.js-genres-list');
+
+// NEED TO OPTIMIZE
+export const filterBtnEl = document.querySelector('.filter-btn');
+export const searchFormEl = document.querySelector('.filters');

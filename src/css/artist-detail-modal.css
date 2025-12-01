@@ -5,11 +5,11 @@
   z-index: 99999;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-
+  /* background-color: rgba(0, 0, 0, 0.85); */
+  background-color: rgba(30, 30, 30, 0.9);
   opacity: 0;
   pointer-events: none;
-  /* transition: opacity 500ms linear; */
+  transition: opacity 500ms linear;
 }
 
 .backdrop-with-modal.is-open {
@@ -23,13 +23,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 288px;
-  height: 85vh;
+  height: calc(100vh - 128px);
+  box-sizing: border-box;
   padding: 52px 8px;
   border-radius: 16px;
   background: #060307;
   overflow: auto;
   scrollbar-width: none;
-  /* width: 100%; */
 
   @media screen and (min-width: 768px) {
     padding: 64px 24px;
@@ -44,34 +44,61 @@
 
 .modal-close-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
   border: none;
   background-color: transparent;
   padding: 0;
   line-height: 0;
-  fill: #fff;
+  fill: var(--color-scheme-1-text);
   transition: fill 250ms linear;
 
+  &:focus,
+  &:hover {
+    fill: var(--color-affair);
+  }
+
   @media screen and (min-width: 768px) {
-    top: 16px;
-    right: 47px;
+    /* right: 31px; */
   }
 
   @media screen and (min-width: 1440px) {
-    top: 16px;
-    right: 16px;
+    right: 0;
   }
 }
 
-.modal-close-svg {
-  fill: #fff;
+/* tooltip */
+.modal-close-button::after {
+  content: 'Close';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  background: #fff;
+  color: var(--color-affair);
+  font-size: 14px;
+  font-family: inherit;
+  opacity: 0;
+  transition: opacity 250ms linear;
 }
 
-.modal-youtube-svg {
-  fill: #fff;
+.modal-close-button:hover::after {
+  opacity: 1;
+}
+
+.link-modal-artist-track-list {
+  line-height: 0;
+  display: inline-block;
+  fill: var(--color-scheme-1-text);
+  transition: fill 250ms linear;
+
+  &:hover,
+  &:focus {
+    fill: var(--color-affair);
+  }
 }
 
 .modal-main-heading {
@@ -108,13 +135,12 @@
 
 .modal-artist-img {
   border-radius: 16px;
-
+  object-fit: cover;
+  object-position: top;
   width: 272px;
   height: 167px;
 
   @media screen and (min-width: 768px) {
-    border-radius: 16px;
-
     width: 654px;
     height: 402px;
   }
@@ -129,9 +155,15 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 272px;
 
   @media screen and (min-width: 768px) {
     gap: 24px;
+    max-width: 654px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 576px;
   }
 }
 
@@ -140,12 +172,6 @@
   flex-direction: column;
   gap: 24px;
 } */
-
-.modal-first-mini-container {
-}
-
-.modal-second-mini-container {
-}
 
 .modal-basic-info-list {
   display: flex;
@@ -178,14 +204,8 @@
   color: #fff;
 }
 
-.modal-info-sex-li {
-}
-
 .modal-info-members-li {
   min-width: 146px;
-}
-
-.modal-info-country-li {
 }
 
 .modal-info-bio {
@@ -202,9 +222,33 @@
   font-size: 18px;
   line-height: 1.5;
   color: #fff;
+  height: 279px;
+  overflow: auto;
+
+  @media screen and (min-width: 768px) {
+    height: 108px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 135px;
+  }
 }
 
-.modal-info-genres-container {
+/* прокрутка */
+.modal-info-text::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* повзунок */
+.modal-info-text::-webkit-scrollbar-thumb {
+  background-color: #764191;
+  border-radius: 8px;
+}
+
+/* фон прокрутки */
+.modal-info-text::-webkit-scrollbar-track {
+  background: var(--color-scheme-2-foreground);
+  border-radius: 8px;
 }
 
 .modal-info-genres-list {
@@ -237,9 +281,9 @@
 
 .modal-table-li {
   background-color: #1e1c1f;
+  box-sizing: border-box;
   /* width: 100%; */
   /* height: 634px; */
-
   /* height: 100%; */
   overflow-y: auto;
   scrollbar-width: none;
