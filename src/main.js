@@ -14,7 +14,7 @@ import {
 } from './js/render-artists';
 import { getTotalPages } from './js/helpers';
 import { getAllGenres, getArtists } from './js/soundwawe-api';
-
+import './js/feedback-modal';
 // TESTS!!!!!!!!!!!!!!!!!!!!!!!!!
 // const result = await getArtistInfoById('65b0fda6ba67998416821076');
 // const { artists, totalArtists } = await getArtists();
