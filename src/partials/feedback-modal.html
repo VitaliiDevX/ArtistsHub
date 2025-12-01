@@ -13,29 +13,36 @@
     <form class="feedback-modal-form">
       <label for="name" class="feedback-modal-label"
         >Name
-        <input
-          class="feedback-modal-input"
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Emily"
-          required
-        />
+        <div class="error-wrapper">
+          <input
+            class="feedback-modal-input"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Emily"
+          />
+          <span class="feedback-error-text" data-error-for="name"></span>
+        </div>
       </label>
 
       <label for="message" class="feedback-modal-label"
         >Message
-        <textarea
-          class="feedback-modal-message-area"
-          id="message"
-          name="message"
-          rows="5"
-          placeholder="Type your message..."
-          required
-        ></textarea>
+        <div class="error-wrapper">
+          <textarea
+            class="feedback-modal-message-area"
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Type your message..."
+          ></textarea>
+          <span class="feedback-error-text" data-error-for="message"></span>
+        </div>
       </label>
-      <div data-raty class="feedback-modal-star"></div>
 
+      <div class="error-wrapper">
+        <div data-raty class="feedback-modal-star"></div>
+        <span class="feedback-error-text" data-error-for="rating"></span>
+      </div>
       <button class="feedback-modal-submit-btn" type="submit">Submit</button>
     </form>
   </div>

@@ -15,9 +15,10 @@ body.no-scroll {
   z-index: 999999;
   min-width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
   opacity: 0;
   pointer-events: none;
+  background-color: rgba(30, 30, 30, 0.9);
+  transition: opacity 500ms linear;
 }
 
 .backdrop-feedback-modal.is-open {
@@ -29,6 +30,7 @@ body.no-scroll {
   position: fixed;
   top: 50%;
   left: 50%;
+
   padding: 64px 16px 58px;
   transform: translate(-50%, -50%);
   max-width: 288px;
@@ -101,16 +103,17 @@ body.no-scroll {
   color: var(--color-white);
   text-align: left;
 }
+
 .feedback-modal-input {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
   color: var(--color-white);
-
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 8px 12px;
-
   height: 43px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: inherit;
   &:hover,
   &:focus {
@@ -129,6 +132,8 @@ body.no-scroll {
   border-radius: 12px;
   padding: 8px 12px;
   height: 130px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: inherit;
 
   &:hover,
@@ -143,6 +148,37 @@ body.no-scroll {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.6);
 }
+
+.feedback-modal-input:focus::placeholder,
+.feedback-modal-message-area:focus::placeholder {
+  opacity: 0;
+}
+.error-wrapper {
+  position: relative;
+  width: 100%;
+}
+.feedback-error-text {
+  position: absolute;
+  left: 0px;
+  bottom: -16px;
+  font-size: 12px;
+  color: var(--color-error-red);
+  pointer-events: none;
+}
+
+.feedback-modal-error {
+  border-color: var(--color-error-red);
+  color: var(--color-error-red);
+  &:focus,
+  &:hover {
+    border-color: var(--color-error-red);
+  }
+}
+.feedback-modal-input.feedback-modal-error::placeholder,
+.feedback-modal-message-area.feedback-modal-error::placeholder {
+  color: var(--color-error-red);
+}
+
 input.my-class:-internal-autofill-selected {
   background-color: var(--color-affair) !important;
 }

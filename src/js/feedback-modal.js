@@ -12,9 +12,25 @@ const feedbackCloseBtn = document.querySelector('.js-feedback-modal-close-btn');
 const bodyElement = document.body;
 const rating = document.querySelector('[data-raty]');
 
+const nameErrorEl = feedbackFormEl.querySelector('[data-error-for="name"]');
+const messageErrorEl = feedbackFormEl.querySelector(
+  '[data-error-for="message"]'
+);
+const ratingErrorEl = feedbackFormEl.querySelector('[data-error-for="rating"]');
+
+const nameInput = feedbackFormEl.elements.name;
+const messageInput = feedbackFormEl.elements.message;
+
 //! Зірочки
 const raty = new Raty(rating, {
   starType: 'i',
+  click(score) {
+    // якщо юзер вибрав хоча б 1 зірку – знімаємо помилку
+    if (score >= 1) {
+      rating.classList.remove('feedback-modal-error');
+      ratingErrorEl.textContent = '';
+    }
+  },
 });
 
 raty.init();
@@ -27,31 +43,49 @@ const postFeedback = feedback => {
 
 //! Валідація
 const validateFeedbackData = data => {
+  nameInput.classList.remove('feedback-modal-error');
+  messageInput.classList.remove('feedback-modal-error');
+
+  nameErrorEl.textContent = '';
+  messageErrorEl.textContent = '';
+  ratingErrorEl.textContent = '';
+
   if (!data.name || data.name.length < 3) {
-    iziToast.warning({
-      message: 'Name must be at least 3 characters long',
-      position: 'topRight',
-      color: '#764191',
-    });
+    nameInput.classList.add('feedback-modal-error');
+    nameErrorEl.textContent = 'Name must be at least 3 characters long';
+
     return false;
   }
 
   if (!data.descr || data.descr.length < 10) {
-    iziToast.warning({
-      message: 'Description must be at least 10 characters long',
-      position: 'topRight',
-    });
+    messageInput.classList.add('feedback-modal-error');
+    messageErrorEl.textContent =
+      'Description must be at least 10 characters long';
+
     return false;
   }
-  if (data.rating === undefined) {
-    iziToast.warning({
-      message: 'Rating must be between 1 and 5',
-      position: 'topRight',
-    });
+  if (!data.rating || data.rating < 1) {
+    rating.classList.add('feedback-modal-error');
+    ratingErrorEl.textContent = 'Please select a rating from 1 to 5';
+
     return false;
   }
 
   return true;
+};
+
+const onClickValidationCheck = () => {
+  const nameValue = nameInput.value.trim();
+  const messageValue = messageInput.value.trim();
+
+  if (nameValue.length >= 3) {
+    nameInput.classList.remove('feedback-modal-error');
+    nameErrorEl.textContent = '';
+  }
+  if (messageValue.length >= 10) {
+    messageInput.classList.remove('feedback-modal-error');
+    messageErrorEl.textContent = '';
+  }
 };
 
 // ! Дія на кнопку сабміт
@@ -63,8 +97,6 @@ const onFeedbackFormSubmit = async event => {
     rating: raty.score(),
     descr: feedbackFormEl.elements.message.value.trim(),
   };
-
-  console.log(newFeedback);
 
   if (!validateFeedbackData(newFeedback)) {
     return;
@@ -79,6 +111,7 @@ const onFeedbackFormSubmit = async event => {
     iziToast.success({
       message: 'Your feedback submited successfully',
       position: 'topRight',
+      color: '#9f7ab2',
     });
 
     localStorage.removeItem('feedbackFormData');
@@ -91,6 +124,7 @@ const onFeedbackFormSubmit = async event => {
     iziToast.error({
       message: 'Error submitting feedback',
       position: 'topRight',
+      color: '#af4040',
     });
   }
 };
@@ -98,6 +132,10 @@ const onFeedbackFormSubmit = async event => {
 const onfeedbackCloseBtnClick = () => {
   feedbackBackdropEl.classList.remove('is-open');
   bodyElement.classList.remove('no-scroll');
+
+  localStorage.removeItem('feedbackFormData');
+  feedbackFormEl.reset();
+  raty.score(0);
 };
 
 const onfeedbackBtnClick = () => {
@@ -118,7 +156,13 @@ const onBackdropClickClose = ({ target }) => {
 };
 
 const getDataFromLS = () => {
-  const savedData = JSON.parse(localStorage.getItem('feedbackFormData'));
+  const savedDataJSON = localStorage.getItem('feedbackFormData');
+
+  if (!savedDataJSON) return;
+
+  const savedData = JSON.parse(savedDataJSON);
+
+  onfeedbackBtnClick();
 
   if (savedData) {
     feedbackFormEl.elements.name.value = savedData.name || '';
@@ -150,8 +194,12 @@ window.addEventListener('keydown', onEscPress);
 
 window.addEventListener('click', onBackdropClickClose);
 
+//! видалення помилки валідації при введенні полів
+feedbackFormEl.addEventListener('input', onClickValidationCheck);
+
+//! відправка на бекенд
 feedbackFormEl.addEventListener('submit', onFeedbackFormSubmit);
 
+//! збереження, видалення і отримання даних з LS
 window.addEventListener('DOMContentLoaded', getDataFromLS);
-
 feedbackFormEl.addEventListener('click', addDataFromLSToForm);
