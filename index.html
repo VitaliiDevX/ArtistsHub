@@ -22,8 +22,8 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/ArtistsHub/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/ArtistsHub/assets/vendor-Bx2Hut4r.js">
-    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-B6GVphpL.css">
+    <link rel="modulepreload" crossorigin href="/ArtistsHub/assets/vendor-BREOjyBh.js">
+    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-BNXvQH2X.css">
   </head>
   <body>
     <header class="container-header">
@@ -429,9 +429,12 @@
   </div>
 </div>
 
-    <div class="backdrop js-backdrop">
-  <div class="container feedback-modal">
-    <button type="button" class="feedback-modal-btn js-feedback-modal-btn">
+    <div class="backdrop-feedback-modal js-backdrop-feedback-modal">
+  <div class="feedback-modal">
+    <button
+      type="button"
+      class="feedback-modal-btn js-feedback-modal-close-btn"
+    >
       <svg class="feedback-modal-icon-cloce" width="14" height="14">
         <use href="../img/sprite.svg#close"></use>
       </svg>
@@ -445,6 +448,7 @@
           class="feedback-modal-input"
           type="text"
           id="name"
+          name="name"
           placeholder="Emily"
           required
         />
@@ -455,39 +459,14 @@
         <textarea
           class="feedback-modal-message-area"
           id="message"
+          name="message"
           rows="5"
           placeholder="Type your message..."
           required
         ></textarea>
       </label>
+      <div data-raty class="feedback-modal-star"></div>
 
-      <ul class="feedback-modal-stars">
-        <li class="feedback-modal-star-item">
-          <svg width="30" height="29">
-            <use href="../img/icons.svg#star"></use>
-          </svg>
-        </li>
-        <li class="feedback-modal-star-item">
-          <svg width="30" height="29">
-            <use href="../img/icons.svg#star"></use>
-          </svg>
-        </li>
-        <li class="feedback-modal-star-item">
-          <svg width="30" height="29">
-            <use href="../img/icons.svg#star"></use>
-          </svg>
-        </li>
-        <li class="feedback-modal-star-item">
-          <svg width="30" height="29">
-            <use href="../img/icons.svg#star"></use>
-          </svg>
-        </li>
-        <li class="feedback-modal-star-item">
-          <svg width="30" height="29">
-            <use href="../img/icons.svg#star"></use>
-          </svg>
-        </li>
-      </ul>
       <button class="feedback-modal-submit-btn" type="submit">Submit</button>
     </form>
   </div>
