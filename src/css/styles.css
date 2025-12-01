@@ -11,6 +11,7 @@
 @import url('swiper/css/navigation');
 @import url('swiper/css/pagination');
 
+@import url('./fonts.css');
 @import url('./root.css');
 @import url('./reset.css');
 @import url('./base.css');
