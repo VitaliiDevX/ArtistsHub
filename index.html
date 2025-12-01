@@ -13,9 +13,9 @@
       href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700&family=IBM+Plex+Sans:wght@400;500;600&family=Roboto:wght@700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/ArtistsHub/index.js"></script>
+    <script async type="module" crossorigin src="/ArtistsHub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/ArtistsHub/assets/vendor-BREOjyBh.js">
-    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-BwPvII-v.css">
+    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-hvhG7rIV.css">
   </head>
   <body>
     <header class="container header">
@@ -107,7 +107,7 @@
       <div class="filters-wrapper">
         <div class="filters-title">
           <span>Filters</span>
-          <button type="reset" class="reset-btn">Reset</button>
+          <button type="reset" class="reset-btn js-reset-btn">Reset</button>
         </div>
         <div class="filters-dropdown-wrapper">
           <button type="button" class="filter-btn">
@@ -173,17 +173,19 @@
       <div class="artist-list-wrapper">
         <ul class="artists-list"></ul>
 
-        <!-- <div class="artists-not-found is-hidden">
+        <div class="artists-not-found visually-hidden">
           <svg class="icon-info" width="40" height="40">
-            <use href="./img/sprite.svg#error-circle"></use>
+            <use href="/ArtistsHub/assets/sprite-CJsgYEop.svg#error-circle"></use>
           </svg>
           <h3 class="artists-not-found-title">Silence on the stage…</h3>
           <p class="artists-not-found-text">
             Looks like no artists match your filters.<br />
             Try changing them or hit "Reset Filters" to bring back the beat.
           </p>
-          <button type="reset" class="artists-btn">Reset filters</button>
-        </div> -->
+          <button type="reset" class="artists-btn js-reset-btn">
+            Reset filters
+          </button>
+        </div>
 
         <div class="artists-pages"></div>
       </div>
