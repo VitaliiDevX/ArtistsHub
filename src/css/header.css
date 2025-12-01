@@ -1,7 +1,7 @@
 /* I copied this class from the main container because other elements use this naming in another file,
 but it added wrong styles that broke my layout. */
 
-.container-header {
+/* .container-header {
     max-width: 320px;
     margin: 0 auto;
     padding: 0 16px;
@@ -15,114 +15,115 @@ but it added wrong styles that broke my layout. */
         max-width: 1440px;
         padding: 0 64px;
     }
-}
+} */
 
-.container-header {
-    position: relative;
-    width: 100%;
-    z-index: 1000;
+.header {
+  position: relative;
+  width: 100%;
+  z-index: 1000;
 }
 
 .hide {
-    display: none !important;
+  display: none !important;
 }
 
 .header-logo {
-    display: inline-block;
-    line-height: 0;
+  display: inline-block;
+  line-height: 0;
 
-    @media screen and (min-width: 768px) {}
+  @media screen and (min-width: 768px) {
+  }
 }
 
 .header-logo-icon {
-    fill: var(--color-scheme-1-text);;
-    width: 119px;
-    height: 51px;
+  fill: var(--color-scheme-1-text);
+  width: 119px;
+  height: 51px;
 }
-
 
 .burger-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 48px;
-    height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
 
-    @media screen and (min-width: 768px) {
-        display: none;
-    }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 }
 
-.burger-icon, .cross-icon {
-    fill: var(--color-scheme-1-text);
-    width: 16px;
-    height: 12px;
+.burger-icon,
+.cross-icon {
+  fill: var(--color-scheme-1-text);
+  width: 16px;
+  height: 12px;
 }
 
 .navigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 10.5px;
-    padding-bottom: 10.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10.5px;
+  padding-bottom: 10.5px;
 
-    @media screen and (min-width: 768px) {
-        display: flex;
-        justify-content: space-between;
-    }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .header-list {
-    display: none;
+  display: none;
 
-    @media screen and (min-width: 768px) {
-        display: flex;
-        gap: 32px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 32px;
 
-        font-size: 18px;
-        color: var(--color-scheme-1-text);
-    }
+    font-size: 18px;
+    color: var(--color-scheme-1-text);
+  }
 }
 
 /* -------  menu - open --------*/
 
 .menu-burger-modal {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: var(--color-scheme-1-background);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--color-scheme-1-background);
 
-    padding: 17px 26px;
-    box-sizing: border-box;
-    pointer-events: auto;
-    z-index: 999;
+  padding: 17px 26px;
+  box-sizing: border-box;
+  pointer-events: auto;
+  z-index: 999;
 }
 
 .menu-burger-close-btn {
-    top: 26px;
-    right: 30px;
-    line-height: 0;
-    width: 12px;
-    height: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    fill: var(--color-scheme-1-text);
+  top: 26px;
+  right: 30px;
+  line-height: 0;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--color-scheme-1-text);
 }
 
 .menu-burger-list {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding-top: 111px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 111px;
 
-    font-weight: 500;
-    font-size: 26px;
-    color: var(--color-scheme-1-text);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--color-scheme-1-text);
 }

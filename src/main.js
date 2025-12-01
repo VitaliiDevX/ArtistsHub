@@ -30,8 +30,7 @@ import {
   renderArtistModalAlbumsList,
   renderArtistModal,
 } from './js/render-artist-modal';
-
-
+import { initHeader } from './js/header';
 import { initSliders } from './js/hero-slider';
 
 document.addEventListener('DOMContentLoaded', () => {
