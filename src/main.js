@@ -21,6 +21,10 @@ import {
   renderArtistGenresList,
   renderPagination,
   renderGenresList,
+  showLoader,
+  hideLoader,
+  showArtistsContent,
+  hideArtistsContent,
 } from './js/render-artists';
 import { getTotalPages } from './js/helpers';
 import './js/feedback-modal';
@@ -52,16 +56,27 @@ initHeader();
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 async function init() {
-  const { artists, totalArtists } = await getArtists();
-  const sliderImages = getSliderImages(artists);
+  hideArtistsContent();
+  showLoader();
 
-  renderSlider(sliderImages.map(src => ({ strArtistThumb: src })));
-  renderArtistList(artists);
+  try {
+    const { artists, totalArtists } = await getArtists();
+    const sliderImages = getSliderImages(artists);
 
-  const genres = await getAllGenres();
-  renderPagination(1, getTotalPages(totalArtists));
-  renderGenresList(genres);
+    renderSlider(sliderImages.map(src => ({ strArtistThumb: src })));
+    renderArtistList(artists);
+
+    const genres = await getAllGenres();
+    renderPagination(1, getTotalPages(totalArtists));
+    renderGenresList(genres);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    hideLoader();
+    showArtistsContent();
+  }
 }
+
 init();
 
 // -------------------EVENT LISTENERS-------------------

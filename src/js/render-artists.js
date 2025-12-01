@@ -4,6 +4,7 @@ import {
   genresListEl,
   loaderEl,
   modalContentEl,
+  artistsListContentEl,
 } from './refs';
 import sprite from '../img/sprite.svg';
 
@@ -145,13 +146,13 @@ export function hideModalContent() {
 
 //! треба використати (разом з лоадером) і додати is-hidden на artists-content
 
-// export function showArtistsContent() {
-//   artistsContentEl.classList.remove('is-hidden');
-// }
+export function showArtistsContent() {
+  artistsListContentEl.classList.remove('is-hidden');
+}
 
-// export function hideArtistsContent() {
-//   artistsContentEl.classList.add('is-hidden');
-// }
+export function hideArtistsContent() {
+  artistsListContentEl.classList.add('is-hidden');
+}
 
 // export function showArtistsListContent() {
 //   artistsListContentEl.classList.remove('is-hidden');

@@ -7,6 +7,8 @@ import {
   hideLoader,
   showModalContent,
   hideModalContent,
+  showArtistsContent,
+  hideArtistsContent,
 } from './render-artists';
 import {
   artistListEl,
@@ -53,9 +55,16 @@ export async function onSearchArtistsByInput(e) {
     }
 
     currentPage = 1;
+
+    hideArtistsContent();
+    showLoader();
+
     checkArtistResponse(currentQuery, currentPage);
   } catch (error) {
     console.log(error);
+  } finally {
+    hideLoader();
+    showArtistsContent();
   }
 }
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
