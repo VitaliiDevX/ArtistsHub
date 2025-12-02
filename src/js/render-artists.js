@@ -22,7 +22,7 @@ export function renderArtistCard(artist) {
     </ul>`
         : ''
     }
-    <h2 class="artist-name">${strArtist}</h2>
+    <h3 class="artist-name">${strArtist}</h3>
     <p class="artist-biography">${
       isEmpty(strBiographyEN) ? 'information missing' : strBiographyEN
     }</p>

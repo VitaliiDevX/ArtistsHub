@@ -20,6 +20,7 @@ import {
   backdropWithModalEl,
   searchFormEl,
   artistModalEl,
+  filterBtnEl,
 } from './refs';
 import { renderArtistModal } from './render-artist-modal';
 // import { document } from 'postcss';
@@ -303,4 +304,5 @@ export function onFilterWrapperFocusOut(e) {
   }
   e.target.classList.remove('open');
   searchFormEl.classList.remove('is-open');
+  filterBtnEl.classList.remove('open');
 }
