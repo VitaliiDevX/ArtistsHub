@@ -96,36 +96,44 @@ html {
 }
 
 .hero-btn {
-  /* width: 100%; */
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  padding: 10px 65px;
-  border-radius: 12px;
-  transition: 250ms linear;
-  /* KOSTYL */
+
+  width: 100%;
   max-width: 288px;
+  height: 47px;
+  border-radius: 12px;
+  margin: 0 auto;
+  border: none;
+
+  background: var(--color-affair);
 
   box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
     inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
     inset 0 0 0 1px var(--opacity-neutral-darkest-15),
     inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 32px 24px 0 var(--opacity-white-5);
-  background: var(--color-affair);
+
+  transition: opacity 250ms linear, transform 250ms ease;
 
   &:hover,
   &:focus {
     opacity: 0.6;
   }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
   @media (min-width: 768px) {
     max-width: 246px;
-    padding: 10px 44px;
+    margin-left: 0;
   }
 
   @media (min-width: 1440px) {
     max-width: 206px;
-    padding: 10px 24px;
   }
 }
 
@@ -159,16 +167,15 @@ html {
   object-fit: cover;
   border-radius: 16px;
   user-select: none;
-
   pointer-events: none;
-  /* cursor: grab; */
+  margin-bottom: 16px;
+
   @media (min-width: 768px) {
     height: 340px;
   }
 }
 
 .splide__slide {
-  margin-bottom: 16px;
 }
 .column {
   overflow: hidden;
