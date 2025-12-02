@@ -375,6 +375,7 @@
 .page-btn.disabled {
   fill: var(--opacity-white-20);
   cursor: default;
+  pointer-events: none;
 
   &:hover,
   &:focus {

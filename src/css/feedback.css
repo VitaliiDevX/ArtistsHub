@@ -1,15 +1,3 @@
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 .feedback-slider {
   display: flex;
   align-items: center;
@@ -17,35 +5,8 @@
   gap: 36px;
   margin-bottom: 80px;
 }
-.feedback-btn {
-  display: block;
-  border-radius: 12px;
-  margin: 0 auto;
-  padding: 10px 24px;
-  width: 100%;
-  height: 47px;
-  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
-    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
-  background-color: #764191;
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #fff;
-  transition: opacity linear 250ms;
-  @media only screen and (min-width: 768px) {
-    width: 177px;
-  }
-}
-.feedback-btn:hover {
-  opacity: 0.6;
-}
-.feedback-btn:active {
-  opacity: 1;
-}
 
+/*left/right arrows buttons*/
 .arrow-btn {
   display: none;
   justify-content: center;
@@ -78,11 +39,12 @@
 .swiper-button-next:active {
   color: #ffffff;
 }
+
 .swiper-slide {
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  min-height: 250px;
+  min-height: 300px;
   @media only screen and (min-width: 768px) {
     padding-inline: 100px;
   }
@@ -90,6 +52,8 @@
     padding-inline: 175px;
   }
 }
+
+/*pagination*/
 .swiper-pagination {
   transform: translateY(10px);
 }
@@ -104,7 +68,15 @@
   opacity: 1;
   outline: none;
 }
+/* з більшою кількістю динамічних булетів виглядає краще, ніж з 3 */
+/* .swiper-pagination-bullet:not(.swiper-pagination-bullet-active-main):not(
+    .swiper-pagination-bullet-active-prev
+  ):not(.swiper-pagination-bullet-active-next) {
+  opacity: 0;
+} */
+
 .feedback-text {
+  margin-bottom: 32px;
   height: 100%;
   font-family: var(--second-family);
   font-weight: 700;
@@ -127,17 +99,47 @@
   font-size: 18px;
   color: var(--color-white);
 }
+
+/*rating stars*/
 .raty {
   display: flex;
   justify-content: center;
   gap: 4px;
   margin-bottom: 32px;
 }
-
 .raty .star-off-png::before {
   content: url('../img/feedback-star.svg');
 }
-
 .raty .star-on-png::before {
   content: url('../img/filled-star-feedbeck.svg');
+}
+
+/*leave feedback*/
+.feedback-btn {
+  display: block;
+  border-radius: 12px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  width: 100%;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background-color: #764191;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  transition: opacity linear 250ms;
+  @media only screen and (min-width: 768px) {
+    width: 177px;
+  }
+}
+.feedback-btn:hover {
+  opacity: 0.6;
+}
+.feedback-btn:active {
+  opacity: 1;
 }

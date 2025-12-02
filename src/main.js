@@ -7,6 +7,7 @@ import {
   artistListEl,
   filterBtnEl,
   resetBtnEl,
+  filtersDropdownWrapperEl,
 } from './js/refs';
 import {
   onSearchArtistsByInput,
@@ -15,6 +16,9 @@ import {
   onLearnMoreClick,
   onFilterClick,
   onResetClick,
+  onSearchFormFocusOut,
+  onFilterWrapperFocusOut,
+  onFilterWrapperMouseDown,
 } from './js/event-listeners-callbacks';
 import {
   renderArtistList,
@@ -82,6 +86,12 @@ init();
 // -------------------EVENT LISTENERS-------------------
 searchFormEl.addEventListener('input', onSearchArtistsByInput);
 searchFormEl.addEventListener('click', onSearchArtistsByClick);
+searchFormEl.addEventListener('focusout', onSearchFormFocusOut);
+filtersDropdownWrapperEl.addEventListener('focusout', onFilterWrapperFocusOut);
+filtersDropdownWrapperEl.addEventListener(
+  'mousedown',
+  onFilterWrapperMouseDown
+);
 artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);
 filterBtnEl.addEventListener('click', onFilterClick);
 resetBtnEl.forEach(btn => btn.addEventListener('click', onResetClick));

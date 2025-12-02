@@ -1,4 +1,4 @@
-# **ArtistsHub**
+# **![Logo](./src/img/readme/logoArtistHub.png)**
 
 A platform for discovering artists, browsing their works, reading details, and
 leaving feedback.

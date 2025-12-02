@@ -239,3 +239,44 @@ export function onResetClick(e) {
   searchFormEl.reset();
   checkArtistResponse(currentQuery, currentPage);
 }
+// AI CREATED BLOCK NEW RelatedTarget
+export function onSearchFormFocusOut(e) {
+  const currentTarget = e.currentTarget;
+  const relatedTarget = e.relatedTarget;
+
+  if (currentTarget.contains(relatedTarget)) {
+    return;
+  }
+
+  const selectListWrappers = currentTarget.querySelectorAll(
+    '.select-list-wrapper'
+  );
+  selectListWrappers.forEach(el => el.classList.add('is-hidden'));
+
+  const selectBtns = currentTarget.querySelectorAll('.select-btn');
+  selectBtns.forEach(btn => btn.nextElementSibling.classList.add('is-hidden'));
+}
+
+let isFilterWrapperClick = false;
+
+export function onFilterWrapperMouseDown() {
+  isFilterWrapperClick = true;
+  setTimeout(() => {
+    isFilterWrapperClick = false;
+  }, 150);
+}
+
+export function onFilterWrapperFocusOut(e) {
+  if (isFilterWrapperClick) {
+    return;
+  }
+
+  const currentTarget = e.currentTarget;
+  const relatedTarget = e.relatedTarget;
+
+  if (currentTarget.contains(relatedTarget)) {
+    return;
+  }
+
+  searchFormEl.classList.remove('is-open');
+}

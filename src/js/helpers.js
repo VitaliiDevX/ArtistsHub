@@ -14,6 +14,10 @@ export function getTotalPages(totalArtists) {
 
 export function isEmpty(info) {
   return (
-    info === null || info === 0 || info === undefined || info.trim() === ''
+    info === null ||
+    info === 0 ||
+    info === undefined ||
+    info.trim() === '' ||
+    info.trim().length < 4
   );
 }
