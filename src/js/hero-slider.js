@@ -42,9 +42,11 @@ export function renderSlider(arr) {
   rightList.innerHTML = '';
 
   const leftSlidesHTML = arr
-    .map(item => {
+    .map((item, index) => {
       return `<li class="splide__slide">
-              <img src="${item.strArtistThumb}" alt="${item.strArtist}" />
+              <img src="${item.strArtistThumb}" alt="${
+        item.strArtist
+      }" loading="${index < 2 ? 'eager' : 'lazy'}" />
             </li>`;
     })
     .join('');
@@ -52,9 +54,11 @@ export function renderSlider(arr) {
   const rightSlidesHTML = arr
     .slice()
     .reverse()
-    .map(item => {
+    .map((item, index) => {
       return `<li class="splide__slide">
-              <img src="${item.strArtistThumb}" alt="${item.strArtist} />
+              <img src="${item.strArtistThumb}" alt="${
+        item.strArtist
+      }" loading="${index < 2 ? 'eager' : 'lazy'}" />
             </li>`;
     })
     .join('');
