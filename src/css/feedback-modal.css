@@ -28,31 +28,29 @@ body.no-scroll {
   position: fixed;
   top: 50%;
   left: 50%;
-
   padding: 64px 16px 58px;
   transform: translate(-50%, -50%);
-  max-width: 288px;
+  width: 320px;
   background-color: var(--color-neutral-darkest);
   border-radius: 16px;
 
   @media only screen and (min-width: 768px) {
-    max-width: 640px;
+    width: 640px;
     padding: 64px 32px 64px;
     max-height: 688px;
   }
 
   @media only screen and (min-width: 1440px) {
-    max-width: 736px;
+    width: 736px;
     padding: 64px;
   }
 }
 .feedback-modal-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 9px;
-  width: 32px;
-  height: 32px;
+  top: 8px;
+  right: 8px;
+  width: 42px;
+  height: 42px;
   border: none;
   background-color: inherit;
   fill: var(--color-white);

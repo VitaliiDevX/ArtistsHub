@@ -37,6 +37,7 @@ export const nameErrorEl = feedbackFormEl.querySelector(
 );
 export const messageErrorEl = feedbackFormEl.querySelector(
   '[data-error-for="message"]'
+);
 export const filtersDropdownWrapperEl = document.querySelector(
   '.filters-dropdown-wrapper'
 );
