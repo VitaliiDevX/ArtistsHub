@@ -222,15 +222,15 @@
   font-size: 18px;
   line-height: 1.5;
   color: #fff;
-  height: 279px;
+  max-height: 279px;
   overflow: auto;
 
   @media screen and (min-width: 768px) {
-    height: 108px;
+    max-height: 108px;
   }
 
   @media screen and (min-width: 1440px) {
-    height: 135px;
+    max-height: 135px;
   }
 }
 

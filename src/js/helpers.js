@@ -11,3 +11,9 @@ export function getTotalPages(totalArtists) {
   const totalPages = Math.ceil(totalArtists / PER_PAGE);
   return totalPages;
 }
+
+export function isEmpty(info) {
+  return (
+    info === null || info === 0 || info === undefined || info.trim() === ''
+  );
+}
