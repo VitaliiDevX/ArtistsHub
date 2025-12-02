@@ -14,9 +14,15 @@ async function renderFeedbacks() {
 
     const feedbacks = results.flat();
 
-    const shuffled = feedbacks.sort(() => Math.random() - 0.5);
+    const uniqueFeedbacks = feedbacks.filter(
+      (item, index, self) =>
+        index ===
+        self.findIndex(f => f.descr === item.descr && f.name === item.name)
+    );
 
-    shuffled.slice(0, 8).forEach(({ descr, name, rating }) => {
+    const shuffled = uniqueFeedbacks.sort(() => Math.random() - 0.5);
+
+    shuffled.slice(0, 10).forEach(({ descr, name, rating }) => {
       const slide = document.createElement('div');
       slide.classList.add('swiper-slide');
 
@@ -67,6 +73,7 @@ renderFeedbacks().then(() => {
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
+      dynamicBullets: true,
       renderBullet: function (index, className) {
         return `<span class="${className}"></span>`;
       },
