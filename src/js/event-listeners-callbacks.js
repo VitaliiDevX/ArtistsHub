@@ -34,10 +34,10 @@ export async function checkArtistResponse(currentQuery, currentPage) {
   if (totalArtists === 0) {
     artistListEl.innerHTML = '';
     artistModalPagesEl.innerHTML = '';
-    artistsNotFoundEl.classList.remove('visually-hidden');
+    artistsNotFoundEl.classList.remove('is-hidden');
     return;
   }
-  artistsNotFoundEl.classList.add('visually-hidden');
+  artistsNotFoundEl.classList.add('is-hidden');
   renderArtistList(artists);
   renderPagination(currentPage, getTotalPages(totalArtists));
 }
