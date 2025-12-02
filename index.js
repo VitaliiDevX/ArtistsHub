@@ -25,7 +25,8 @@ import{a as b,S as be,N as ye,P as he,R as Q,i as z,b as Y,A as J}from"./assets/
     <a 
       ${u?"":'href="#artists-content"'}
       class="page-btn artists-arrow-btn ${u?"disabled":""}"
-      ${u?"":`data-page="${e+(c?-1:1)}"`}>      
+      ${u?"":`data-page="${e+(c?-1:1)}"`}
+        aria-label="next page">      
       <svg width="24" height="24">
         <use href="${O}${c?"#left-arrow-btn":"#right-arrow-btn"}"></use>
       </svg>
