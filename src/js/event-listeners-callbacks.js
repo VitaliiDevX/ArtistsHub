@@ -226,6 +226,7 @@ function closeModal() {
 
 export function onFilterClick(e) {
   const btn = e.target.closest('.filter-btn');
+  btn.classList.toggle('is-open');
   btn.nextElementSibling.classList.toggle('is-open');
 }
 

@@ -109,12 +109,19 @@
   }
 }
 
+.filter-btn.is-open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .filters {
-  display: none;
+  display: flex;
+  /* display: none; */
   flex-direction: column;
   position: absolute;
-  /* top: calc(100% + 12px); */
 
+  /* top: calc(100% + 12px); */
+  visibility: hidden;
   opacity: 0;
   transform: translateY(-20px);
 
@@ -132,7 +139,7 @@
   transition: transform 300ms ease, opacity 250ms ease;
 
   @media only screen and (min-width: 1440px) {
-    display: flex;
+    visibility: visible;
     position: relative;
     top: auto;
     opacity: 1;
@@ -145,10 +152,11 @@
 }
 
 .filters.is-open {
-  display: flex;
+  visibility: visible;
   opacity: 1;
   transform: translateY(0);
-
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   pointer-events: auto;
 }
 
@@ -281,9 +289,11 @@
     max-width: 704px;
   }
 }
+
 .icon-info {
   fill: var(--color-scheme-1-text);
 }
+
 .artists-not-found-title {
   font-weight: 700;
   font-size: 32px;
