@@ -118,9 +118,8 @@ export function renderPagination(currentPage, totalPages) {
     <a 
       ${isDisabled ? '' : 'href="#artists-content"'}
       class="page-btn artists-arrow-btn ${isDisabled ? 'disabled' : ''}"
-      ${
-        isDisabled ? '' : `data-page="${currentPage + (isLeft ? -1 : 1)}"`
-      }>      
+      ${isDisabled ? '' : `data-page="${currentPage + (isLeft ? -1 : 1)}"`}
+        aria-label="next page">      
       <svg width="24" height="24">
         <use href="${sprite}${
       isLeft ? '#left-arrow-btn' : '#right-arrow-btn'
