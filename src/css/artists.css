@@ -487,6 +487,14 @@
   }
 }
 
+.select-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.select-btn.open svg {
+  transform: rotate(180deg);
+}
+
 .select-list-wrapper {
   padding: 24px;
   border-top: 1px solid var(--opacity-white-20);
@@ -499,6 +507,7 @@
   gap: 16px;
   list-style: none;
   text-align: start;
+  cursor: pointer;
 
   max-height: 328px;
   overflow-y: auto;

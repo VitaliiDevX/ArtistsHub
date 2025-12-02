@@ -177,7 +177,7 @@ export function renderArtistModalTrack({ strTrack, intDuration, movie }) {
   const trackCard = `<tr>
                         <td class="position-left track-name">${strTrack}</td>
                         <td class="track-time ">${convertTime(intDuration)}</td>
-                        <td><a class="link-modal-artist-track-list" href="${movie}">${movieIcon}</a></td>
+                        <td><a class="link-modal-artist-track-list" target="_blank" href="${movie}">${movieIcon}</a></td>
                     </tr>`;
 
   return trackCard;

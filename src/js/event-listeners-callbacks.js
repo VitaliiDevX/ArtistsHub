@@ -74,13 +74,28 @@ export async function onSearchArtistsByInput(e) {
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
 export async function onSearchArtistsByClick(e) {
   try {
-    if (e.target.closest('.select-btn')) {
-      const nextElementSibling =
-        e.target.closest('.select-btn').nextElementSibling;
-      nextElementSibling.classList.toggle('is-hidden');
+    const btn = e.target.closest('.select-btn');
+
+    // 1) Toggle списка при клике по кнопке
+    if (btn) {
+      const nextElementSibling = btn.nextElementSibling;
+
+      const isHidden = nextElementSibling.classList.toggle('is-hidden');
+
+      // Вращаем стрелку
+      btn.classList.toggle('open', !isHidden);
+
+      // Закрываем предыдущий
       if (previousSelector && previousSelector !== nextElementSibling) {
         previousSelector.classList.add('is-hidden');
+
+        // Сбрасываем вращение у предыдущей кнопки
+        const prevBtn = previousSelector
+          .closest('.select')
+          .querySelector('.select-btn');
+        prevBtn?.classList.remove('open');
       }
+
       previousSelector = nextElementSibling;
       return;
     }
