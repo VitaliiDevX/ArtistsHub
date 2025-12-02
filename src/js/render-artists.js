@@ -1,4 +1,12 @@
-import { artistListEl, artistModalPagesEl, genresListEl } from './refs';
+import {
+  artistListEl,
+  artistModalPagesEl,
+  genresListEl,
+  modalLoaderEl,
+  modalContentEl,
+  artistsListContentEl,
+  artistsLoaderEl,
+} from './refs';
 import sprite from '../img/sprite.svg';
 
 export function renderArtistCard(artist) {
@@ -115,4 +123,40 @@ export function renderPagination(page, totalPages) {
   `;
 
   artistModalPagesEl.innerHTML = html;
+}
+
+// loader
+
+export function showModalLoader() {
+  modalLoaderEl.classList.remove('is-hidden');
+}
+
+export function hideModalLoader() {
+  modalLoaderEl.classList.add('is-hidden');
+}
+
+export function showArtistsLoader() {
+  artistsLoaderEl.classList.remove('is-hidden');
+}
+
+export function hideArtistsLoader() {
+  artistsLoaderEl.classList.add('is-hidden');
+}
+
+// modal content
+
+export function showModalContent() {
+  modalContentEl.classList.remove('is-hidden');
+}
+
+export function hideModalContent() {
+  modalContentEl.classList.add('is-hidden');
+}
+
+export function showArtistsContent() {
+  artistsListContentEl.classList.remove('is-hidden');
+}
+
+export function hideArtistsContent() {
+  artistsListContentEl.classList.add('is-hidden');
 }

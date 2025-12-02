@@ -146,7 +146,7 @@ export function renderArtistModalAlbum({ strAlbum, tracks }) {
                         <table class="artist-modal-album">
                             <thead>
                                 <tr>
-                                   <th scope="col">Track</th>
+                                   <th class="position-left" scope="col">Track</th>
                                    <th scope="col">Time</th>
                                    <th scope="col">Link</th>
                                 </tr>
@@ -172,8 +172,8 @@ export function renderArtistModalTrack({ strTrack, intDuration, movie }) {
     ? `<svg class="icon-modal-artist-track-list" width="24" height="24"><use href="${spriteUrl}#youtube"></use></svg>`
     : '';
   const trackCard = `<tr>
-                        <td>${strTrack}</td>
-                        <td>${convertTime(intDuration)}</td>
+                        <td class="position-left track-name">${strTrack}</td>
+                        <td class="track-time ">${convertTime(intDuration)}</td>
                         <td><a class="link-modal-artist-track-list" href="${movie}">${movieIcon}</a></td>
                     </tr>`;
 
