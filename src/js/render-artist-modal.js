@@ -1,7 +1,6 @@
 import { artistModalEl } from './refs';
 import { renderArtistGenresList } from './render-artists';
-import { artistModalList } from './refs';
-import { convertTime } from './helpers';
+import { convertTime, isEmpty } from './helpers';
 import spriteUrl from '../img/sprite.svg';
 
 export function renderArtistModal(artist) {
@@ -19,42 +18,46 @@ export function renderArtistModal(artist) {
   } = artist;
 
   const artistName = artistModalEl.querySelector('.modal-main-heading');
-  artistName.textContent = strArtist;
-
   const artistImage = artistModalEl.querySelector('.modal-artist-img');
-  artistImage.src = strArtistThumb;
-
   const timeActive = document.querySelector('.js-modal-years');
-  timeActive.textContent =
-    intDiedYear === null
-      ? `${intFormedYear}-present`
-      : `${intFormedYear}-${intDiedYear}`;
-
   const sex = document.querySelector('.js-modal-sex');
-  sex.textContent = strGender;
-
   const members = document.querySelector('.js-modal-members');
-  members.textContent = intMembers;
-
   const country = document.querySelector('.js-modal-country');
-  country.textContent = strCountry;
-
   const bio = document.querySelector('.js-modal-bio');
-  bio.textContent = strBiographyEN;
-
   const genresListEl = document.querySelector('.modal-info-genres-list');
+  const albumsListEl = document.querySelector('.artist-modal-list');
+
+  artistName.textContent = strArtist;
+  artistImage.src = strArtistThumb;
+  timeActive.textContent =
+    isEmpty(intFormedYear) && isEmpty(intDiedYear)
+      ? '-'
+      : `${isEmpty(intFormedYear) ? 'unknown' : intFormedYear}-${
+          isEmpty(intDiedYear) ? 'present' : intDiedYear
+        }`;
+  sex.textContent = isEmpty(strGender) ? '-' : strGender.trim();
+  members.textContent = isEmpty(intMembers) ? '-' : intMembers;
+  country.textContent = isEmpty(strCountry) ? '-' : strCountry.trim();
+  bio.textContent = isEmpty(strBiographyEN)
+    ? 'information missing'
+    : strBiographyEN.trim();
+
   genresListEl.innerHTML = '';
   genresListEl.insertAdjacentHTML(
     'beforeend',
     renderArtistModalGenresList(genres)
   );
 
-  const albumsListEl = document.querySelector('.artist-modal-list');
   albumsListEl.innerHTML = '';
   albumsListEl.insertAdjacentHTML(
     'beforeend',
     renderArtistModalAlbumsList(albumsList)
   );
+
+  // timeActive.textContent =
+  //   intDiedYear === null
+  //     ? `${intFormedYear}-present`
+  //     : `${intFormedYear}-${intDiedYear}`;
 
   // ---------------SECOND VERSION-------------------
   //   const artistModalPreview = `
@@ -146,7 +149,7 @@ export function renderArtistModalAlbum({ strAlbum, tracks }) {
                         <table class="artist-modal-album">
                             <thead>
                                 <tr>
-                                   <th scope="col">Track</th>
+                                   <th class="position-left" scope="col">Track</th>
                                    <th scope="col">Time</th>
                                    <th scope="col">Link</th>
                                 </tr>
@@ -172,8 +175,8 @@ export function renderArtistModalTrack({ strTrack, intDuration, movie }) {
     ? `<svg class="icon-modal-artist-track-list" width="24" height="24"><use href="${spriteUrl}#youtube"></use></svg>`
     : '';
   const trackCard = `<tr>
-                        <td>${strTrack}</td>
-                        <td>${convertTime(intDuration)}</td>
+                        <td class="position-left track-name">${strTrack}</td>
+                        <td class="track-time ">${convertTime(intDuration)}</td>
                         <td><a class="link-modal-artist-track-list" href="${movie}">${movieIcon}</a></td>
                     </tr>`;
 

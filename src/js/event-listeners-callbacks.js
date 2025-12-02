@@ -1,13 +1,25 @@
 import { getTotalPages } from './helpers';
 import { getArtistInfoById, getArtists } from './soundwawe-api';
-import { renderArtistList } from './render-artists';
-import { renderPagination } from './render-artists';
+
+import {
+  renderArtistList,
+  renderPagination,
+  showModalLoader,
+  hideModalLoader,
+  showModalContent,
+  hideModalContent,
+  showArtistsLoader,
+  hideArtistsLoader,
+  showArtistsContent,
+  hideArtistsContent,
+} from './render-artists';
 import {
   artistListEl,
   artistModalPagesEl,
   artistsNotFoundEl,
   backdropWithModalEl,
   searchFormEl,
+  artistModalEl,
 } from './refs';
 import { renderArtistModal } from './render-artist-modal';
 // import { document } from 'postcss';
@@ -32,6 +44,9 @@ export async function checkArtistResponse(currentQuery, currentPage) {
 
 export async function onSearchArtistsByInput(e) {
   try {
+    hideArtistsContent();
+    showArtistsLoader();
+
     const name = e.target.value.trim();
 
     if (name.length === previousInputValue.length) {
@@ -47,9 +62,13 @@ export async function onSearchArtistsByInput(e) {
     }
 
     currentPage = 1;
-    checkArtistResponse(currentQuery, currentPage);
+
+    await checkArtistResponse(currentQuery, currentPage);
   } catch (error) {
     console.log(error);
+  } finally {
+    hideArtistsLoader();
+    showArtistsContent();
   }
 }
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
@@ -107,7 +126,11 @@ export async function onSearchArtistsByClick(e) {
             }
           }
           currentPage = 1;
-          checkArtistResponse(currentQuery, currentPage);
+
+          hideArtistsContent();
+          showArtistsLoader();
+
+          await checkArtistResponse(currentQuery, currentPage);
         }
       }
 
@@ -117,6 +140,9 @@ export async function onSearchArtistsByClick(e) {
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    hideArtistsLoader();
+    showArtistsContent();
   }
 }
 // IM SERIOUSLY
@@ -125,27 +151,54 @@ export async function onArtistModalPagesClick(e) {
   const btn = e.target.closest('.page-btn');
   if (!btn || btn.disabled || btn.classList.contains('active')) return;
 
-  const newPage = Number(btn.dataset.page);
+  try {
+    const newPage = Number(btn.dataset.page);
 
-  if (newPage < 1) return;
+    if (newPage < 1) return;
 
-  currentPage = newPage;
+    currentPage = newPage;
 
-  const { artists, totalArtists } = await getArtists(currentQuery, currentPage);
-  const totalPages = getTotalPages(totalArtists);
+    hideArtistsContent();
+    showArtistsLoader();
 
-  renderArtistList(artists);
-  renderPagination(currentPage, totalPages);
+    const { artists, totalArtists } = await getArtists(
+      currentQuery,
+      currentPage
+    );
+    const totalPages = getTotalPages(totalArtists);
+
+    renderArtistList(artists);
+    renderPagination(currentPage, totalPages);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    hideArtistsLoader();
+    showArtistsContent();
+  }
 }
 
 export async function onLearnMoreClick(e) {
   backdropWithModalEl.classList.add('is-open');
-  const artistId = await getArtistInfoById(e.target.dataset.id);
-  renderArtistModal(artistId);
   document.body.style.overflow = 'hidden';
+
+  hideModalContent();
+  showModalLoader();
 
   backdropWithModalEl.addEventListener('click', onCloseModal);
   document.addEventListener('keydown', onEscClose);
+
+  try {
+    const artistId = await getArtistInfoById(e.target.dataset.id);
+    renderArtistModal(artistId);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    hideModalLoader();
+    showModalContent();
+
+    const bio = artistModalEl.querySelector('.modal-info-text');
+    if (bio) bio.scrollTop = 0;
+  }
 }
 
 export function onCloseModal(e) {
@@ -185,4 +238,45 @@ export function onResetClick(e) {
   form[1].childNodes[0].nodeValue = 'Genre';
   searchFormEl.reset();
   checkArtistResponse(currentQuery, currentPage);
+}
+// AI CREATED BLOCK NEW RelatedTarget
+export function onSearchFormFocusOut(e) {
+  const currentTarget = e.currentTarget;
+  const relatedTarget = e.relatedTarget;
+
+  if (currentTarget.contains(relatedTarget)) {
+    return;
+  }
+
+  const selectListWrappers = currentTarget.querySelectorAll(
+    '.select-list-wrapper'
+  );
+  selectListWrappers.forEach(el => el.classList.add('is-hidden'));
+
+  const selectBtns = currentTarget.querySelectorAll('.select-btn');
+  selectBtns.forEach(btn => btn.nextElementSibling.classList.add('is-hidden'));
+}
+
+let isFilterWrapperClick = false;
+
+export function onFilterWrapperMouseDown() {
+  isFilterWrapperClick = true;
+  setTimeout(() => {
+    isFilterWrapperClick = false;
+  }, 150);
+}
+
+export function onFilterWrapperFocusOut(e) {
+  if (isFilterWrapperClick) {
+    return;
+  }
+
+  const currentTarget = e.currentTarget;
+  const relatedTarget = e.relatedTarget;
+
+  if (currentTarget.contains(relatedTarget)) {
+    return;
+  }
+
+  searchFormEl.classList.remove('is-open');
 }

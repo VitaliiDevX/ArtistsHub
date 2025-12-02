@@ -7,6 +7,7 @@ import {
   artistListEl,
   filterBtnEl,
   resetBtnEl,
+  filtersDropdownWrapperEl,
 } from './js/refs';
 import {
   onSearchArtistsByInput,
@@ -15,12 +16,19 @@ import {
   onLearnMoreClick,
   onFilterClick,
   onResetClick,
+  onSearchFormFocusOut,
+  onFilterWrapperFocusOut,
+  onFilterWrapperMouseDown,
 } from './js/event-listeners-callbacks';
 import {
   renderArtistList,
   renderArtistGenresList,
   renderPagination,
   renderGenresList,
+  showArtistsLoader,
+  hideArtistsLoader,
+  showArtistsContent,
+  hideArtistsContent,
 } from './js/render-artists';
 import { getTotalPages } from './js/helpers';
 import './js/feedback-modal';
@@ -52,21 +60,38 @@ initHeader();
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 async function init() {
-  const { artists, totalArtists } = await getArtists();
-  const sliderImages = getSliderImages(artists);
+  hideArtistsContent();
+  showArtistsLoader();
 
-  renderSlider(sliderImages.map(src => ({ strArtistThumb: src })));
-  renderArtistList(artists);
+  try {
+    const { artists, totalArtists } = await getArtists();
+    const sliderImages = getSliderImages(artists);
 
-  const genres = await getAllGenres();
-  renderPagination(1, getTotalPages(totalArtists));
-  renderGenresList(genres);
+    renderSlider(sliderImages.map(src => ({ strArtistThumb: src })));
+    renderArtistList(artists);
+
+    const genres = await getAllGenres();
+    renderPagination(1, getTotalPages(totalArtists));
+    renderGenresList(genres);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    hideArtistsLoader();
+    showArtistsContent();
+  }
 }
+
 init();
 
 // -------------------EVENT LISTENERS-------------------
 searchFormEl.addEventListener('input', onSearchArtistsByInput);
 searchFormEl.addEventListener('click', onSearchArtistsByClick);
+searchFormEl.addEventListener('focusout', onSearchFormFocusOut);
+filtersDropdownWrapperEl.addEventListener('focusout', onFilterWrapperFocusOut);
+filtersDropdownWrapperEl.addEventListener(
+  'mousedown',
+  onFilterWrapperMouseDown
+);
 artistModalPagesEl.addEventListener('click', onArtistModalPagesClick);
 filterBtnEl.addEventListener('click', onFilterClick);
 resetBtnEl.forEach(btn => btn.addEventListener('click', onResetClick));

@@ -44,7 +44,7 @@ export function renderSlider(arr) {
   const leftSlidesHTML = arr
     .map(item => {
       return `<li class="splide__slide">
-              <img src="${item.strArtistThumb}" />
+              <img src="${item.strArtistThumb}" alt="${item.strArtist}" />
             </li>`;
     })
     .join('');
@@ -54,7 +54,7 @@ export function renderSlider(arr) {
     .reverse()
     .map(item => {
       return `<li class="splide__slide">
-              <img src="${item.strArtistThumb}" />
+              <img src="${item.strArtistThumb}" alt="${item.strArtist} />
             </li>`;
     })
     .join('');

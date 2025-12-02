@@ -160,7 +160,6 @@
   display: flex;
   flex-direction: column;
   row-gap: 64px;
-  margin-bottom: 32px;
 
   @media only screen and (min-width: 1440px) {
     flex-direction: row;
@@ -333,19 +332,28 @@
   justify-content: center;
   align-items: end;
   gap: 4px;
+  margin-top: 32px;
 }
 
-.artists-arrow-btn,
-.page-btn {
+.page-btn,
+.artists-arrow-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   padding: 10px 17px;
+  cursor: pointer;
+  fill: var(--color-scheme-1-text);
+  transition: background-color 250ms linear, color 250ms linear,
+    fill 250ms linear;
+
+  &:hover {
+    color: var(--color-affair);
+    fill: var(--color-affair);
+  }
 }
 
 .artists-arrow-btn {
-  fill: var(--color-scheme-1-text);
   padding: 8px 12px;
 }
 
@@ -353,8 +361,26 @@
   padding: 10px 0;
 }
 
-.active {
+.page-btn.active {
   background-color: var(--opacity-white-10);
+  cursor: default;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: var(--opacity-white-20);
+  }
+}
+
+.page-btn.disabled {
+  fill: var(--opacity-white-20);
+  cursor: default;
+  pointer-events: none;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
 }
 
 .select-btn {
@@ -366,8 +392,10 @@
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-white);
+  transition: color 250ms linear;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--opacity-white-60);
   }
 }
@@ -384,12 +412,14 @@
   background: none;
   border: none;
   display: none;
+  transition: color 250ms linear;
 
   @media screen and (min-width: 1440px) {
     display: block;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--opacity-white-60);
   }
 }
@@ -450,13 +480,11 @@
   font-size: 18px;
   line-height: 150%;
   color: var(--color-scheme-2-text);
-}
 
-.select-btn:focus,
-.select-btn:active {
-  outline: none;
-  color: var(--color-scheme-2-text);
-  background: var(--opacity-transparent);
+  &:focus,
+  &:active {
+    color: var(--color-scheme-2-text);
+  }
 }
 
 .select-list-wrapper {
