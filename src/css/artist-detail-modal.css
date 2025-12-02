@@ -58,21 +58,16 @@
   &:hover {
     fill: var(--color-affair);
   }
-
-  @media screen and (min-width: 768px) {
-    /* right: 31px; */
-  }
-
-  @media screen and (min-width: 1440px) {
-    right: 0;
-  }
 }
 
 .link-modal-artist-track-list {
   line-height: 0;
-  display: inline-block;
   fill: var(--color-scheme-1-text);
   transition: fill 250ms linear;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover,
   &:focus {
@@ -81,13 +76,13 @@
 }
 
 .modal-main-heading {
-  font-family: 'Epilogue', sans-serif;
+  font-family: var(--second-family);
   font-weight: 700;
   font-size: 20px;
   line-height: 1.3;
   letter-spacing: -0.01em;
   text-align: center;
-  color: #fff;
+  color: var(--color-white);
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
@@ -162,19 +157,14 @@
 }
 
 .modal-info-semibold-text {
-  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.5;
-  color: #fff;
 }
 
 .modal-info-normal-text {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  color: #fff;
 }
 
 .modal-info-members-li {
@@ -182,19 +172,14 @@
 }
 
 .modal-info-bio {
-  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.5;
-  color: #fff;
 }
 
 .modal-info-text {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
-  color: #fff;
   height: 279px;
   overflow: auto;
 
@@ -238,11 +223,9 @@
 }
 
 .modal-info-genre {
-  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
 }
 
 /* table */
@@ -253,6 +236,7 @@
 }
 
 .modal-table-li {
+  display: inline-block;
   background-color: #1e1c1f;
   box-sizing: border-box;
   overflow-y: auto;
@@ -278,7 +262,6 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
   margin-bottom: 12px;
 }
 
@@ -287,7 +270,6 @@
   font-size: 24px;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: #fff;
   margin-bottom: 16px;
 }
 
@@ -295,13 +277,13 @@ table {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
+  font-family: var(--font-family);
 }
 
 table th {
   font-weight: 600;
   font-size: 8px;
   line-height: 1.5;
-  color: #fff;
   background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -330,28 +312,19 @@ tbody tr:nth-child(even) td:last-child {
   border-bottom-right-radius: 8px;
 }
 
-.modal-table-li {
-  display: inline-block;
-}
-
 tbody tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-tbody td {
-  font-weight: 400;
+tbody .track-time {
+  text-align: center;
+}
+
+tbody {
   font-size: 12px;
   line-height: 1.5;
-  color: #fff;
-  text-align: center;
 }
 
 .position-left {
   text-align: left;
-}
-
-.link-modal-artist-track-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
