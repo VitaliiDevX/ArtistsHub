@@ -71,34 +71,36 @@ export async function onSearchArtistsByInput(e) {
     showArtistsContent();
   }
 }
+
+export function reverseArrowOnBtn(btn) {
+  // 1) Toggle списка при клике по кнопке
+  if (btn) {
+    const nextElementSibling = btn.nextElementSibling;
+
+    const isHidden = nextElementSibling.classList.toggle('is-hidden');
+
+    // Вращаем стрелку
+    btn.classList.toggle('open', !isHidden);
+
+    // Закрываем предыдущий
+    if (previousSelector && previousSelector !== nextElementSibling) {
+      previousSelector.classList.add('is-hidden');
+
+      // Сбрасываем вращение у предыдущей кнопки
+      const prevBtn = previousSelector
+        .closest('.select')
+        .querySelector('.select-btn');
+      prevBtn?.classList.remove('open');
+    }
+
+    previousSelector = nextElementSibling;
+    return;
+  }
+}
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
 export async function onSearchArtistsByClick(e) {
   try {
-    const btn = e.target.closest('.select-btn');
-
-    // 1) Toggle списка при клике по кнопке
-    if (btn) {
-      const nextElementSibling = btn.nextElementSibling;
-
-      const isHidden = nextElementSibling.classList.toggle('is-hidden');
-
-      // Вращаем стрелку
-      btn.classList.toggle('open', !isHidden);
-
-      // Закрываем предыдущий
-      if (previousSelector && previousSelector !== nextElementSibling) {
-        previousSelector.classList.add('is-hidden');
-
-        // Сбрасываем вращение у предыдущей кнопки
-        const prevBtn = previousSelector
-          .closest('.select')
-          .querySelector('.select-btn');
-        prevBtn?.classList.remove('open');
-      }
-
-      previousSelector = nextElementSibling;
-      return;
-    }
+    reverseArrowOnBtn(e.target.closest('.select-btn'));
 
     //Click logic
     if (e.target.tagName === 'LI') {
@@ -243,6 +245,8 @@ export function onFilterClick(e) {
   const btn = e.target.closest('.filter-btn');
   btn.classList.toggle('is-open');
   btn.nextElementSibling.classList.toggle('is-open');
+  // reverseArrowOnBtn(btn);
+  btn.classList.toggle('open');
 }
 
 export function onResetClick(e) {
@@ -263,9 +267,12 @@ export function onSearchFormFocusOut(e) {
   if (currentTarget.contains(relatedTarget)) {
     return;
   }
+  // Another KOSTYL
+  e.currentTarget.previousElementSibling.classList.remove('open');
 
   // Затримка потрібна, щоб клік по LI елементу встиг спрацювати
   // перед тим, як dropdown буде захований
+
   setTimeout(() => {
     const selectListWrappers = currentTarget.querySelectorAll(
       '.select-list-wrapper'
@@ -294,6 +301,6 @@ export function onFilterWrapperFocusOut(e) {
   if (currentTarget.contains(relatedTarget)) {
     return;
   }
-
+  e.target.classList.remove('open');
   searchFormEl.classList.remove('is-open');
 }

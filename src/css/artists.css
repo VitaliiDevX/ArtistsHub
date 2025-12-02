@@ -497,11 +497,13 @@
   }
 }
 
-.select-btn svg {
+.select-btn svg,
+.filter-btn svg {
   transition: transform 0.25s ease;
 }
 
-.select-btn.open svg {
+.select-btn.open svg,
+.filter-btn.open svg {
   transform: rotate(180deg);
 }
 
