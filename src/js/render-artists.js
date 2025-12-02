@@ -14,7 +14,7 @@ export function renderArtistCard(artist) {
   const { genres, strArtist, strArtistThumb, strBiographyEN, _id } = artist;
   const artistCard = `<li class="artist-card"> 
   
-    <img class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}" loading="lazy" decoding="async">
+    <img class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}" width="320" height="320" loading="lazy" decoding="async">
     ${
       genres.length > 0
         ? `<ul class="artist-genres">

@@ -12,11 +12,33 @@ export default defineConfig(({ command }) => {
     root: 'src',
     build: {
       sourcemap: true,
+      target: 'es2020', // Modern browsers, reduces polyfills
+      cssCodeSplit: true, // Enable CSS code splitting
+      minify: 'terser', // Better minification
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove console.log in production
+          drop_debugger: true,
+        },
+      },
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
           manualChunks(id) {
+            // Split vendor chunks more granularly for better caching
             if (id.includes('node_modules')) {
+              if (id.includes('swiper')) {
+                return 'swiper';
+              }
+              if (id.includes('splide')) {
+                return 'splide';
+              }
+              if (id.includes('izitoast')) {
+                return 'izitoast';
+              }
+              if (id.includes('axios')) {
+                return 'axios';
+              }
               return 'vendor';
             }
           },
