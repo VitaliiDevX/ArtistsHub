@@ -5,9 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/ArtistsHub/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ArtistsHub</title>
-    <script async type="module" crossorigin src="/ArtistsHub/index.js"></script>
+    <script type="module" crossorigin src="/ArtistsHub/index.js"></script>
     <link rel="modulepreload" crossorigin href="/ArtistsHub/assets/vendor-BREOjyBh.js">
-    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-DnaQ2Vyr.css">
+    <link rel="stylesheet" crossorigin href="/ArtistsHub/assets/index-B21VbfBD.css">
   </head>
   <body>
     <div class="container">
@@ -382,14 +382,15 @@
     <button
       type="button"
       class="feedback-modal-btn js-feedback-modal-close-btn"
+      aria-label="close-button"
     >
       <svg class="feedback-modal-icon-cloce" width="14" height="14">
-        <use href="../img/sprite.svg#close"></use>
+        <use href="../img/sprite.svg#icon-close"></use>
       </svg>
     </button>
     <h2 class="feedback-modal-header">Submit feedback</h2>
 
-    <form class="feedback-modal-form">
+    <form class="feedback-modal-form" autocomplete="off">
       <label for="name" class="feedback-modal-label"
         >Name
         <div class="error-wrapper">
@@ -426,6 +427,7 @@
     </form>
   </div>
 </div>
+<!-- <div id="toast-container"></div> -->
 
 
   </body>
