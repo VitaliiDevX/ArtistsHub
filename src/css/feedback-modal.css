@@ -206,15 +206,4 @@ body.no-scroll {
 
 .feedback-modal-star .star-on-png::before {
   content: url('../img/filled-star-feedbeck.svg');
-
-  /* content: url('../img/icons.svg/#icon-fill-star'); */
-}
-
-/* .feedback-modal-star i {
-  font-size: 32px !important;
-  line-height: 1;
-} */
-.feedback-modal-star > i {
-  /* font-size: 1em;
-  height: 36px; */
 }
