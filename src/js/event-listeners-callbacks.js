@@ -255,7 +255,7 @@ export function onSearchFormFocusOut(e) {
       '.select-list-wrapper'
     );
     selectListWrappers.forEach(el => el.classList.add('is-hidden'));
-  }, 150);
+  }, 50);
 }
 
 let isFilterWrapperClick = false;
@@ -264,7 +264,7 @@ export function onFilterWrapperMouseDown() {
   isFilterWrapperClick = true;
   setTimeout(() => {
     isFilterWrapperClick = false;
-  }, 150);
+  }, 50);
 }
 
 export function onFilterWrapperFocusOut(e) {
