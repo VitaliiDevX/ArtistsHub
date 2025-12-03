@@ -26,13 +26,14 @@
   fill: var(--color-scheme-1-text);
   width: 106px;
   height: 30px;
-}
-
-.header-logo-icon:hover,
-.header-logo-icon:focus {
   cursor: pointer;
-  fill: var(--color-affair);
+
   transition: fill 250ms linear;
+
+  &:hover,
+  &:focus {
+    fill: var(--color-affair);
+  }
 }
 
 .burger-btn {
@@ -46,6 +47,11 @@
   @media screen and (min-width: 768px) {
     display: none;
   }
+
+  &:hover .burger-icon,
+  &:focus .burger-icon {
+    fill: var(--color-affair);
+  }
 }
 
 .burger-icon {
@@ -54,10 +60,6 @@
   height: 12px;
 
   transition: fill 250ms linear;
-}
-.burger-btn:hover .burger-icon,
-.burger-btn:focus .burger-icon {
-  fill: var(--color-affair);
 }
 
 .navigation {
@@ -75,7 +77,6 @@
 
 .header-list {
   display: none;
-  font-weight: 400;
   line-height: 1.5;
   color: var(--color-scheme-1-text);
 
@@ -86,14 +87,16 @@
     font-size: 18px;
   }
 }
+
 .menu-item {
   transition: color 250ms linear;
-}
-.menu-item:hover,
-.menu-item:focus {
   cursor: pointer;
-  color: var(--color-affair);
-  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: var(--color-affair);
+    text-decoration: underline;
+  }
 }
 
 /* -------  menu - open --------*/
@@ -122,7 +125,7 @@
     display: none;
   }
 }
-.menu-burger.hide .menu-burger.hide {
+.menu-burger.hide {
   opacity: 0;
   pointer-events: none;
 }
@@ -155,13 +158,14 @@
   align-items: center;
   justify-content: center;
   fill: var(--color-scheme-1-text);
+  cursor: pointer;
 
   transition: fill 250ms linear;
-}
-.cross-icon:hover,
-.cross-icon:focus {
-  cursor: pointer;
-  fill: var(--color-affair);
+
+  &:hover,
+  &:focus {
+    fill: var(--color-affair);
+  }
 }
 
 .menu-burger-list {
@@ -179,12 +183,13 @@
 
 .menu-burger-item {
   width: 100%;
-}
-.menu-burger-item:hover,
-.menu-burger-item:focus {
   cursor: pointer;
-  color: var(--color-affair);
-  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: var(--color-affair);
+    text-decoration: underline;
+  }
 }
 
 .menu-burger-link {
@@ -194,4 +199,3 @@
 
   transition: color 250ms linear;
 }
-
