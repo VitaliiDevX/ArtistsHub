@@ -124,7 +124,7 @@
 
   pointer-events: none;
 
-  z-index: 9999;
+  z-index: 999;
   border-radius: 12px;
   padding: 12px;
   /* max-width: 289px; */
