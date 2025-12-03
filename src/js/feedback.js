@@ -1,11 +1,29 @@
-import Raty from 'raty-js';
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import { getFeedbacks } from './soundwawe-api';
+export function initFeedback() {
+  const feedbackSection = document.querySelector('.feedback');
+  if (!feedbackSection) return;
 
-const arrowBtns = document.querySelectorAll('.arrow-btn');
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadFeedbackLogic();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: '200px' }
+  );
 
-async function renderFeedbacks() {
+  observer.observe(feedbackSection);
+}
+
+async function loadFeedbackLogic() {
+  const { default: Raty } = await import('raty-js');
+  const { default: Swiper } = await import('swiper');
+  const { Navigation, Pagination } = await import('swiper/modules');
+  const { getFeedbacks } = await import('./soundwawe-api');
+
+  const arrowBtns = document.querySelectorAll('.arrow-btn');
   const wrapper = document.querySelector('.swiper-wrapper');
 
   try {
@@ -44,6 +62,26 @@ async function renderFeedbacks() {
       const raty = new Raty(el, { starType: 'i', score, readOnly: true });
       raty.init();
     });
+
+    // Initialize Swiper after rendering slides
+    new Swiper('.swiper', {
+      modules: [Navigation, Pagination],
+      speed: 400,
+      spaceBetween: 30,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+        renderBullet: function (index, className) {
+          return `<span class="${className}"></span>`;
+        },
+      },
+    });
   } catch (error) {
     console.error('Error fetching feedbacks:', error);
 
@@ -60,23 +98,3 @@ async function renderFeedbacks() {
     });
   }
 }
-renderFeedbacks().then(() => {
-  const swiper = new Swiper('.swiper', {
-    modules: [Navigation, Pagination],
-    speed: 400,
-    spaceBetween: 30,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-      renderBullet: function (index, className) {
-        return `<span class="${className}"></span>`;
-      },
-    },
-  });
-});

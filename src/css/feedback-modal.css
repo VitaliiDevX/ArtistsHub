@@ -1,4 +1,4 @@
-@import url(root.css);
+/* @import url(root.css); */
 
 body.no-scroll {
   overflow: hidden;
@@ -31,8 +31,10 @@ body.no-scroll {
   padding: 64px 16px 58px;
   transform: translate(-50%, -50%);
   width: 320px;
+  box-sizing: border-box;
   background-color: var(--color-neutral-darkest);
   border-radius: 16px;
+  color: var(--color-scheme-1-text);
 
   @media only screen and (min-width: 768px) {
     width: 640px;
@@ -53,7 +55,7 @@ body.no-scroll {
   height: 42px;
   border: none;
   background-color: inherit;
-  fill: var(--color-white);
+  fill: var(--color-scheme-1-text);
 
   &:hover,
   &:focus {
@@ -65,7 +67,6 @@ body.no-scroll {
 .feedback-modal-header {
   text-align: center;
   font-family: 'Epilogue', sans-serif;
-  font-weight: 700;
   font-size: 24px;
   line-height: 130%;
   letter-spacing: -0.01em;
@@ -96,7 +97,6 @@ body.no-scroll {
   gap: 8px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
-  color: var(--color-white);
   text-align: left;
 }
 
@@ -104,7 +104,6 @@ body.no-scroll {
 .feedback-modal-message-area {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
-  color: var(--color-white);
   border: 1px solid var(--opacity-white-20);
   border-radius: 12px;
   padding: 8px 12px;
@@ -112,6 +111,7 @@ body.no-scroll {
   width: 100%;
   box-sizing: border-box;
   background-color: inherit;
+  color: var(--color-scheme-1-text);
   &:hover,
   &:focus {
     outline: none;
@@ -162,11 +162,13 @@ body.no-scroll {
 .feedback-modal-submit-btn {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
-  color: var(--color-white);
+  font-weight: 700;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
   border-radius: 12px;
   padding: 10px 114px;
-  width: 288px;
-  height: 47px;
+  min-width: 288px;
+
   box-shadow: 0 1px 2px 0 var(--opacity-neutral-darkest-5),
     inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
     inset 0 0 0 1px var(----opacity-neutral-darkest-15),
@@ -176,12 +178,12 @@ body.no-scroll {
 
   @media only screen and (min-width: 768px) {
     align-self: center;
-    width: 340px;
+    min-width: 340px;
   }
 
   @media only screen and (min-width: 1440px) {
     padding: 10px 24px;
-    width: 108px;
+    min-width: 108px;
   }
 
   &:hover,

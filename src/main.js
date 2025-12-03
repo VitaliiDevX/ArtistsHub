@@ -1,8 +1,7 @@
-import './js/feedback';
+import { initFeedback } from './js/feedback';
 import './js/search-form';
 import {
   artistModalPagesEl,
-  genresListEl,
   searchFormEl,
   artistListEl,
   filterBtnEl,
@@ -22,7 +21,6 @@ import {
 } from './js/event-listeners-callbacks';
 import {
   renderArtistList,
-  renderArtistGenresList,
   renderPagination,
   renderGenresList,
   showArtistsLoader,
@@ -32,15 +30,7 @@ import {
 } from './js/render-artists';
 import { getTotalPages } from './js/helpers';
 import './js/feedback-modal';
-import {
-  getAllGenres,
-  getArtistInfoById,
-  getArtists,
-} from './js/soundwawe-api';
-import {
-  renderArtistModalAlbumsList,
-  renderArtistModal,
-} from './js/render-artist-modal';
+import { getAllGenres, getArtists } from './js/soundwawe-api';
 
 import { initSliders, renderSlider, getSliderImages } from './js/hero-slider';
 import { initHeader } from './js/header';
@@ -50,6 +40,7 @@ import { initHeader } from './js/header';
 // });
 
 initHeader();
+initFeedback();
 
 // TESTS!!!!!!!!!!!!!!!!!!!!!!!!!
 // const result = await getArtistInfoById('65b0fda6ba67998416821076');

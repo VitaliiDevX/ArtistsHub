@@ -1,23 +1,23 @@
 export const initHeader = () => {
   const burgerBtnWrapper = document.querySelector('.burger-btn');
-  const croseIcon = document.querySelector('.cross-icon');
+  const crossIcon = document.querySelector('.cross-icon');
   const burgerIcon = document.querySelector('.burger-icon');
-  const modalEl = document.querySelector('.menu-burger');
   const menuBurger = document.querySelector('.menu-burger');
 
+  if (!burgerBtnWrapper || !crossIcon || !burgerIcon || !menuBurger) {
+    return;
+  }
+
   const toggle = () => {
-    console.log('toggle');
     burgerIcon.classList.toggle('hide');
-    croseIcon.classList.toggle('hide');
+    crossIcon.classList.toggle('hide');
     menuBurger.classList.toggle('hide');
   };
 
   burgerBtnWrapper.addEventListener('click', toggle);
 
-  modalEl.addEventListener('click', event => {
-    console.log(event.target.tagName);
-    if (event.target.tagName === 'LI' || event.target.tagName === 'A') {
-      console.log(event.target.tagName);
+  menuBurger.addEventListener('click', event => {
+    if (event.target.closest('a')) {
       toggle();
     }
   });

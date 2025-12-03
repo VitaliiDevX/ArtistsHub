@@ -20,6 +20,7 @@ import {
   backdropWithModalEl,
   searchFormEl,
   artistModalEl,
+  filterBtnEl,
 } from './refs';
 import { renderArtistModal } from './render-artist-modal';
 // import { document } from 'postcss';
@@ -71,19 +72,36 @@ export async function onSearchArtistsByInput(e) {
     showArtistsContent();
   }
 }
+
+export function reverseArrowOnBtn(btn) {
+  // 1) Toggle списка при клике по кнопке
+  if (btn) {
+    const nextElementSibling = btn.nextElementSibling;
+
+    const isHidden = nextElementSibling.classList.toggle('is-hidden');
+
+    // Вращаем стрелку
+    btn.classList.toggle('open', !isHidden);
+
+    // Закрываем предыдущий
+    if (previousSelector && previousSelector !== nextElementSibling) {
+      previousSelector.classList.add('is-hidden');
+
+      // Сбрасываем вращение у предыдущей кнопки
+      const prevBtn = previousSelector
+        .closest('.select')
+        .querySelector('.select-btn');
+      prevBtn?.classList.remove('open');
+    }
+
+    previousSelector = nextElementSibling;
+    return;
+  }
+}
 // NEVER OPEN THIS FUNCTION IN THE FUTURE
 export async function onSearchArtistsByClick(e) {
   try {
-    if (e.target.closest('.select-btn')) {
-      const nextElementSibling =
-        e.target.closest('.select-btn').nextElementSibling;
-      nextElementSibling.classList.toggle('is-hidden');
-      if (previousSelector && previousSelector !== nextElementSibling) {
-        previousSelector.classList.add('is-hidden');
-      }
-      previousSelector = nextElementSibling;
-      return;
-    }
+    reverseArrowOnBtn(e.target.closest('.select-btn'));
 
     //Click logic
     if (e.target.tagName === 'LI') {
@@ -96,7 +114,15 @@ export async function onSearchArtistsByClick(e) {
         input.value = e.target.textContent.trim();
       }
 
-      // NEED TO UNDERSTAND NEED TO WATCH
+      // Close UI
+      if (button) {
+        button.classList.remove('open');
+        button.focus();
+      }
+      if (listWrapper) {
+        listWrapper.classList.add('is-hidden');
+      }
+
       if (button) {
         const textNode = Array.from(button.childNodes).find(
           node => node.nodeType === Node.TEXT_NODE
@@ -105,25 +131,30 @@ export async function onSearchArtistsByClick(e) {
           const textContent = e.target.textContent.trim();
           textNode.nodeValue = textContent;
           const selectValue = select.dataset.selectName;
+          let newValue;
 
           if (selectValue === 'sortName') {
-            if (textContent === 'Default') {
-              delete currentQuery.sortName;
-            } else {
-              currentQuery = {
-                ...currentQuery,
-                [selectValue]: textContent === 'Z-A' ? 'desc' : 'asc',
-              };
-            }
+            newValue =
+              textContent === 'Default'
+                ? undefined
+                : textContent === 'Z-A'
+                ? 'desc'
+                : 'asc';
           } else {
-            if (textContent === 'All Genres') {
-              delete currentQuery.genre;
-            } else {
-              currentQuery = {
-                ...currentQuery,
-                [selectValue]: textContent,
-              };
-            }
+            newValue = textContent === 'All Genres' ? undefined : textContent;
+          }
+
+          if (currentQuery[selectValue] === newValue) {
+            return;
+          }
+
+          if (newValue === undefined) {
+            delete currentQuery[selectValue];
+          } else {
+            currentQuery = {
+              ...currentQuery,
+              [selectValue]: newValue,
+            };
           }
           currentPage = 1;
 
@@ -133,10 +164,6 @@ export async function onSearchArtistsByClick(e) {
           await checkArtistResponse(currentQuery, currentPage);
         }
       }
-
-      if (listWrapper) {
-        listWrapper.classList.add('is-hidden');
-      }
     }
   } catch (error) {
     console.log(error);
@@ -145,7 +172,6 @@ export async function onSearchArtistsByClick(e) {
     showArtistsContent();
   }
 }
-// IM SERIOUSLY
 
 export async function onArtistModalPagesClick(e) {
   const btn = e.target.closest('.page-btn');
@@ -226,7 +252,10 @@ function closeModal() {
 
 export function onFilterClick(e) {
   const btn = e.target.closest('.filter-btn');
+  btn.classList.toggle('is-open');
   btn.nextElementSibling.classList.toggle('is-open');
+  // reverseArrowOnBtn(btn);
+  btn.classList.toggle('open');
 }
 
 export function onResetClick(e) {
@@ -241,20 +270,28 @@ export function onResetClick(e) {
 }
 // AI CREATED BLOCK NEW RelatedTarget
 export function onSearchFormFocusOut(e) {
+  if (isFilterWrapperClick) {
+    return;
+  }
   const currentTarget = e.currentTarget;
   const relatedTarget = e.relatedTarget;
 
   if (currentTarget.contains(relatedTarget)) {
     return;
   }
+  // Another KOSTYL
+  e.currentTarget.previousElementSibling.classList.remove('open');
 
   // Затримка потрібна, щоб клік по LI елементу встиг спрацювати
   // перед тим, як dropdown буде захований
+
   setTimeout(() => {
     const selectListWrappers = currentTarget.querySelectorAll(
       '.select-list-wrapper'
     );
     selectListWrappers.forEach(el => el.classList.add('is-hidden'));
+    const selectBtns = currentTarget.querySelectorAll('.select-btn');
+    selectBtns.forEach(btn => btn.classList.remove('open'));
   }, 150);
 }
 
@@ -278,6 +315,7 @@ export function onFilterWrapperFocusOut(e) {
   if (currentTarget.contains(relatedTarget)) {
     return;
   }
-
+  e.target.classList.remove('open');
   searchFormEl.classList.remove('is-open');
+  filterBtnEl.classList.remove('open');
 }

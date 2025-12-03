@@ -104,12 +104,9 @@ const onFeedbackFormSubmit = async event => {
   if (!validateFeedbackData(newFeedback)) {
     return;
   }
-  console.log(newFeedback);
 
   try {
     const response = await postFeedback(newFeedback);
-
-    console.log(response);
 
     iziToast.success({
       message: 'Your feedback submited successfully',
@@ -123,7 +120,7 @@ const onFeedbackFormSubmit = async event => {
 
     onfeedbackCloseBtnClick();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     iziToast.error({
       message: 'Error submitting feedback',
       position: 'topRight',
@@ -167,7 +164,8 @@ const getDataFromLS = () => {
 
   const savedData = JSON.parse(savedDataJSON);
 
-  onfeedbackBtnClick();
+  //!Reopen modal form
+  // onfeedbackBtnClick();
 
   if (savedData) {
     feedbackFormEl.elements.name.value = savedData.name;

@@ -14,7 +14,7 @@ export function renderArtistCard(artist) {
   const { genres, strArtist, strArtistThumb, strBiographyEN, _id } = artist;
   const artistCard = `<li class="artist-card"> 
   
-    <img class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}" loading="lazy" decoding="async">
+    <img class="artist-thumb" src="${strArtistThumb}" alt="${strArtist}" loading="lazy" decoding="async" width="288" height="288">
     ${
       genres.length > 0
         ? `<ul class="artist-genres">
@@ -22,7 +22,7 @@ export function renderArtistCard(artist) {
     </ul>`
         : ''
     }
-    <h2 class="artist-name">${strArtist}</h2>
+    <h3 class="artist-name">${strArtist}</h3>
     <p class="artist-biography">${
       isEmpty(strBiographyEN) ? 'information missing' : strBiographyEN
     }</p>
@@ -118,9 +118,8 @@ export function renderPagination(currentPage, totalPages) {
     <a 
       ${isDisabled ? '' : 'href="#artists-content"'}
       class="page-btn artists-arrow-btn ${isDisabled ? 'disabled' : ''}"
-      ${
-        isDisabled ? '' : `data-page="${currentPage + (isLeft ? -1 : 1)}"`
-      }>      
+      ${isDisabled ? '' : `data-page="${currentPage + (isLeft ? -1 : 1)}"`}
+        aria-label="next page">      
       <svg width="24" height="24">
         <use href="${sprite}${
       isLeft ? '#left-arrow-btn' : '#right-arrow-btn'

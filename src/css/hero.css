@@ -27,13 +27,13 @@
     pointer-events: none;
   }
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     &::before {
       height: 32px;
     }
   }
 
-  @media (min-width: 1440px) {
+  @media only screen and (min-width: 1440px) {
     &::before {
       height: 80px;
     }
@@ -47,11 +47,11 @@
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     align-items: flex-start;
   }
 
-  @media (min-width: 1440px) {
+  @media only screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 31px;
   }
@@ -59,18 +59,21 @@
 
 .hero-text-content {
   padding: 64px 0;
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     padding: 32px 0;
     max-width: 624px;
   }
 
-  @media (min-width: 1440px) {
+  @media only screen and (min-width: 1440px) {
     width: calc((100% - 31px) / 2);
     padding: 215px 0;
   }
 }
 
 .hero-title {
+  margin: 0;
+  /* найти, откуда тянется марджин на h1 */
+
   margin-bottom: 20px;
   font-family: var(--second-family);
   font-weight: 700;
@@ -79,23 +82,18 @@
   letter-spacing: -0.01em;
   color: var(--color-scheme-1-text);
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     margin-bottom: 24px;
   }
-  @media (min-width: 1440px) {
+  @media only screen and (min-width: 1440px) {
     font-size: 84px;
   }
 }
 
 .hero-desk {
   margin-bottom: 24px;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--color-scheme-1-text);
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     margin-bottom: 32px;
     font-size: 20px;
   }
@@ -107,12 +105,10 @@
   justify-content: center;
   gap: 12px;
 
-  width: 100%;
-  max-width: 288px;
-  height: 47px;
+  min-width: 280px;
+  padding: 10px 0;
   border-radius: 12px;
   margin: 0 auto;
-  border: none;
 
   background: var(--color-affair);
 
@@ -133,13 +129,13 @@
     transform: translateY(1px);
   } */
 
-  @media (min-width: 768px) {
-    max-width: 246px;
+  @media only screen and (min-width: 768px) {
+    min-width: 246px;
     margin-left: 0;
   }
 
-  @media (min-width: 1440px) {
-    max-width: 206px;
+  @media only screen and (min-width: 1440px) {
+    min-width: 206px;
   }
 }
 
@@ -151,18 +147,20 @@
 }
 .hero-slider {
   display: flex;
+  justify-content: center;
   gap: 16px;
   height: 385px;
   overflow: hidden;
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     height: 632px;
   }
 
-  @media (min-width: 1440px) {
-    gap: 18px;
+  @media only screen and (min-width: 1440px) {
+    gap: 16px;
+    width: 50%;
     height: 900px;
   }
 }
@@ -176,7 +174,7 @@
   pointer-events: none;
   margin-bottom: 16px;
 
-  @media (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     height: 340px;
   }
 }
