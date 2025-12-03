@@ -111,6 +111,7 @@ body.no-scroll {
   width: 100%;
   box-sizing: border-box;
   background-color: inherit;
+  color: var(--color-scheme-1-text);
   &:hover,
   &:focus {
     outline: none;
