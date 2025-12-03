@@ -327,3 +327,13 @@ export function onFilterWrapperFocusOut(e) {
   searchFormEl.classList.remove('is-open');
   filterBtnEl.classList.remove('open');
 }
+
+export function onPageScroll(e) {
+  const header = document.querySelector('.header');
+
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+}

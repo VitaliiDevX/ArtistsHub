@@ -130,11 +130,9 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 272px;
 
   @media only screen and (min-width: 768px) {
     gap: 24px;
-    max-width: 654px;
   }
 
   @media only screen and (min-width: 1440px) {

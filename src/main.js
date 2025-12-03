@@ -18,6 +18,7 @@ import {
   onSearchFormFocusOut,
   onFilterWrapperFocusOut,
   onFilterWrapperMouseDown,
+  onPageScroll,
 } from './js/event-listeners-callbacks';
 import {
   renderArtistList,
@@ -92,3 +93,5 @@ artistListEl.addEventListener('click', e => {
   if (!btnClick) return;
   onLearnMoreClick(e);
 });
+
+window.addEventListener('scroll', onPageScroll);

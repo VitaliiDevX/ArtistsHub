@@ -5,10 +5,16 @@
 
   width: 100%;
   z-index: 1000;
+
+  transition: box-shadow 250ms linear;
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 10px rgba(248, 2, 248, 0.2);
 }
 
 .header::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -17,9 +23,7 @@
 
   pointer-events: none;
 
-  background: linear-gradient(180deg,
-      #060307 0%,
-      rgba(35, 19, 43, 0) 100%);
+  background: linear-gradient(180deg, #060307 0%, rgba(35, 19, 43, 0) 100%);
 }
 
 .hide {
@@ -242,4 +246,3 @@
 .menu-burger-link:focus {
   color: var(--color-affair);
 }
-
