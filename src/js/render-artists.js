@@ -119,7 +119,7 @@ export function renderPagination(currentPage, totalPages) {
       ${isDisabled ? '' : 'href="#artists-content"'}
       class="page-btn artists-arrow-btn ${isDisabled ? 'disabled' : ''}"
       ${isDisabled ? '' : `data-page="${currentPage + (isLeft ? -1 : 1)}"`}
-        aria-label="next page">      
+        aria-label="Go to ${isLeft ? 'previous' : 'next'} page">      
       <svg width="24" height="24">
         <use href="${sprite}${
       isLeft ? '#left-arrow-btn' : '#right-arrow-btn'
@@ -142,7 +142,7 @@ export function renderPagination(currentPage, totalPages) {
       isActive(page) ? '' : 'href="#artists-content"'
     } class="page-btn ${
       isActive(page) ? 'active' : ''
-    }" data-page="${page}">${page}</a>`;
+    }" data-page="${page}" aria-label="Go to page ${page}">${page}</a>`;
   }
 }
 
