@@ -26,7 +26,7 @@ export function renderArtistCard(artist) {
     <p class="artist-biography">${
       isEmpty(strBiographyEN) ? 'information missing' : strBiographyEN
     }</p>
-    <button class="learn-more-btn" data-id="${_id}" aria-label="Learn more about artist">Learn More<svg width="24" height="24">
+    <button class="learn-more-btn" data-id="${_id}">Learn More<svg width="24" height="24">
               <use href="${sprite}#icon-caret-right"></use>
             </svg></button>
     </li>`;
