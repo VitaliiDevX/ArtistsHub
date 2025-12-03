@@ -21,19 +21,23 @@
 
 .about-img {
     border-radius: 18px;
+    width: 100%
 }
 
 .about-picture {
     margin-bottom: 48px;
+    max-width: 280px;
 
     @media only screen and (min-width: 768px) {
         margin-bottom: 24px;
+        max-width: 704px;
     }
 
     @media only screen and (min-width: 1440px) {
         margin-bottom: 0;
         margin-right: 32px;
         flex-shrink: 0;
+        max-width: none;
     }
 }
 
