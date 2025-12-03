@@ -65,6 +65,11 @@
   @media only screen and (min-width: 768px) {
     display: none;
   }
+
+  &:hover .burger-icon,
+  &:focus .burger-icon {
+    fill: var(--color-affair);
+  }
 }
 
 .burger-btn:hover,
@@ -104,7 +109,6 @@
 
 .header-list {
   display: none;
-  font-weight: 400;
   line-height: 1.5;
   color: var(--color-scheme-1-text);
 
@@ -218,8 +222,12 @@
 .menu-burger-item:hover,
 .menu-burger-item:focus {
   cursor: pointer;
-  color: var(--color-affair);
-  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    color: var(--color-affair);
+    text-decoration: underline;
+  }
 }
 
 .menu-burger-link {

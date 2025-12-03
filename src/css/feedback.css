@@ -24,22 +24,24 @@
   @media only screen and (min-width: 768px) {
     display: flex;
   }
+
+  &:active {
+    background-color: var(--color-neutral-darker);
+    border-color: var(--opacity-neutral-darkest-15);
+  }
 }
-.arrow-btn:active {
-  background-color: var(--color-neutral-darker);
-  border-color: var(--opacity-neutral-darkest-15);
-}
+
 .swiper-button-prev,
 .swiper-button-next {
   color: var(--color-white);
-}
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  color: var(--opacity-white-50);
-}
-.swiper-button-prev:active,
-.swiper-button-next:active {
-  color: var(--color-white);
+
+  &:hover {
+    color: var(--opacity-white-50);
+  }
+
+  &:active {
+    color: var(--color-white);
+  }
 }
 
 .swiper-slide {
@@ -145,10 +147,11 @@
     min-width: 177px;
     width: auto;
   }
-}
-.feedback-btn:hover {
-  opacity: 0.6;
-}
-.feedback-btn:active {
-  opacity: 1;
+
+  &:hover {
+    opacity: 0.6;
+  }
+  &:active {
+    opacity: 1;
+  }
 }

@@ -280,8 +280,7 @@ export function onSearchFormFocusOut(e) {
     return;
   }
   // Another KOSTYL
-  e.currentTarget.previousElementSibling.classList.remove('open');
-
+  currentTarget.previousElementSibling.classList.remove('open', 'is-open');
   // Затримка потрібна, щоб клік по LI елементу встиг спрацювати
   // перед тим, як dropdown буде захований
 
@@ -297,8 +296,16 @@ export function onSearchFormFocusOut(e) {
 
 let isFilterWrapperClick = false;
 
-export function onFilterWrapperMouseDown() {
+export function onFilterWrapperMouseDown(e) {
   isFilterWrapperClick = true;
+  // ZATYCHKA
+  if (e.target.classList.contains('filters')) {
+    isFilterWrapperClick = false;
+  }
+  if (e.target.classList.contains('select-list-wrapper')) {
+    isFilterWrapperClick = false;
+  }
+  // ZATYCHKA
   setTimeout(() => {
     isFilterWrapperClick = false;
   }, 150);
@@ -315,7 +322,8 @@ export function onFilterWrapperFocusOut(e) {
   if (currentTarget.contains(relatedTarget)) {
     return;
   }
-  e.target.classList.remove('open');
+
+  e.target.classList.remove('open', 'is-open');
   searchFormEl.classList.remove('is-open');
   filterBtnEl.classList.remove('open');
 }
