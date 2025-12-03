@@ -5,6 +5,8 @@
 
   width: 100%;
   z-index: 1000;
+
+  transition: box-shadow 250ms linear;
 }
 
 .header.scrolled {
