@@ -75,7 +75,7 @@
 <symbol id="list-arrow-up" viewBox="0 0 32 32">
 <path  d="M8.391 19.057l1.885 1.885 5.724-5.724 5.724 5.724 1.885-1.885-7.609-7.609-7.609 7.609z"></path>
 <symbol id="icon-burger" viewBox="0 0 43 32">
-<path fill="#fff" style="fill: var(--color1, #fff)" d="M0 0h42.667v5.333h-42.667v-5.333zM10.667 13.333h32v5.333h-32v-5.333zM24 26.667h18.667v5.333h-18.667v-5.333z"></path>
+<path  d="M0 0h42.667v5.333h-42.667v-5.333zM10.667 13.333h32v5.333h-32v-5.333zM24 26.667h18.667v5.333h-18.667v-5.333z"></path>
 </symbol>
 <symbol id="icon-caret-right" viewBox="0 0 32 32">
 <path d="M12 25.333l10.667-9.333-10.667-9.333v18.667z"></path>
